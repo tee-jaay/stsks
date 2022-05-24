@@ -19,7 +19,7 @@ class StasksApp extends StatelessWidget {
         primaryColor: stPrimaryColor,
         textTheme: Theme.of(context).textTheme.apply(bodyColor: stTextColor),
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
