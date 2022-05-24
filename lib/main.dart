@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stasks/constants.dart';
+import 'package:stasks/screens/dashboard/dashboard_screen.dart';
 import 'package:stasks/screens/home/home_screen.dart';
 
 void main() {
@@ -19,7 +20,11 @@ class StasksApp extends StatelessWidget {
         primaryColor: stPrimaryColor,
         textTheme: Theme.of(context).textTheme.apply(bodyColor: stTextColor),
       ),
-      home: const HomeScreen(),
+      initialRoute: HomeScreen.screenId,
+      routes: {
+        HomeScreen.screenId : (context) => HomeScreen(appTitle: "Stasks",),
+        DashboardScreen.screenId: (context) => DashboardScreen(),
+      },
     );
   }
 }
