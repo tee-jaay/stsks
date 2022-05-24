@@ -22,6 +22,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Row(
           children: const [
             Text("Welcome to Dashboard", style: TextStyle(fontWeight: FontWeight.bold),),
+            Spacer(),
             Text("Date")
           ],
         ),
