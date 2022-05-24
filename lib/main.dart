@@ -12,6 +12,7 @@ class StasksApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String aTitle = "Stasks";
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -22,7 +23,7 @@ class StasksApp extends StatelessWidget {
       ),
       initialRoute: HomeScreen.screenId,
       routes: {
-        HomeScreen.screenId : (context) => HomeScreen(appTitle: "Stasks",),
+        HomeScreen.screenId : (context) => HomeScreen(appTitle: aTitle,),
         DashboardScreen.screenId: (context) => DashboardScreen(),
       },
     );
