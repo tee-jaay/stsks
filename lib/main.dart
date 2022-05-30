@@ -15,7 +15,7 @@ class StasksApp extends StatelessWidget {
     String aTitle = "Stasks";
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Stasks',
       theme: ThemeData(
         scaffoldBackgroundColor: stBackgroundColor,
         primaryColor: stPrimaryColor,
