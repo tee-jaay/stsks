@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import '../../dashboard/dashboard_screen.dart';
 import '../home_screen.dart';
 
-class Hero extends StatelessWidget {
-  const Hero({
+class HeroSection extends StatelessWidget {
+  const HeroSection({
     Key? key,
-    required this.widget, required this.title,
+    required this.widget,
+    required this.title,
   }) : super(key: key);
 
   final HomeScreen widget;

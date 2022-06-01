@@ -23,7 +23,7 @@ class StasksApp extends StatelessWidget {
       ),
       initialRoute: HomeScreen.screenId,
       routes: {
-        HomeScreen.screenId : (context) => HomeScreen(appTitle: aTitle,),
+        HomeScreen.screenId: (context) => HomeScreen(),
         DashboardScreen.screenId: (context) => DashboardScreen(),
       },
     );
