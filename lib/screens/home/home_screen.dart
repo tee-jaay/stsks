@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:stasks/screens/home/components/deployed_using.dart';
+import 'package:stasks/screens/home/components/footer_links.dart';
+import 'package:stasks/screens/home/components/system_and_tools.dart';
+import 'package:stasks/screens/home/components/techs_used.dart';
 
 import 'components/description.dart';
 import 'components/features.dart';
@@ -24,6 +28,10 @@ class _HomeScreenState extends State<HomeScreen> {
           Hero(widget: widget),
           Description(),
           Features(),
+          TechsUsed(),
+          SystemAndTools(),
+          DeployedUsing(),
+          FooterLinks(),
         ],
       ),
     );
