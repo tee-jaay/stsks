@@ -26,7 +26,7 @@ class TechsUsed extends StatelessWidget {
             children: [
               Container(
                 child: SectionTitle(
-                  title: "Techs used",
+                  title: "Techs",
                 ),
               ),
               SizedBox(

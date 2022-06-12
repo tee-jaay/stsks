@@ -16,14 +16,14 @@ class Description extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(stDefaultSpace / 2,
                 stDefaultSpace, stDefaultSpace / 2, stDefaultSpace),
             color: Colors.white,
-            child: const Text(
-              "a MERN Stack powered project and employee management system.",
+            child: Text(
+              "a MERN Stack & Flutter build project and employee management system",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 12.0,
-                color: Color.fromRGBO(0, 0, 0, 0.87),
-                wordSpacing: 8,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    fontSize: 12.0,
+                    color: Color.fromRGBO(0, 0, 0, 0.87),
+                    wordSpacing: 8,
+                  ),
             ),
           ),
         ),
