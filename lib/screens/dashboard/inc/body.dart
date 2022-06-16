@@ -7,10 +7,8 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late final scrWidth = MediaQuery.of(context).size.width * 0.8;
-    late final scrHeight = MediaQuery.of(context).size.height * 0.5;
-    late String scrWidthStr = scrWidth.toString().substring(0, 2);
-    late String scrHeightStr = scrHeight.toString().substring(0, 2);
+    late final scrWidth = MediaQuery.of(context).size.width * 0.28;
+    late double scrHeight = 160.0;
 
     return Padding(
       padding: EdgeInsets.all(stDefaultSpace),
@@ -20,17 +18,29 @@ class Body extends StatelessWidget {
           Row(
             children: [
               Container(
-                  width: scrWidth,
-                  height: scrHeight,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          "https://picsum.photos/$scrHeightStr/$scrWidthStr"),
-                      fit: BoxFit.cover,
+                width: scrWidth,
+                height: scrHeight,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Column(
+                  children: [
+                    Icon(
+                      Icons.task,
+                      size: 24.0,
+                      semanticLabel: 'Projects',
                     ),
-                  ),
-                  child: Text("Projects")),
+                    Text(
+                      "134",
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    Text(
+                      "Projects",
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ],
