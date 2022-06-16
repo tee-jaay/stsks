@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// info
+const String appName = "prozeqts";
+
 // colors
 const stPrimaryColor = Color(0xFF0C9869);
 const stTextColor = Color(0xFF3C4046);

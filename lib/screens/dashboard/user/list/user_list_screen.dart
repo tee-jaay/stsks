@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class UserListScreen extends StatelessWidget {
   const UserListScreen({Key? key}) : super(key: key);
+  static String screenId = "user_list";
 
   @override
   Widget build(BuildContext context) {

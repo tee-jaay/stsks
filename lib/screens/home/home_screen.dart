@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stasks/constants.dart';
 import 'package:stasks/screens/home/components/deployed_using.dart';
 import 'package:stasks/screens/home/components/footer_links.dart';
 import 'package:stasks/screens/home/components/system_and_tools.dart';
@@ -13,7 +14,7 @@ class HomeScreen extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  static String screenId = "home_screen";
+  static String screenId = "home";
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -50,7 +51,7 @@ class Hero extends StatelessWidget {
   Widget build(BuildContext context) {
     return HeroSection(
       widget: widget,
-      title: 'stasks',
+      title: appName,
     );
   }
 }
