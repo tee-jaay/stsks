@@ -25,10 +25,10 @@ class HeroSection extends StatelessWidget {
           },
           child: Text(
             title.toUpperCase(),
-            style: const TextStyle(
-              color: Color.fromRGBO(76, 175, 80, 1),
-              fontSize: 32.0,
-            ),
+            style: Theme.of(context).textTheme.headline1?.copyWith(
+                color: Color.fromRGBO(76, 175, 80, 1),
+                fontSize: 32.0,
+                fontWeight: FontWeight.bold),
           ),
         ),
       ),
