@@ -1,4 +1,6 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:stasks/constants.dart';
 
 import '../../dashboard/dashboard_screen.dart';
 import '../home_screen.dart';
@@ -23,12 +25,18 @@ class HeroSection extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, DashboardScreen.screenId);
           },
-          child: Text(
-            title.toUpperCase(),
-            style: Theme.of(context).textTheme.headline1?.copyWith(
-                color: Color.fromRGBO(76, 175, 80, 1),
-                fontSize: 32.0,
-                fontWeight: FontWeight.bold),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: TextLiquidFill(
+              text: appName,
+              waveColor: stPrimaryColor,
+              boxBackgroundColor: stBackgroundColorLight,
+              textStyle: TextStyle(
+                fontSize: 80.0,
+                fontWeight: FontWeight.bold,
+              ),
+              boxHeight: 300.0,
+            ),
           ),
         ),
       ),
