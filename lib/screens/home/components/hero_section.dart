@@ -32,7 +32,7 @@ class HeroSection extends StatelessWidget {
               waveColor: stPrimaryColor,
               boxBackgroundColor: stBackgroundColorLight,
               textStyle: TextStyle(
-                fontSize: 80.0,
+                fontSize: MediaQuery.of(context).size.width * 0.2,
                 fontWeight: FontWeight.bold,
               ),
               boxHeight: 300.0,

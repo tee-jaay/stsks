@@ -18,7 +18,7 @@ class RecentProjectItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: stDefaultSpace * 0.5),
+      margin: EdgeInsets.only(bottom: stDefaultSpace * 0.8),
       padding: EdgeInsets.symmetric(vertical: stDefaultSpace * 0.5),
       decoration: BoxDecoration(
         color: stBackgroundColorLight,
