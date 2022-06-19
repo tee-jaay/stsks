@@ -17,6 +17,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       appBar: AppBar(
         title: Text("Dashboard"),
       ),
+      backgroundColor: Colors.white,
       body: Body(),
     );
   }
