@@ -7,10 +7,8 @@ import 'package:stasks/screens/home/components/section_title.dart';
 
 class TechsUsed extends StatelessWidget {
   final List<String> _techNames = [
+    'mern',
     'flutter',
-    'express.js',
-    'react.js',
-    'mongoDb',
   ];
 
   @override
