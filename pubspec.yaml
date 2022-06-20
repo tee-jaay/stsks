@@ -39,6 +39,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   graphic: ^0.10.5
   draw_graph: ^1.0.0
+  easy_table: ^1.6.0
 
 dev_dependencies:
   flutter_test:
