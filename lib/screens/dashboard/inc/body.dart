@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graphic/graphic.dart';
 import 'package:stasks/screens/dashboard/inc/latest_issues.dart';
+import 'package:stasks/screens/dashboard/inc/online_users.dart';
 import 'package:stasks/screens/dashboard/inc/welcomeDate.dart';
 import 'package:stasks/screens/dashboard/inc/recent_projects.dart';
 import '../../../constants.dart';
@@ -34,6 +35,10 @@ class Body extends StatelessWidget {
               height: stDefaultSpace,
             ),
             LatestIssues(),
+            SizedBox(
+              height: stDefaultSpace,
+            ),
+            OnlineUsers(),
             SizedBox(
               height: stDefaultSpace,
             ),
