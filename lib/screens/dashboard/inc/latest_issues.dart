@@ -48,7 +48,7 @@ class _LatestIssuesState extends State<LatestIssues> {
           },
         ),
         IssueItem(
-          about: "Quas vero voluptas cumque susc",
+          about: "Quas vero voluptas cumque susc vero voluptas cumque susc",
           issueType: "feature",
           severity: "Upgrade",
           colorType: Colors.blue,
@@ -103,16 +103,19 @@ class IssueItem extends StatelessWidget {
         child: Row(
           children: [
             Container(
+              width: MediaQuery.of(context).size.width * 0.5,
               padding: EdgeInsets.symmetric(
                 vertical: stDefaultSpace * 0.5,
-                horizontal: stDefaultSpace * 0.1,
+                horizontal: stDefaultSpace * 0.5,
               ),
               child: Text(
                 about,
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: stDefaultSpace),
+              margin: EdgeInsets.only(
+                left: stDefaultSpace,
+              ),
               padding: EdgeInsets.symmetric(
                   horizontal: stDefaultSpace * 0.6,
                   vertical: stDefaultSpace * 0.3),
@@ -126,10 +129,13 @@ class IssueItem extends StatelessWidget {
               ),
             ),
             Spacer(),
-            Text(
-              severity,
-              style: TextStyle(
-                color: colorSeverity,
+            Padding(
+              padding: EdgeInsets.only(right: stDefaultSpace * 0.5),
+              child: Text(
+                severity,
+                style: TextStyle(
+                  color: colorSeverity,
+                ),
               ),
             ),
           ],
