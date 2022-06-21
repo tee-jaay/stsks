@@ -17,10 +17,12 @@ class StasksApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: appName,
       theme: ThemeData(
-        scaffoldBackgroundColor: stBackgroundColor,
-        primaryColor: stPrimaryColor,
-        textTheme: Theme.of(context).textTheme.apply(bodyColor: stTextColor),
-      ),
+          scaffoldBackgroundColor: stBackgroundColor,
+          primaryColor: stPrimaryColor,
+          textTheme: Theme.of(context).textTheme.apply(bodyColor: stTextColor),
+          appBarTheme: AppBarTheme(
+            color: Colors.white,
+          )),
       initialRoute: HomeScreen.screenId,
       routes: routes,
     );
