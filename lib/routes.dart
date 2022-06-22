@@ -4,6 +4,7 @@ import 'package:stasks/screens/auth/request-password/request_password.dart';
 import 'package:stasks/screens/auth/sign-in/sign_in.dart';
 import 'package:stasks/screens/auth/sign-up/sign_up.dart';
 import 'package:stasks/screens/dashboard/dashboard_screen.dart';
+import 'package:stasks/screens/dashboard/projects/projects_list/projects_list_screen.dart';
 import 'package:stasks/screens/home/home_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -13,4 +14,5 @@ final Map<String, WidgetBuilder> routes = {
   SignInScreen.screenId: (context) => SignInScreen(),
   RequestPasswordScreen.screenId: (context) => RequestPasswordScreen(),
   NewPasswordScreen.screenId: (context) => NewPasswordScreen(),
+  ProjectListScreen.screenId: (context) => ProjectListScreen(),
 };

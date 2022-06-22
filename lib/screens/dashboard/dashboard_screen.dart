@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stasks/screens/dashboard/inc/body.dart';
+import 'package:stasks/screens/dashboard/projects/project_detail/detail_screen.dart';
+import 'package:stasks/screens/dashboard/projects/projects_list/projects_list_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -36,7 +38,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             TextButton(
               onPressed: () {
-                print("projects");
+                Navigator.pushNamed(context, ProjectListScreen.screenId);
               },
               child: Text("Projects"),
             ),
