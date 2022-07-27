@@ -1,6 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stasks/screens/dashboard/inc/body.dart';
-import 'package:stasks/screens/dashboard/projects/project_detail/detail_screen.dart';
 import 'package:stasks/screens/dashboard/projects/projects_list/projects_list_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       appBar: AppBar(
         leading: IconButton(
           color: Colors.black,
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -32,21 +32,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 primary: Colors.white,
               ),
               onPressed: () {
-                print("Dashboard screen");
+                if (kDebugMode) {
+                  print("Dashboard screen");
+                }
               },
-              child: Text("Dashboard"),
+              child: const Text("Dashboard"),
             ),
             TextButton(
               onPressed: () {
                 Navigator.pushNamed(context, ProjectListScreen.screenId);
               },
-              child: Text("Projects"),
+              child: const Text("Projects"),
             ),
             TextButton(
               onPressed: () {
-                print("users");
+                if (kDebugMode) {
+                  print("users");
+                }
               },
-              child: Text("Users"),
+              child: const Text("Users"),
             ),
           ],
         ),
@@ -55,14 +59,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
           IconButton(
             color: Colors.black,
             onPressed: () {
-              print("logout");
+              if (kDebugMode) {
+                print("logout");
+              }
             },
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
           ),
         ],
       ),
       backgroundColor: Colors.white,
-      body: Body(),
+      body: const Body(),
     );
   }
 }

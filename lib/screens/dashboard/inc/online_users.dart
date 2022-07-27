@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stasks/constants.dart';
 
@@ -18,12 +19,14 @@ class _OnlineUsersState extends State<OnlineUsers> {
           "Users online now",
           style: Theme.of(context).textTheme.bodyText2,
         ),
-        SizedBox(
+        const SizedBox(
           height: stDefaultSpace,
         ),
         OnLineUserCard(
           press: () {
-            print("online user 1");
+            if (kDebugMode) {
+              print("online user 1");
+            }
           },
           imgSrc: "https://i.pravatar.cc/300",
           role: "Admin",
@@ -32,7 +35,9 @@ class _OnlineUsersState extends State<OnlineUsers> {
         ),
         OnLineUserCard(
           press: () {
-            print("online user 2");
+            if (kDebugMode) {
+              print("online user 2");
+            }
           },
           imgSrc: "https://i.pravatar.cc/300",
           role: "visitor",
@@ -41,7 +46,9 @@ class _OnlineUsersState extends State<OnlineUsers> {
         ),
         OnLineUserCard(
           press: () {
-            print("online user 3");
+            if (kDebugMode) {
+              print("online user 3");
+            }
           },
           imgSrc: "https://i.pravatar.cc/300",
           role: "client",
@@ -50,7 +57,9 @@ class _OnlineUsersState extends State<OnlineUsers> {
         ),
         OnLineUserCard(
           press: () {
-            print("online user 4");
+            if (kDebugMode) {
+              print("online user 4");
+            }
           },
           imgSrc: "https://i.pravatar.cc/300",
           role: "user",
@@ -59,7 +68,9 @@ class _OnlineUsersState extends State<OnlineUsers> {
         ),
         OnLineUserCard(
           press: () {
-            print("online user 5");
+            if (kDebugMode) {
+              print("online user 5");
+            }
           },
           imgSrc: "https://i.pravatar.cc/300",
           role: "client",
@@ -89,8 +100,8 @@ class OnLineUserCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: stDefaultSpace * 0.4),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.symmetric(vertical: stDefaultSpace * 0.4),
+        decoration: const BoxDecoration(
           border: Border(
             top: BorderSide(
               color: Colors.green,
@@ -103,7 +114,7 @@ class OnLineUserCard extends StatelessWidget {
             CircleAvatar(
               backgroundImage: NetworkImage(imgSrc),
             ),
-            SizedBox(
+            const SizedBox(
               width: stDefaultSpace * 0.4,
             ),
             Column(
@@ -112,19 +123,19 @@ class OnLineUserCard extends StatelessWidget {
                 Text(
                   name,
                   textAlign: TextAlign.start,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   email,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xff666666),
                   ),
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Text(
               role.toUpperCase(),
               style: Theme.of(context).textTheme.bodyLarge,

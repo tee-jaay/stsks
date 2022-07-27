@@ -1,6 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stasks/constants.dart';
-import 'package:easy_table/easy_table.dart';
 
 class LatestIssues extends StatefulWidget {
   const LatestIssues({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _LatestIssuesState extends State<LatestIssues> {
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: stDefaultSpace,
         ),
         Container(),
@@ -34,7 +34,9 @@ class _LatestIssuesState extends State<LatestIssues> {
           colorType: Colors.yellow,
           colorSeverity: Colors.yellow,
           press: () {
-            print("pressed yellow");
+            if (kDebugMode) {
+              print("pressed yellow");
+            }
           },
         ),
         IssueItem(
@@ -44,7 +46,9 @@ class _LatestIssuesState extends State<LatestIssues> {
           colorType: Colors.red,
           colorSeverity: Colors.red,
           press: () {
-            print("pressed red");
+            if (kDebugMode) {
+              print("pressed red");
+            }
           },
         ),
         IssueItem(
@@ -54,7 +58,9 @@ class _LatestIssuesState extends State<LatestIssues> {
           colorType: Colors.blue,
           colorSeverity: Colors.blue,
           press: () {
-            print("pressed blue");
+            if (kDebugMode) {
+              print("pressed blue");
+            }
           },
         ),
         IssueItem(
@@ -64,7 +70,9 @@ class _LatestIssuesState extends State<LatestIssues> {
           colorType: Colors.green,
           colorSeverity: Colors.green,
           press: () {
-            print("pressed green");
+            if (kDebugMode) {
+              print("pressed green");
+            }
           },
         ),
       ],
@@ -92,8 +100,8 @@ class IssueItem extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Container(
-        margin: EdgeInsets.only(bottom: stDefaultSpace),
-        padding: EdgeInsets.symmetric(
+        margin: const EdgeInsets.only(bottom: stDefaultSpace),
+        padding: const EdgeInsets.symmetric(
           vertical: stDefaultSpace * 0.7,
         ),
         decoration: BoxDecoration(
@@ -104,7 +112,7 @@ class IssueItem extends StatelessWidget {
           children: [
             Container(
               width: MediaQuery.of(context).size.width * 0.5,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 vertical: stDefaultSpace * 0.5,
                 horizontal: stDefaultSpace * 0.5,
               ),
@@ -113,24 +121,24 @@ class IssueItem extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(
+              margin: const EdgeInsets.only(
                 left: stDefaultSpace,
               ),
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                   horizontal: stDefaultSpace * 0.6,
                   vertical: stDefaultSpace * 0.3),
               decoration: BoxDecoration(
                   color: colorType, borderRadius: BorderRadius.circular(50)),
               child: Text(
                 issueType,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 12.0,
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
-              padding: EdgeInsets.only(right: stDefaultSpace * 0.5),
+              padding: const EdgeInsets.only(right: stDefaultSpace * 0.5),
               child: Text(
                 severity,
                 style: TextStyle(

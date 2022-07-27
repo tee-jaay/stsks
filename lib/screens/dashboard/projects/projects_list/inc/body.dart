@@ -14,22 +14,22 @@ class _BodyState extends State<Body> {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.all(stDefaultSpace),
+          padding: const EdgeInsets.all(stDefaultSpace),
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: 200.0,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: NetworkImage("https://picsum.photos/200/300"),
+              ),
+            ),
             child: Text(
               "Project title",
               style: TextStyle(
                 color: Colors.white,
                 backgroundColor: Colors.black.withOpacity(0.5),
                 fontSize: 18.0,
-              ),
-            ),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: NetworkImage("https://picsum.photos/200/300"),
               ),
             ),
           ),

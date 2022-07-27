@@ -12,7 +12,6 @@ class StasksApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String aTitle = appName;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: appName,
@@ -20,7 +19,7 @@ class StasksApp extends StatelessWidget {
           scaffoldBackgroundColor: stBackgroundColor,
           primaryColor: stPrimaryColor,
           textTheme: Theme.of(context).textTheme.apply(bodyColor: stTextColor),
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
             color: Colors.white,
           )),
       initialRoute: HomeScreen.screenId,

@@ -23,7 +23,7 @@ class StatCards extends StatelessWidget {
           count: '43',
           name: 'projects',
           color: projectColor,
-          icon: Icon(
+          icon: const Icon(
             Icons.archive,
             size: 24.0,
             semanticLabel: 'projects',
@@ -35,7 +35,7 @@ class StatCards extends StatelessWidget {
           count: '1345',
           name: 'tasks',
           color: taskColor,
-          icon: Icon(
+          icon: const Icon(
             Icons.task,
             size: 24.0,
             semanticLabel: 'tasks',
@@ -47,7 +47,7 @@ class StatCards extends StatelessWidget {
           count: '94',
           name: 'issues',
           color: issueColor,
-          icon: Icon(
+          icon: const Icon(
             Icons.list,
             size: 24.0,
             semanticLabel: 'issues',
@@ -59,7 +59,7 @@ class StatCards extends StatelessWidget {
           count: '34',
           name: 'meeting',
           color: meetingColor,
-          icon: Icon(
+          icon: const Icon(
             Icons.people,
             size: 24.0,
             semanticLabel: 'meeting',

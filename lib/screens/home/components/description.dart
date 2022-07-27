@@ -21,7 +21,7 @@ class Description extends StatelessWidget {
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 12.0,
-                    color: Color.fromRGBO(0, 0, 0, 0.87),
+                    color: const Color.fromRGBO(0, 0, 0, 0.87),
                     wordSpacing: 8,
                   ),
             ),

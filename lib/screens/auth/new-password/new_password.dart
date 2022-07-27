@@ -8,9 +8,9 @@ class NewPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Save new password"),
+        title: const Text("Save new password"),
       ),
-      body: Text("save new password form"),
+      body: const Text("save new password form"),
     );
   }
 }

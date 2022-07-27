@@ -9,9 +9,9 @@ class RequestPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Password reset"),
+        title: const Text("Password reset"),
       ),
-      body: Text("Request reset password link"),
+      body: const Text("Request reset password link"),
     );
   }
 }

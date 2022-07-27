@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:badges/badges.dart';
 
 import 'package:stasks/constants.dart';
 
@@ -11,23 +10,23 @@ class TechsUsed extends StatelessWidget {
     'flutter',
   ];
 
+  TechsUsed({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Material(
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: stDefaultSpace,
             vertical: stDefaultSpace * 2,
           ),
           child: Column(
             children: [
-              Container(
-                child: SectionTitle(
-                  title: "Techs",
-                ),
+              const SectionTitle(
+                title: "Techs",
               ),
-              SizedBox(
+              const SizedBox(
                 height: stDefaultSpace * 4,
               ),
               Center(
@@ -38,11 +37,11 @@ class TechsUsed extends StatelessWidget {
                     (index) => Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Chip(
-                        padding: EdgeInsets.all(0),
-                        backgroundColor: Color(0xff2E2E2E),
+                        padding: const EdgeInsets.all(0),
+                        backgroundColor: const Color(0xff2E2E2E),
                         label: Text(
                           _techNames[index],
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.normal,
                           ),
@@ -59,7 +58,7 @@ class TechsUsed extends StatelessWidget {
                   // ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: stDefaultSpace * 4,
               ),
             ],
@@ -70,8 +69,8 @@ class TechsUsed extends StatelessWidget {
   }
 }
 
-class customTechChip extends StatelessWidget {
-  const customTechChip({
+class CustomTechChip extends StatelessWidget {
+  const CustomTechChip({
     Key? key,
     required this.text,
   }) : super(key: key);
@@ -81,10 +80,10 @@ class customTechChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0),
-        color: Color(0xff2e2e2e),
+        color: const Color(0xff2e2e2e),
       ),
       child: Text(
         text,

@@ -18,8 +18,8 @@ class RecentProjectItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: stDefaultSpace * 0.8),
-      padding: EdgeInsets.symmetric(vertical: stDefaultSpace * 0.5),
+      margin: const EdgeInsets.only(bottom: stDefaultSpace * 0.8),
+      padding: const EdgeInsets.symmetric(vertical: stDefaultSpace * 0.5),
       decoration: BoxDecoration(
         color: stBackgroundColorLight,
         borderRadius: BorderRadius.circular(50),
@@ -33,7 +33,7 @@ class RecentProjectItem extends StatelessWidget {
               height: stDefaultSpace,
               color: color,
             ),
-            SizedBox(
+            const SizedBox(
               width: stDefaultSpace * 0.5,
             ),
             Container(
@@ -42,9 +42,9 @@ class RecentProjectItem extends StatelessWidget {
               // decoration: BoxDecoration(),
               child: Text(title),
             ),
-            Spacer(),
+            const Spacer(),
             Text(date),
-            SizedBox(
+            const SizedBox(
               width: stDefaultSpace,
             ),
           ],

@@ -8,11 +8,11 @@ import 'package:stasks/screens/dashboard/projects/projects_list/projects_list_sc
 import 'package:stasks/screens/home/home_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
-  HomeScreen.screenId: (context) => HomeScreen(),
-  DashboardScreen.screenId: (context) => DashboardScreen(),
-  SignUpScreen.screenId: (context) => SignUpScreen(),
-  SignInScreen.screenId: (context) => SignInScreen(),
-  RequestPasswordScreen.screenId: (context) => RequestPasswordScreen(),
-  NewPasswordScreen.screenId: (context) => NewPasswordScreen(),
-  ProjectListScreen.screenId: (context) => ProjectListScreen(),
+  HomeScreen.screenId: (context) => const HomeScreen(),
+  DashboardScreen.screenId: (context) => const DashboardScreen(),
+  SignUpScreen.screenId: (context) => const SignUpScreen(),
+  SignInScreen.screenId: (context) => const SignInScreen(),
+  RequestPasswordScreen.screenId: (context) => const RequestPasswordScreen(),
+  NewPasswordScreen.screenId: (context) => const NewPasswordScreen(),
+  ProjectListScreen.screenId: (context) => const ProjectListScreen(),
 };

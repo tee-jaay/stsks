@@ -27,12 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: [
           Hero(widget: widget),
-          Description(),
-          Features(),
+          const Description(),
+          const Features(),
           TechsUsed(),
-          SystemAndTools(),
-          DeployedUsing(),
-          FooterLinks(),
+          const SystemAndTools(),
+          const DeployedUsing(),
+          const FooterLinks(),
         ],
       ),
     );

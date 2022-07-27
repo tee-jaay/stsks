@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stasks/screens/dashboard/dashboard_screen.dart';
 import './inc/body.dart';
@@ -13,7 +14,7 @@ class ProjectListScreen extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           color: Colors.black,
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -24,7 +25,7 @@ class ProjectListScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, DashboardScreen.screenId);
               },
-              child: Text("Dashboard"),
+              child: const Text("Dashboard"),
             ),
             TextButton(
               style: TextButton.styleFrom(
@@ -32,16 +33,18 @@ class ProjectListScreen extends StatelessWidget {
                 primary: Colors.white,
               ),
               onPressed: null,
-              child: Text(
+              child: const Text(
                 "Projects",
                 style: TextStyle(color: Colors.white),
               ),
             ),
             TextButton(
               onPressed: () {
-                print("users");
+                if (kDebugMode) {
+                  print("users");
+                }
               },
-              child: Text("Users"),
+              child: const Text("Users"),
             ),
           ],
         ),
@@ -50,14 +53,16 @@ class ProjectListScreen extends StatelessWidget {
           IconButton(
             color: Colors.black,
             onPressed: () {
-              print("logout");
+              if (kDebugMode) {
+                print("logout");
+              }
             },
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
           ),
         ],
       ),
       backgroundColor: Colors.white,
-      body: Body(),
+      body: const Body(),
     );
   }
 }

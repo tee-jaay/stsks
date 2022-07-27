@@ -33,15 +33,15 @@ class StatCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 5,
             blurRadius: 7,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
       child: Column(
         children: [
-          Spacer(),
+          const Spacer(),
           Container(
-            padding: EdgeInsets.all(stDefaultSpace),
+            padding: const EdgeInsets.all(stDefaultSpace),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               color: color,
@@ -50,25 +50,25 @@ class StatCard extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(0, 1),
+                  offset: const Offset(0, 1),
                 ),
               ],
             ),
             child: icon,
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             count,
             style: Theme.of(context).textTheme.bodyText2,
           ),
-          SizedBox(
+          const SizedBox(
             height: stDefaultSpace * 0.8,
           ),
           Text(
             name,
             style: Theme.of(context).textTheme.bodyText1,
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:stasks/constants.dart';
 import 'package:stasks/screens/home/components/section_title.dart';
 
@@ -10,18 +8,16 @@ class DeployedUsing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(stDefaultSpace),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.all(stDefaultSpace),
+      decoration: const BoxDecoration(
         color: Colors.white,
       ),
       child: Column(
         children: [
-          Container(
-            child: SectionTitle(
-              title: "Deployed using",
-            ),
+          const SectionTitle(
+            title: "Deployed using",
           ),
-          SizedBox(
+          const SizedBox(
             height: stDefaultSpace * 4,
           ),
           Row(
@@ -37,7 +33,7 @@ class DeployedUsing extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: stDefaultSpace * 4,
           ),
         ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../models/Feature.dart';
+import '../../../models/feature.dart';
 
 class Features extends StatelessWidget {
   const Features({

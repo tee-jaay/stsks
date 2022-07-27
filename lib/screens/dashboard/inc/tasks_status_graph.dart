@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:draw_graph/draw_graph.dart';
 import 'package:draw_graph/models/feature.dart';
 import 'package:graphic/graphic.dart';
 import 'package:stasks/constants.dart';
 
 class TasksStatusGraph extends StatelessWidget {
-  final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
+  final Color darkBlue = const Color.fromARGB(255, 18, 32, 47);
 
   final List<Feature> features = [
     Feature(
@@ -43,6 +42,8 @@ class TasksStatusGraph extends StatelessWidget {
     {'category': 'Not Started', 'sales': 10},
   ];
 
+  TasksStatusGraph({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -52,7 +53,7 @@ class TasksStatusGraph extends StatelessWidget {
           "All Tasks Status",
           style: Theme.of(context).textTheme.bodyText2,
         ),
-        Container(
+        SizedBox(
           height: 300.00,
           width: 360.00,
           child: Chart(
@@ -72,7 +73,7 @@ class TasksStatusGraph extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: stDefaultSpace,
         ),
       ],

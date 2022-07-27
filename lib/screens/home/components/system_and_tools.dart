@@ -8,21 +8,19 @@ class SystemAndTools extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(stDefaultSpace),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.all(stDefaultSpace),
+      decoration: const BoxDecoration(
         color: Colors.white,
       ),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: stDefaultSpace * 4,
           ),
-          Container(
-            child: SectionTitle(
-              title: "System and Tools",
-            ),
+          const SectionTitle(
+            title: "System and Tools",
           ),
-          SizedBox(
+          const SizedBox(
             height: stDefaultSpace * 2,
           ),
           Row(
@@ -42,7 +40,7 @@ class SystemAndTools extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: stDefaultSpace * 2,
           ),
         ],

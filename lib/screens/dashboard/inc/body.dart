@@ -1,45 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:graphic/graphic.dart';
 import 'package:stasks/screens/dashboard/inc/latest_issues.dart';
 import 'package:stasks/screens/dashboard/inc/online_users.dart';
-import 'package:stasks/screens/dashboard/inc/welcomeDate.dart';
+import 'package:stasks/screens/dashboard/inc/welcome_date.dart';
 import 'package:stasks/screens/dashboard/inc/recent_projects.dart';
 import '../../../constants.dart';
 import 'stat_cards.dart';
 import 'tasks_status_graph.dart';
 
 class Body extends StatelessWidget {
-  Body({Key? key}) : super(key: key);
+  const Body({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(stDefaultSpace),
+        padding: const EdgeInsets.all(stDefaultSpace),
         child: Column(
           children: [
             welcomeDate(),
-            SizedBox(
+            const SizedBox(
               height: stDefaultSpace * 1.4,
             ),
-            StatCards(),
-            SizedBox(
+            const StatCards(),
+            const SizedBox(
               height: stDefaultSpace,
             ),
-            RecentProjects(),
-            SizedBox(
+            const RecentProjects(),
+            const SizedBox(
               height: stDefaultSpace,
             ),
             TasksStatusGraph(),
-            SizedBox(
+            const SizedBox(
               height: stDefaultSpace,
             ),
-            LatestIssues(),
-            SizedBox(
+            const LatestIssues(),
+            const SizedBox(
               height: stDefaultSpace,
             ),
-            OnlineUsers(),
-            SizedBox(
+            const OnlineUsers(),
+            const SizedBox(
               height: stDefaultSpace,
             ),
           ],
