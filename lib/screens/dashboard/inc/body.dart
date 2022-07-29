@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stasks/screens/dashboard/inc/latest_issues.dart';
 import 'package:stasks/screens/dashboard/inc/online_users.dart';
+import 'package:stasks/screens/dashboard/inc/stat_cards_grid.dart';
 import 'package:stasks/screens/dashboard/inc/welcome_date.dart';
 import 'package:stasks/screens/dashboard/inc/recent_projects.dart';
 import '../../../constants.dart';
-import 'stat_cards.dart';
 import 'tasks_status_graph.dart';
 
 class Body extends StatelessWidget {
@@ -21,7 +21,8 @@ class Body extends StatelessWidget {
             const SizedBox(
               height: stDefaultSpace * 1.4,
             ),
-            const StatCards(),
+            // const StatCards(),
+            const SizedBox(height: 380.0, child: StatCardsGrid()),
             const SizedBox(
               height: stDefaultSpace,
             ),
