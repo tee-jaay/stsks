@@ -58,14 +58,7 @@ class StatCard extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            count,
-            style: Theme.of(context).textTheme.bodyText2,
-          ),
-          const SizedBox(
-            height: stDefaultSpace * 0.8,
-          ),
-          Text(
-            name,
+            "$name($count)",
             style: Theme.of(context).textTheme.bodyText1,
           ),
           const Spacer(),

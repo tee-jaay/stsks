@@ -10,6 +10,8 @@ class StatCardsGrid extends StatelessWidget {
     return Scaffold(
       body: GridView.count(
         crossAxisCount: 2,
+        crossAxisSpacing: 8.0,
+        mainAxisSpacing: 8.0,
         children: List.generate(
             dashboardStats.length, (index) {
           return StatCard(
