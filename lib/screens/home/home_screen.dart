@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:stasks/constants.dart';
-import 'package:stasks/screens/home/components/deployed_using.dart';
-import 'package:stasks/screens/home/components/footer_links.dart';
-import 'package:stasks/screens/home/components/system_and_tools.dart';
-import 'package:stasks/screens/home/components/techs_used.dart';
+import '../../constants.dart';
+import '../../screens/home/components/deployed_using.dart';
+import '../../screens/home/components/footer_links.dart';
+import '../../screens/home/components/system_and_tools.dart';
+import '../../screens/home/components/techs_used.dart';
 
 import 'components/description.dart';
 import 'components/features.dart';

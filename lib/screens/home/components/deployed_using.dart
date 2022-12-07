@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:stasks/constants.dart';
-import 'package:stasks/screens/home/components/section_title.dart';
+
+import '../../../constants.dart';
+import 'section_title.dart';
 
 class DeployedUsing extends StatelessWidget {
   const DeployedUsing({Key? key}) : super(key: key);

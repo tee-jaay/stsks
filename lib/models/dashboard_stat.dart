@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stasks/constants.dart';
+import '../constants.dart';
 
 class DashboardStat {
   final String count, name, label;

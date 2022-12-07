@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:stasks/constants.dart';
-import 'package:stasks/routes.dart';
-import 'package:stasks/screens/home/home_screen.dart';
+import './constants.dart';
+import './routes.dart';
+
+import './screens/home/home_screen.dart';
 
 void main() {
   runApp(const StasksApp());

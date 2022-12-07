@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:stasks/screens/dashboard/inc/latest_issues.dart';
-import 'package:stasks/screens/dashboard/inc/online_users.dart';
-import 'package:stasks/screens/dashboard/inc/stat_cards_grid.dart';
-import 'package:stasks/screens/dashboard/inc/welcome_date.dart';
-import 'package:stasks/screens/dashboard/inc/recent_projects.dart';
+
 import '../../../constants.dart';
+import 'latest_issues.dart';
+import 'online_users.dart';
+import 'recent_projects.dart';
+import 'stat_cards_grid.dart';
 import 'tasks_status_graph.dart';
+import 'welcome_date.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);

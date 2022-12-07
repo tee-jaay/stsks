@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:stasks/constants.dart';
+import '../../../constants.dart';
+import 'section_title.dart';
 
-import 'package:stasks/screens/home/components/section_title.dart';
 
 class TechsUsed extends StatelessWidget {
   final List<String> _techNames = [
