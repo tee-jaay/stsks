@@ -8,11 +8,11 @@ import './screens/home/home_screen.dart';
 void main() async {
   await dotenv.load(fileName: "assets/.env");
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const StasksApp());
+  runApp(const MyAppRoot());
 }
 
-class StasksApp extends StatelessWidget {
-  const StasksApp({Key? key}) : super(key: key);
+class MyAppRoot extends StatelessWidget {
+  const MyAppRoot({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

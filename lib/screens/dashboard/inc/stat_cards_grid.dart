@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stasks/models/dashboard_stat.dart';
+import 'package:stasks/models/dashboard.dart';
 import 'package:stasks/screens/dashboard/inc/stat_card.dart';
 
 class StatCardsGrid extends StatelessWidget {
