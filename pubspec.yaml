@@ -40,6 +40,12 @@ dependencies:
   graphic: ^0.10.5
   draw_graph: ^1.0.0
   easy_table: ^1.6.0
+  http:
+  flutter_dotenv: ^5.0.2
+  path_provider: ^2.0.11
+  path: ^1.8.2
+  jwt_decode: ^0.3.1
+  image_picker: ^0.8.6
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +72,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/.env
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

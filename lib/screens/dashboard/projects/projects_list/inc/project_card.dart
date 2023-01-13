@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants.dart';
+import '../../../../../settings/constants.dart';
 
 class ProjectCard extends StatelessWidget {
   const ProjectCard({Key? key}) : super(key: key);

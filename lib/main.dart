@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import './constants.dart';
-import './routes.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'settings/constants.dart';
+import 'settings/routes.dart';
 
 import './screens/home/home_screen.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: "assets/.env");
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const StasksApp());
 }
 
@@ -13,6 +16,7 @@ class StasksApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: appName,

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:stasks/constants.dart';
+import 'package:stasks/settings/constants.dart';
 
 class LatestIssues extends StatefulWidget {
   const LatestIssues({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../settings/constants.dart';
 import 'latest_issues.dart';
 import 'online_users.dart';
 import 'recent_projects.dart';

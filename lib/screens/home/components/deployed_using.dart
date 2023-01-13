@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../settings/constants.dart';
 import 'section_title.dart';
 
 class DeployedUsing extends StatelessWidget {

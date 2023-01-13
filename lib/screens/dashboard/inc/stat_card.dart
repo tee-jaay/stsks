@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../constants.dart';
+import '../../../settings/constants.dart';
 
 class StatCard extends StatelessWidget {
   const StatCard({

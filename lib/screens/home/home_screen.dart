@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../constants.dart';
+import '../../settings/constants.dart';
 import '../../screens/home/components/deployed_using.dart';
 import '../../screens/home/components/footer_links.dart';
 import '../../screens/home/components/system_and_tools.dart';
