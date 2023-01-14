@@ -24,7 +24,7 @@ class _LatestIssuesState extends State<LatestIssues> {
           ],
         ),
         const SizedBox(
-          height: stDefaultSpace,
+          height: appDefaultSpace,
         ),
         Container(),
         IssueItem(
@@ -100,9 +100,9 @@ class IssueItem extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Container(
-        margin: const EdgeInsets.only(bottom: stDefaultSpace),
+        margin: const EdgeInsets.only(bottom: appDefaultSpace),
         padding: const EdgeInsets.symmetric(
-          vertical: stDefaultSpace * 0.7,
+          vertical: appDefaultSpace * 0.7,
         ),
         decoration: BoxDecoration(
           color: Colors.grey.withOpacity(0.3),
@@ -113,8 +113,8 @@ class IssueItem extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width * 0.5,
               padding: const EdgeInsets.symmetric(
-                vertical: stDefaultSpace * 0.5,
-                horizontal: stDefaultSpace * 0.5,
+                vertical: appDefaultSpace * 0.5,
+                horizontal: appDefaultSpace * 0.5,
               ),
               child: Text(
                 about,
@@ -122,11 +122,11 @@ class IssueItem extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.only(
-                left: stDefaultSpace,
+                left: appDefaultSpace,
               ),
               padding: const EdgeInsets.symmetric(
-                  horizontal: stDefaultSpace * 0.6,
-                  vertical: stDefaultSpace * 0.3),
+                  horizontal: appDefaultSpace * 0.6,
+                  vertical: appDefaultSpace * 0.3),
               decoration: BoxDecoration(
                   color: colorType, borderRadius: BorderRadius.circular(50)),
               child: Text(
@@ -138,7 +138,7 @@ class IssueItem extends StatelessWidget {
             ),
             const Spacer(),
             Padding(
-              padding: const EdgeInsets.only(right: stDefaultSpace * 0.5),
+              padding: const EdgeInsets.only(right: appDefaultSpace * 0.5),
               child: Text(
                 severity,
                 style: TextStyle(

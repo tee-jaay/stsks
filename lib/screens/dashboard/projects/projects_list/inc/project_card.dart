@@ -10,7 +10,7 @@ class ProjectCard extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.all(stDefaultSpace),
+          padding: const EdgeInsets.all(appDefaultSpace),
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: 200.0,
@@ -35,8 +35,8 @@ class ProjectCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: stDefaultSpace,
-          left: stDefaultSpace * 1.4,
+          bottom: appDefaultSpace,
+          left: appDefaultSpace * 1.4,
           child: ElevatedButton(onPressed: (){print('pressed');}, child: const Text('view'))),
       ],
     );

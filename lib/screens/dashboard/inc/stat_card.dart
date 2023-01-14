@@ -41,7 +41,7 @@ class StatCard extends StatelessWidget {
         children: [
           const Spacer(),
           Container(
-            padding: const EdgeInsets.all(stDefaultSpace),
+            padding: const EdgeInsets.all(appDefaultSpace),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               color: color,

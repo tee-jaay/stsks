@@ -21,9 +21,9 @@ class MyAppRoot extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: appName,
       theme: ThemeData(
-          scaffoldBackgroundColor: stBackgroundColor,
-          primaryColor: stPrimaryColor,
-          textTheme: Theme.of(context).textTheme.apply(bodyColor: stTextColor),
+          scaffoldBackgroundColor: appBackgroundColor,
+          primaryColor: appPrimaryColor,
+          textTheme: Theme.of(context).textTheme.apply(bodyColor: appTextColor),
           appBarTheme: const AppBarTheme(
             color: Colors.white,
           )),

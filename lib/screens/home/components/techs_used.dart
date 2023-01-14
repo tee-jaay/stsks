@@ -18,8 +18,8 @@ class TechsUsed extends StatelessWidget {
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: stDefaultSpace,
-            vertical: stDefaultSpace * 2,
+            horizontal: appDefaultSpace,
+            vertical: appDefaultSpace * 2,
           ),
           child: Column(
             children: [
@@ -27,7 +27,7 @@ class TechsUsed extends StatelessWidget {
                 title: "Techs",
               ),
               const SizedBox(
-                height: stDefaultSpace * 4,
+                height: appDefaultSpace * 4,
               ),
               Center(
                 child: Row(
@@ -59,7 +59,7 @@ class TechsUsed extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: stDefaultSpace * 4,
+                height: appDefaultSpace * 4,
               ),
             ],
           ),

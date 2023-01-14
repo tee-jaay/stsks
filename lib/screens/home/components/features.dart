@@ -17,13 +17,13 @@ class Features extends StatelessWidget {
           SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Container(
-                color: stBackgroundColorLight,
+                color: appBackgroundColorLight,
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: List.generate(
                       dataFeatures.length,
                           (index) => (Padding(
-                        padding: const EdgeInsets.all(stDefaultSpace / 4),
+                        padding: const EdgeInsets.all(appDefaultSpace / 4),
                         child: SizedBox(
                           height: 220,
                           width: 150.0,
@@ -50,7 +50,7 @@ class Features extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(
-                                height: stDefaultSpace,
+                                height: appDefaultSpace,
                               ),
                             ],
                           ),
@@ -79,7 +79,7 @@ class FeaturesTitle extends StatelessWidget {
         Container(
           width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.only(
-              top: stDefaultSpace * 3, bottom: stDefaultSpace * 3),
+              top: appDefaultSpace * 3, bottom: appDefaultSpace * 3),
           color: const Color(0xFFf1f1f1),
           child: Text(
             title,

@@ -18,10 +18,10 @@ class RecentProjectItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: stDefaultSpace * 0.8),
-      padding: const EdgeInsets.symmetric(vertical: stDefaultSpace * 0.5),
+      margin: const EdgeInsets.only(bottom: appDefaultSpace * 0.8),
+      padding: const EdgeInsets.symmetric(vertical: appDefaultSpace * 0.5),
       decoration: BoxDecoration(
-        color: stBackgroundColorLight,
+        color: appBackgroundColorLight,
         borderRadius: BorderRadius.circular(50),
       ),
       child: GestureDetector(
@@ -29,15 +29,15 @@ class RecentProjectItem extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: stDefaultSpace * 0.5,
-              height: stDefaultSpace,
+              width: appDefaultSpace * 0.5,
+              height: appDefaultSpace,
               color: color,
             ),
             const SizedBox(
-              width: stDefaultSpace * 0.5,
+              width: appDefaultSpace * 0.5,
             ),
             Container(
-              height: stDefaultSpace,
+              height: appDefaultSpace,
               color: Colors.white10,
               // decoration: BoxDecoration(),
               child: Text(title),
@@ -45,7 +45,7 @@ class RecentProjectItem extends StatelessWidget {
             const Spacer(),
             Text(date),
             const SizedBox(
-              width: stDefaultSpace,
+              width: appDefaultSpace,
             ),
           ],
         ),

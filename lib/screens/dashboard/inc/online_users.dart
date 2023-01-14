@@ -20,7 +20,7 @@ class _OnlineUsersState extends State<OnlineUsers> {
           style: Theme.of(context).textTheme.bodyText2,
         ),
         const SizedBox(
-          height: stDefaultSpace,
+          height: appDefaultSpace,
         ),
         OnLineUserCard(
           press: () {
@@ -100,7 +100,7 @@ class OnLineUserCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: stDefaultSpace * 0.4),
+        padding: const EdgeInsets.symmetric(vertical: appDefaultSpace * 0.4),
         decoration: const BoxDecoration(
           border: Border(
             top: BorderSide(
@@ -115,7 +115,7 @@ class OnLineUserCard extends StatelessWidget {
               backgroundImage: NetworkImage(imgSrc),
             ),
             const SizedBox(
-              width: stDefaultSpace * 0.4,
+              width: appDefaultSpace * 0.4,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

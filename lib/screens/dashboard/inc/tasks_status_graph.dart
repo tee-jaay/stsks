@@ -74,7 +74,7 @@ class TasksStatusGraph extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: stDefaultSpace,
+          height: appDefaultSpace,
         ),
       ],
     );

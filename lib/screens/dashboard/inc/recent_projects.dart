@@ -16,7 +16,7 @@ class RecentProjects extends StatelessWidget {
         color: Colors.white,
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: stDefaultSpace),
+        padding: const EdgeInsets.symmetric(vertical: appDefaultSpace),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -26,7 +26,7 @@ class RecentProjects extends StatelessWidget {
               textAlign: TextAlign.start,
             ),
             const SizedBox(
-              height: stDefaultSpace * 0.5,
+              height: appDefaultSpace * 0.5,
             ),
             RecentProjectItem(
               color: Colors.blue,

@@ -1,4 +1,4 @@
-# stasks
+# prozeqts
 
 Mobile version for stasks
 

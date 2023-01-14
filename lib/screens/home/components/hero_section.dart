@@ -29,8 +29,8 @@ class HeroSection extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             child: TextLiquidFill(
               text: appName,
-              waveColor: stPrimaryColor,
-              boxBackgroundColor: stBackgroundColorLight,
+              waveColor: appPrimaryColor,
+              boxBackgroundColor: appBackgroundColorLight,
               textStyle: TextStyle(
                 fontSize: MediaQuery.of(context).size.width * 0.2,
                 fontWeight: FontWeight.bold,
