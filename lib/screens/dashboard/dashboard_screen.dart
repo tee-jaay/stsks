@@ -1,7 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:stasks/screens/dashboard/inc/body.dart';
-import 'package:stasks/screens/dashboard/projects/projects_list/projects_list_screen.dart';
+
+import '../../controllers/project_controller.dart';
+import '../../controllers/user_controller.dart';
+import 'inc/body.dart';
+import 'projects/projects_list/projects_list_screen.dart';
+
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -13,6 +17,16 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  void _handleClickProjects(){
+    ProjectController _projectController = ProjectController();
+    _projectController.index();
+  }
+
+  void _handleClickUsers(){
+    UserController _userController = UserController();
+    _userController.fetchUsers();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,17 +54,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             TextButton(
               onPressed: () {
+                _handleClickProjects();
                 Navigator.pushNamed(context, ProjectListScreen.screenId);
               },
               child: const Text("Projects"),
             ),
             TextButton(
               onPressed: () {
-                if (kDebugMode) {
-                  print("users");
-                }
+                _handleClickUsers();
               },
-              child: const Text("Users"),
+              child: const Text("Users List"),
             ),
           ],
         ),

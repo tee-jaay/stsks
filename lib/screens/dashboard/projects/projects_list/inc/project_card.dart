@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../settings/constants.dart';
+import '../../../../../controllers/project_controller.dart';
 
 class ProjectCard extends StatelessWidget {
   const ProjectCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    void _handleClickView() {
+      ProjectController projectController = ProjectController();
+      projectController.show();
+    }
+
     return Stack(
       children: [
         Padding(
@@ -37,8 +44,11 @@ class ProjectCard extends StatelessWidget {
         Positioned(
           bottom: appDefaultSpace,
           left: appDefaultSpace * 1.4,
-          child: ElevatedButton(onPressed: (){print('pressed');}, child: const Text('view'))),
+          child: ElevatedButton(onPressed: (){
+            _handleClickView();
+            }, child: const Text('view'))),
       ],
     );
   }
 }
+
