@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stasks/constants.dart';
+import 'package:stasks/settings/constants.dart';
 import 'package:stasks/screens/dashboard/projects/projects_list/inc/project_card.dart';
 
 class Body extends StatefulWidget {

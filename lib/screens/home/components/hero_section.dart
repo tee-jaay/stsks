@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../settings/constants.dart';
 import '../../dashboard/dashboard_screen.dart';
 import '../home_screen.dart';
 
@@ -29,8 +29,8 @@ class HeroSection extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             child: TextLiquidFill(
               text: appName,
-              waveColor: stPrimaryColor,
-              boxBackgroundColor: stBackgroundColorLight,
+              waveColor: appPrimaryColor,
+              boxBackgroundColor: appBackgroundColorLight,
               textStyle: TextStyle(
                 fontSize: MediaQuery.of(context).size.width * 0.2,
                 fontWeight: FontWeight.bold,

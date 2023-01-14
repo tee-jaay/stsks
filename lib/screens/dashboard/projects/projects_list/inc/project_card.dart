@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../constants.dart';
+import '../../../../../settings/constants.dart';
+import '../../../../../controllers/project_controller.dart';
 
 class ProjectCard extends StatelessWidget {
   const ProjectCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    void _handleClickView() {
+      ProjectController projectController = ProjectController();
+      projectController.show();
+    }
+
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.all(stDefaultSpace),
+          padding: const EdgeInsets.all(appDefaultSpace),
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: 200.0,
@@ -35,10 +42,13 @@ class ProjectCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: stDefaultSpace,
-          left: stDefaultSpace * 1.4,
-          child: ElevatedButton(onPressed: (){print('pressed');}, child: const Text('view'))),
+          bottom: appDefaultSpace,
+          left: appDefaultSpace * 1.4,
+          child: ElevatedButton(onPressed: (){
+            _handleClickView();
+            }, child: const Text('view'))),
       ],
     );
   }
 }
+

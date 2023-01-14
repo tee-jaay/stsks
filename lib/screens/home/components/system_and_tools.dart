@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../settings/constants.dart';
 import 'section_title.dart';
 
 
@@ -10,20 +10,20 @@ class SystemAndTools extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(stDefaultSpace),
+      padding: const EdgeInsets.all(appDefaultSpace),
       decoration: const BoxDecoration(
         color: Colors.white,
       ),
       child: Column(
         children: [
           const SizedBox(
-            height: stDefaultSpace * 4,
+            height: appDefaultSpace * 4,
           ),
           const SectionTitle(
             title: "System and Tools",
           ),
           const SizedBox(
-            height: stDefaultSpace * 2,
+            height: appDefaultSpace * 2,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,7 +43,7 @@ class SystemAndTools extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: stDefaultSpace * 2,
+            height: appDefaultSpace * 2,
           ),
         ],
       ),

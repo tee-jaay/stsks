@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../settings/constants.dart';
 import 'latest_issues.dart';
 import 'online_users.dart';
 import 'recent_projects.dart';
@@ -15,33 +15,33 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(stDefaultSpace),
+        padding: const EdgeInsets.all(appDefaultSpace),
         child: Column(
           children: [
             welcomeDate(),
             const SizedBox(
-              height: stDefaultSpace * 1.4,
+              height: appDefaultSpace * 1.4,
             ),
             // const StatCards(),
             const SizedBox(height: 380.0, child: StatCardsGrid()),
             const SizedBox(
-              height: stDefaultSpace,
+              height: appDefaultSpace,
             ),
             const RecentProjects(),
             const SizedBox(
-              height: stDefaultSpace,
+              height: appDefaultSpace,
             ),
             TasksStatusGraph(),
             const SizedBox(
-              height: stDefaultSpace,
+              height: appDefaultSpace,
             ),
             const LatestIssues(),
             const SizedBox(
-              height: stDefaultSpace,
+              height: appDefaultSpace,
             ),
             const OnlineUsers(),
             const SizedBox(
-              height: stDefaultSpace,
+              height: appDefaultSpace,
             ),
           ],
         ),

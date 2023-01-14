@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../constants.dart';
+import '../../../settings/constants.dart';
 
 class StatCard extends StatelessWidget {
   const StatCard({
@@ -41,7 +41,7 @@ class StatCard extends StatelessWidget {
         children: [
           const Spacer(),
           Container(
-            padding: const EdgeInsets.all(stDefaultSpace),
+            padding: const EdgeInsets.all(appDefaultSpace),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               color: color,

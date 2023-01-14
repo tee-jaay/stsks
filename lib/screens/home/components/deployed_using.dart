@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../settings/constants.dart';
 import 'section_title.dart';
 
 class DeployedUsing extends StatelessWidget {
@@ -9,7 +9,7 @@ class DeployedUsing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(stDefaultSpace),
+      padding: const EdgeInsets.all(appDefaultSpace),
       decoration: const BoxDecoration(
         color: Colors.white,
       ),
@@ -19,7 +19,7 @@ class DeployedUsing extends StatelessWidget {
             title: "Deployed using",
           ),
           const SizedBox(
-            height: stDefaultSpace * 4,
+            height: appDefaultSpace * 4,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -35,7 +35,7 @@ class DeployedUsing extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: stDefaultSpace * 4,
+            height: appDefaultSpace * 4,
           ),
         ],
       ),

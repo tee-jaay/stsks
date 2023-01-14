@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
-import './constants.dart';
-import './routes.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'settings/constants.dart';
+import 'settings/routes.dart';
 
 import './screens/home/home_screen.dart';
 
-void main() {
-  runApp(const StasksApp());
+void main() async {
+  await dotenv.load(fileName: "assets/.env");
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyAppRoot());
 }
 
-class StasksApp extends StatelessWidget {
-  const StasksApp({Key? key}) : super(key: key);
+class MyAppRoot extends StatelessWidget {
+  const MyAppRoot({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: appName,
       theme: ThemeData(
-          scaffoldBackgroundColor: stBackgroundColor,
-          primaryColor: stPrimaryColor,
-          textTheme: Theme.of(context).textTheme.apply(bodyColor: stTextColor),
+          scaffoldBackgroundColor: appBackgroundColor,
+          primaryColor: appPrimaryColor,
+          textTheme: Theme.of(context).textTheme.apply(bodyColor: appTextColor),
           appBarTheme: const AppBarTheme(
             color: Colors.white,
           )),

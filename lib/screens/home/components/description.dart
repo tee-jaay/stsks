@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../../settings/constants.dart';
 
 class Description extends StatelessWidget {
   const Description({
@@ -13,8 +13,8 @@ class Description extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            padding: const EdgeInsets.fromLTRB(stDefaultSpace / 2,
-                stDefaultSpace, stDefaultSpace / 2, stDefaultSpace),
+            padding: const EdgeInsets.fromLTRB(appDefaultSpace / 2,
+                appDefaultSpace, appDefaultSpace / 2, appDefaultSpace),
             color: Colors.white,
             child: Text(
               "a MERN Stack & Flutter build project and employee management system",

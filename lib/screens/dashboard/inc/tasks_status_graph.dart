@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:draw_graph/models/feature.dart';
 import 'package:graphic/graphic.dart';
-import 'package:stasks/constants.dart';
+import 'package:stasks/settings/constants.dart';
 
 class TasksStatusGraph extends StatelessWidget {
   final Color darkBlue = const Color.fromARGB(255, 18, 32, 47);
@@ -74,7 +74,7 @@ class TasksStatusGraph extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: stDefaultSpace,
+          height: appDefaultSpace,
         ),
       ],
     );
