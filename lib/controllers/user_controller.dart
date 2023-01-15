@@ -4,7 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../services/http_requests_service.dart';
 
 class UserController with  ChangeNotifier{
-  void fetchUsers() async {
+  void index() async {
     print("fetchUsers");
     var endpoint = '${dotenv.env["API_BASE"]}/users';
     HttpRequestsService httpRequestsService = HttpRequestsService();

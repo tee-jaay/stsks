@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:stasks/controllers/issue_controller.dart';
+import 'package:stasks/controllers/meeting_controller.dart';
+import 'package:stasks/controllers/task_controller.dart';
 
 import '../../controllers/project_controller.dart';
 import '../../controllers/user_controller.dart';
@@ -18,13 +21,18 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   void _handleClickProjects(){
-    ProjectController _projectController = ProjectController();
-    _projectController.index();
+    ProjectController projectController = ProjectController();
+    projectController.index();
   }
 
   void _handleClickUsers(){
-    UserController _userController = UserController();
-    _userController.fetchUsers();
+    UserController userController = UserController();
+    userController.index();
+  }
+
+  void _handleClickIssues() {
+    IssueController issueController = IssueController();
+    issueController.index();
   }
 
   @override
@@ -61,7 +69,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             TextButton(
               onPressed: () {
-                _handleClickUsers();
+                // _handleClickUsers();
+                // _handleClickIssues();
+                // _handleClickMeetings();
+                // _handleClickTasks();
               },
               child: const Text("Users List"),
             ),
@@ -85,3 +96,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 }
+
+void _handleClickMeetings() {
+MeetingController meetingController = MeetingController();
+meetingController.index();
+}
+
+void _handleClickTasks() {
+TaskController taskController = TaskController();
+taskController.index();
+}
+
+
