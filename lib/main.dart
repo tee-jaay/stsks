@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'settings/constants.dart';
 import 'settings/routes.dart';
-
 import './screens/home/home_screen.dart';
 
 void main() async {
