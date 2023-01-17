@@ -1,22 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:stasks/settings/constants.dart';
-import 'package:stasks/screens/dashboard/projects/projects_list/inc/project_card.dart';
+import 'package:provider/provider.dart';
 
-class Body extends StatefulWidget {
+import '../../../../../controllers/project_controller.dart';
+import 'project_card.dart';
+
+class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
-  @override
-  State<Body> createState() => _BodyState();
-}
+  Future<void> _refreshProjects(BuildContext context) async {
+    await Provider.of<ProjectController>(context, listen: false).index();
+  }
 
-class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 8,
-        itemBuilder: (context, index) => ProjectCard(
-              key: Key(index.toString()),
-            )
+    return SingleChildScrollView(
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height - 90,
+        child: FutureBuilder(
+          builder: (context, snapshot) => snapshot.connectionState ==
+                  ConnectionState.waiting
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : RefreshIndicator(
+                  onRefresh: () => _refreshProjects(context),
+                  child: Consumer<ProjectController>(
+                    builder: (context, value, child) => ListView.builder(
+                      itemCount: value.projects.length,
+                      itemBuilder: (context, index) => ProjectCard(
+                          id: value.projects[index].id,
+                          title: value.projects[index].title,
+                          imgUrl: value.projects[index].imgUrl,
+                          status: value.projects[index].status,
+                          commentsCount: value.projects[index].commentsCount),
+                    ),
+                  ),
+                ),
+          future: _refreshProjects(context),
+        ),
+      ),
     );
   }
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
 
 import 'settings/constants.dart';
 import 'settings/routes.dart';
+import 'controllers/project_controller.dart';
 import './screens/home/home_screen.dart';
 
 void main() async {
@@ -16,19 +18,30 @@ class MyAppRoot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: appName,
-      theme: ThemeData(
-          scaffoldBackgroundColor: appBackgroundColor,
-          primaryColor: appPrimaryColor,
-          textTheme: Theme.of(context).textTheme.apply(bodyColor: appTextColor),
-          appBarTheme: const AppBarTheme(
-            color: Colors.white,
-          )),
-      initialRoute: HomeScreen.screenId,
-      routes: routes,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ProjectController(),
+        ),
+      ],
+      child: Builder(
+        builder: (BuildContext context) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: appName,
+            theme: ThemeData(
+                scaffoldBackgroundColor: appBackgroundColor,
+                primaryColor: appPrimaryColor,
+                textTheme:
+                    Theme.of(context).textTheme.apply(bodyColor: appTextColor),
+                appBarTheme: const AppBarTheme(
+                  color: Colors.white,
+                )),
+            initialRoute: HomeScreen.screenId,
+            routes: routes,
+          );
+        },
+      ),
     );
   }
 }
