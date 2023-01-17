@@ -9,7 +9,8 @@ import 'components/meta/meta.dart';
 import 'components/source/sources.dart';
 
 class ProjectInfo extends StatelessWidget {
-  ProjectInfo({required this.title,required this.description, Key? key}) : super(key: key);
+  ProjectInfo({required this.title, required this.description, Key? key})
+      : super(key: key);
   String title;
   String description;
 
@@ -22,7 +23,7 @@ class ProjectInfo extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Meta(title: title,description: description ),
+            Meta(title: title, description: description),
             Budget(),
             AssigneesList(),
             Communicate(),

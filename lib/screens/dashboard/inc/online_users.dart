@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:stasks/settings/constants.dart';
+
+import '../../../settings/constants.dart';
 
 class OnlineUsers extends StatefulWidget {
   const OnlineUsers({Key? key}) : super(key: key);

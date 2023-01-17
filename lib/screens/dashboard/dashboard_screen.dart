@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:stasks/controllers/issue_controller.dart';
-import 'package:stasks/controllers/meeting_controller.dart';
-import 'package:stasks/controllers/task_controller.dart';
 
+import '../../controllers/issue_controller.dart';
+import '../../controllers/meeting_controller.dart';
+import '../../controllers/task_controller.dart';
 import '../../controllers/project_controller.dart';
 import '../../controllers/user_controller.dart';
 import 'inc/body.dart';
