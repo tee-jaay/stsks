@@ -5,13 +5,11 @@ class Communicate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        "Setting screen",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 24.0,
-        ),
+    return Text(
+      "Setting screen",
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: 24.0,
       ),
     );
   }

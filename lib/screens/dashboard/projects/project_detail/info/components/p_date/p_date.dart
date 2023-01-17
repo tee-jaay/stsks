@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class StatGraph extends StatelessWidget {
-  const StatGraph({Key? key}) : super(key: key);
+class PDate extends StatelessWidget {
+  const PDate({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      "Stat graph screen",
+      "dates",
       style: TextStyle(
         color: Colors.black,
         fontSize: 24.0,

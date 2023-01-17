@@ -3,7 +3,7 @@ class ProjectDetail{
   String title;
   String image;
   String status;
-  int commentsCount;
+  String commentsCount;
   String slug;
   String createdBy;
   String description;

@@ -3,12 +3,17 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import '../models/project_detail.dart';
 import '../models/project_preview.dart';
 import '../services/http_requests_service.dart';
 
 class ProjectController with ChangeNotifier {
   HttpRequestsService httpRequestsService = HttpRequestsService();
   late List<ProjectPreview> projects = [];
+
+  bool loading = true;
+
+  var projectDetail = null;
 
   Future<void> index({int limit = 4}) async {
     var endpoint = '${dotenv.env["API_BASE"]}/projects-by-limit/$limit';
@@ -35,7 +40,21 @@ class ProjectController with ChangeNotifier {
     var endpoint = '${dotenv.env["API_BASE"]}/projects/$id';
     var result = await httpRequestsService.fetchData(endpoint, "method");
     final data = jsonDecode(result.body);
-    print(data);
+
+    projectDetail = ProjectDetail(
+        id: data[0]["id"] ?? '',
+        title: data[0]["title"] ?? '',
+        image: data[0]["image"] ?? '',
+        status: data[0]["status"] ?? '',
+        commentsCount: data[0]["0"] ?? '',
+        slug: data[0]["slug"] ?? '',
+        createdBy: data[0]["createdBy"] ?? '',
+        description: data[0]["description"] ?? '',
+        repoLink: data[0][" repoLink "] ?? '',
+        urlOne: data[0]["urlOne"] ?? '',
+        urlTwo: data[0]["urlTwo"] ?? '');
+
+    loading = false;
     notifyListeners();
   } // show
 }

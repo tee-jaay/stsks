@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../settings/constants.dart';
-import '../../../../../controllers/project_controller.dart';
+import '../../project_detail/project_detail_screen.dart';
 
 class ProjectCard extends StatelessWidget {
   ProjectCard(
@@ -21,11 +21,6 @@ class ProjectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _handleClickView() {
-      ProjectController projectController = ProjectController();
-      projectController.show('08650ddf-cd45-4464-a3c7-92e5064645bf');
-    }
-
     return Stack(
       children: [
         Padding(
@@ -58,8 +53,9 @@ class ProjectCard extends StatelessWidget {
             left: appDefaultSpace * 1.4,
             child: ElevatedButton(
                 onPressed: () {
-                  print(id);
-                  _handleClickView();
+                  Navigator.pushNamed(
+                      context, ProjectDetailScreen.screenId,
+                      arguments: id);
                 },
                 child: const Text('view'))),
       ],
