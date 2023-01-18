@@ -59,16 +59,31 @@ class ProjectInfo extends StatelessWidget {
                 commentsCount: commentsCount,
                 createdBy: createdBy,
               ),
+              SizedBox(
+                height: appDefaultSpace,
+              ),
               Budget(
                 estimate: estimate,
                 spent: spent,
               ),
+              SizedBox(
+                height: appDefaultSpace,
+              ),
               AssigneesList(),
+              SizedBox(
+                height: appDefaultSpace,
+              ),
               Communicate(),
+              SizedBox(
+                height: appDefaultSpace,
+              ),
               Sources(
                 repoLink: repoLink,
                 urlOne: urlOne,
                 urlTwo: urlTwo,
+              ),
+              SizedBox(
+                height: appDefaultSpace,
               ),
               PrjDates(
                 createdAt: createdAt,

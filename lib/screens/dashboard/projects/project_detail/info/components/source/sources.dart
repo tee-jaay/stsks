@@ -18,7 +18,7 @@ class Sources extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          "Sources screen",
+          "Sources & Links",
           style: TextStyle(
             color: Colors.black,
             fontSize: 18.0,

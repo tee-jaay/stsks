@@ -11,7 +11,7 @@ class Budget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           "Budget",
           style: TextStyle(
             color: Colors.black,
