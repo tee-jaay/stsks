@@ -12,6 +12,8 @@ class ProjectDetail{
   String urlTwo;
   String estimate;
   String spent;
+  String createdAt;
+  String updatedAt;
 
   ProjectDetail({
     required this.id,
@@ -27,5 +29,7 @@ class ProjectDetail{
     required this.urlTwo,
     required this.estimate,
     required this.spent,
+    required this.createdAt,
+    required this.updatedAt,
   });
 }

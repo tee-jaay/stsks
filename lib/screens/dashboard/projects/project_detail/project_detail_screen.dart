@@ -38,6 +38,8 @@ class ProjectDetailScreen extends StatelessWidget {
                 repoLink: value.projectDetail.repoLink,
                 urlOne: value.projectDetail.urlOne,
                 urlTwo: value.projectDetail.urlTwo,
+                createdAt: value.projectDetail.createdAt,
+                updatedAt: value.projectDetail.updatedAt,
               ),
             );
           } else if (snapshot.hasError) {

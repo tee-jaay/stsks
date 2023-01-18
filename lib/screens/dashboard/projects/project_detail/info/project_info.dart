@@ -4,8 +4,8 @@ import '../../../../../settings/constants.dart';
 import 'components/assignee/assignees_list.dart';
 import 'components/budget/budget.dart';
 import 'components/communicate/communicate.dart';
-import 'components/p_date/p_date.dart';
 import 'components/meta/meta.dart';
+import 'components/prj_dates/prj_dates.dart';
 import 'components/source/sources.dart';
 
 class ProjectInfo extends StatelessWidget {
@@ -21,6 +21,8 @@ class ProjectInfo extends StatelessWidget {
     required this.repoLink,
     required this.urlOne,
     required this.urlTwo,
+    required this.createdAt,
+    required this.updatedAt,
     Key? key,
   }) : super(key: key);
   String title;
@@ -34,6 +36,8 @@ class ProjectInfo extends StatelessWidget {
   String repoLink;
   String urlOne;
   String urlTwo;
+  String createdAt;
+  String updatedAt;
 
   @override
   Widget build(BuildContext context) {
@@ -42,30 +46,36 @@ class ProjectInfo extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
             vertical: 8, horizontal: appDefaultSpace),
         width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Meta(
-              title: title,
-              description: description,
-              image: image,
-              status: status,
-              commentsCount: commentsCount,
-              createdBy: createdBy,
-            ),
-            Budget(
-              estimate: estimate,
-              spent: spent,
-            ),
-            AssigneesList(),
-            Communicate(),
-            Sources(
-              repoLink: repoLink,
-              urlOne: urlOne,
-              urlTwo: urlTwo,
-            ),
-            PDate(),
-          ],
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Meta(
+                title: title,
+                description: description,
+                image: image,
+                status: status,
+                commentsCount: commentsCount,
+                createdBy: createdBy,
+              ),
+              Budget(
+                estimate: estimate,
+                spent: spent,
+              ),
+              AssigneesList(),
+              Communicate(),
+              Sources(
+                repoLink: repoLink,
+                urlOne: urlOne,
+                urlTwo: urlTwo,
+              ),
+              PrjDates(
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+              ),
+            ],
+          ),
         ),
       ),
     );
