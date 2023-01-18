@@ -41,19 +41,23 @@ class ProjectController with ChangeNotifier {
     var endpoint = '${dotenv.env["API_BASE"]}/projects/$id';
     var result = await httpRequestsService.requestApi(endpoint, "get");
     final data = jsonDecode(result.body);
+    print(data[0]);
 
     projectDetail = ProjectDetail(
         id: data[0]["id"] ?? '',
         title: data[0]["title"] ?? '',
         image: data[0]["image"] ?? '',
         status: data[0]["status"] ?? '',
-        commentsCount: data[0]["0"] ?? '',
+        commentsCount: data[0]["comments"].length.toString() ?? '',
         slug: data[0]["slug"] ?? '',
         createdBy: data[0]["createdBy"] ?? '',
         description: data[0]["description"] ?? '',
         repoLink: data[0][" repoLink "] ?? '',
         urlOne: data[0]["urlOne"] ?? '',
-        urlTwo: data[0]["urlTwo"] ?? '');
+        urlTwo: data[0]["urlTwo"] ?? '',
+        estimate: data[0]["budget"][0]["estimate"].toString() ?? '',
+        spent: data[0]["budget"][0]["spent"].toString() ?? '',
+    );
 
     loading = false;
     notifyListeners();

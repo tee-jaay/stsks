@@ -19,7 +19,7 @@ class ProjectDetailScreen extends StatelessWidget {
         ),
       ),
       body: FutureBuilder(
-        future: Provider.of<ProjectController>(context, listen: true).show(id),
+        future: Provider.of<ProjectController>(context, listen: false).show(id),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             // Data has been fetched, display the data in a widget
@@ -29,6 +29,9 @@ class ProjectDetailScreen extends StatelessWidget {
                 description: value.projectDetail.description,
                 image: value.projectDetail.image,
                 status: value.projectDetail.status,
+                commentsCount: value.projectDetail.commentsCount,
+                estimate: value.projectDetail.estimate,
+                spent: value.projectDetail.spent,
               ),
             );
           } else if (snapshot.hasError) {

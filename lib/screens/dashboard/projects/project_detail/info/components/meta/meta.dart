@@ -6,12 +6,14 @@ class Meta extends StatelessWidget {
       required this.description,
       required this.image,
       required this.status,
+      required this.commentsCount,
       Key? key})
       : super(key: key);
   String title;
   String description;
   String image;
   String status;
+  String commentsCount;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,21 @@ class Meta extends StatelessWidget {
           height: 300,
           width: double.infinity,
           child: Image.network(image),
+        ),
+        SizedBox(
+          width: 60.0,
+          child: Row(
+            children: [
+              Icon(
+                Icons.comment,
+                color: Colors.black,
+              ),
+              Text(
+                commentsCount,
+                style: TextStyle(color: Colors.black),
+              ),
+            ],
+          ),
         ),
         Text('Statue: $status'),
       ],

@@ -10,6 +10,8 @@ class ProjectDetail{
   String repoLink;
   String urlOne;
   String urlTwo;
+  String estimate;
+  String spent;
 
   ProjectDetail({
     required this.id,
@@ -23,5 +25,7 @@ class ProjectDetail{
     required this.repoLink,
     required this.urlOne,
     required this.urlTwo,
+    required this.estimate,
+    required this.spent,
   });
 }

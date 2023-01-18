@@ -1,16 +1,39 @@
 import 'package:flutter/material.dart';
 
 class Budget extends StatelessWidget {
-  const Budget({Key? key}) : super(key: key);
+  Budget({required this.estimate, required this.spent, Key? key})
+      : super(key: key);
+  String estimate;
+  String spent;
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "Budget",
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: 24.0,
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Budget",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 24.0,
+          ),
+        ),
+        Row(
+          children: [
+            RichText(
+              text: TextSpan(
+                text: 'Estimate $estimate ',
+                style: DefaultTextStyle.of(context).style,
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'Spent $spent',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

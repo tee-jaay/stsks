@@ -14,12 +14,18 @@ class ProjectInfo extends StatelessWidget {
       required this.description,
       required this.image,
       required this.status,
+      required this.commentsCount,
+      required this.estimate,
+      required this.spent,
       Key? key})
       : super(key: key);
   String title;
   String description;
   String image;
   String status;
+  String commentsCount;
+  String estimate;
+  String spent;
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +37,16 @@ class ProjectInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Meta(
-                title: title,
-                description: description,
-                image: image,
-                status: status),
-            Budget(),
+              title: title,
+              description: description,
+              image: image,
+              status: status,
+              commentsCount: commentsCount,
+            ),
+            Budget(
+              estimate: estimate,
+              spent: spent,
+            ),
             AssigneesList(),
             Communicate(),
             Sources(),
