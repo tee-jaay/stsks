@@ -41,9 +41,9 @@ class ProjectDetailScreen extends StatelessWidget {
                   urlTwo: value.projectDetail.urlTwo,
                   createdAt: value.projectDetail.createdAt,
                   updatedAt: value.projectDetail.updatedAt,
-                    assignees:value.projectDetail.assignees,
+                  assignees: value.projectDetail.assignees,
                 );
-              } ,
+              },
             );
           } else if (snapshot.hasError) {
             // An error occurred, display an error message

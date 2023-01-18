@@ -61,6 +61,7 @@ class ProjectController with ChangeNotifier {
       createdAt: data[0]["createdAt"].toString() ?? '',
       updatedAt: data[0]["updatedAt"].toString() ?? '',
       assignees: data[0]["assignees"] as List<dynamic>,
+      comments: data[0]["comments"] as List<dynamic>,
     );
 
     loading = false;
