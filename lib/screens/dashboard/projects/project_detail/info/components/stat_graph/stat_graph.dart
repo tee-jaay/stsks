@@ -5,11 +5,11 @@ class StatGraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "Stat graph screen",
+    return const Text(
+      "Stat Graph",
       style: TextStyle(
         color: Colors.black,
-        fontSize: 24.0,
+        fontSize: 18.0,
       ),
     );
   }
