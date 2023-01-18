@@ -41,6 +41,7 @@ class ProjectController with ChangeNotifier {
     var endpoint = '${dotenv.env["API_BASE"]}/projects/$id';
     var result = await httpRequestsService.requestApi(endpoint, "get");
     final data = jsonDecode(result.body);
+
     print(data[0]);
 
     projectDetail = ProjectDetail(
@@ -59,6 +60,7 @@ class ProjectController with ChangeNotifier {
       spent: data[0]["budget"][0]["spent"].toString() ?? '',
       createdAt: data[0]["createdAt"].toString() ?? '',
       updatedAt: data[0]["updatedAt"].toString() ?? '',
+      assignees: data[0]["assignees"] as List<dynamic>,
     );
 
     loading = false;

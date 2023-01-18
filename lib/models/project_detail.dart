@@ -14,6 +14,7 @@ class ProjectDetail{
   String spent;
   String createdAt;
   String updatedAt;
+  List<dynamic> assignees;
 
   ProjectDetail({
     required this.id,
@@ -31,5 +32,6 @@ class ProjectDetail{
     required this.spent,
     required this.createdAt,
     required this.updatedAt,
+    required this.assignees,
   });
 }

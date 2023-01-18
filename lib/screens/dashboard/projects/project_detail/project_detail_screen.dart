@@ -25,22 +25,25 @@ class ProjectDetailScreen extends StatelessWidget {
           if (snapshot.hasData) {
             // Data has been fetched, display the data in a widget
             return Consumer<ProjectController>(
-              builder: (context, value, child) => ProjectInfo(
-                key: const Key('project_info'),
-                title: value.projectDetail.title,
-                description: value.projectDetail.description,
-                image: value.projectDetail.image,
-                status: value.projectDetail.status,
-                commentsCount: value.projectDetail.commentsCount,
-                estimate: value.projectDetail.estimate,
-                spent: value.projectDetail.spent,
-                createdBy: value.projectDetail.createdBy,
-                repoLink: value.projectDetail.repoLink,
-                urlOne: value.projectDetail.urlOne,
-                urlTwo: value.projectDetail.urlTwo,
-                createdAt: value.projectDetail.createdAt,
-                updatedAt: value.projectDetail.updatedAt,
-              ),
+              builder: (context, value, child) {
+                return ProjectInfo(
+                  key: const Key('project_info'),
+                  title: value.projectDetail.title,
+                  description: value.projectDetail.description,
+                  image: value.projectDetail.image,
+                  status: value.projectDetail.status,
+                  commentsCount: value.projectDetail.commentsCount,
+                  estimate: value.projectDetail.estimate,
+                  spent: value.projectDetail.spent,
+                  createdBy: value.projectDetail.createdBy,
+                  repoLink: value.projectDetail.repoLink,
+                  urlOne: value.projectDetail.urlOne,
+                  urlTwo: value.projectDetail.urlTwo,
+                  createdAt: value.projectDetail.createdAt,
+                  updatedAt: value.projectDetail.updatedAt,
+                    assignees:value.projectDetail.assignees,
+                );
+              } ,
             );
           } else if (snapshot.hasError) {
             // An error occurred, display an error message

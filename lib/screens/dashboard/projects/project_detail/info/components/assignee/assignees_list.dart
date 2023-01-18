@@ -1,28 +1,31 @@
 import 'package:flutter/material.dart';
 
 class AssigneesList extends StatelessWidget {
-  const AssigneesList({Key? key}) : super(key: key);
+  List<dynamic> assignees;
+
+  AssigneesList({required this.assignees, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           "Assignees",
           style: TextStyle(
             color: Colors.black,
             fontSize: 18.0,
           ),
         ),
-        Row(
-          children: [
-            CircleAvatar(backgroundImage: NetworkImage('http://picsum.photos/40/40?q=1')),
-            CircleAvatar(backgroundImage: NetworkImage('http://picsum.photos/40/40?q=2')),
-            CircleAvatar(backgroundImage: NetworkImage('http://picsum.photos/40/40?q=3')),
-            CircleAvatar(backgroundImage: NetworkImage('http://picsum.photos/40/40?q=4')),
-            CircleAvatar(backgroundImage: NetworkImage('http://picsum.photos/40/40?q=5')),
-          ],
+        SizedBox(
+          height: 80.0,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: assignees.length,
+            itemBuilder: (context, index) => CircleAvatar(
+                backgroundImage:
+                    NetworkImage(assignees[index]["userAvatar"])),
+          ),
         ),
       ],
     );

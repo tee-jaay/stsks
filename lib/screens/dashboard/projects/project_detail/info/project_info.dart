@@ -9,6 +9,21 @@ import 'components/prj_dates/prj_dates.dart';
 import 'components/source/sources.dart';
 
 class ProjectInfo extends StatelessWidget {
+  String title;
+  String description;
+  String image;
+  String status;
+  String commentsCount;
+  String estimate;
+  String spent;
+  String createdBy;
+  String repoLink;
+  String urlOne;
+  String urlTwo;
+  String createdAt;
+  String updatedAt;
+  List<dynamic> assignees;
+
   ProjectInfo({
     required this.title,
     required this.description,
@@ -23,21 +38,9 @@ class ProjectInfo extends StatelessWidget {
     required this.urlTwo,
     required this.createdAt,
     required this.updatedAt,
+    required this.assignees,
     Key? key,
   }) : super(key: key);
-  String title;
-  String description;
-  String image;
-  String status;
-  String commentsCount;
-  String estimate;
-  String spent;
-  String createdBy;
-  String repoLink;
-  String urlOne;
-  String urlTwo;
-  String createdAt;
-  String updatedAt;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +72,7 @@ class ProjectInfo extends StatelessWidget {
               SizedBox(
                 height: appDefaultSpace,
               ),
-              AssigneesList(),
+              AssigneesList(assignees: assignees),
               SizedBox(
                 height: appDefaultSpace,
               ),
