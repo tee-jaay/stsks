@@ -73,7 +73,7 @@ class ProjectInfo extends StatelessWidget {
               SizedBox(
                 height: appDefaultSpace,
               ),
-              Communicate(),
+              const Communicate(),
               SizedBox(
                 height: appDefaultSpace,
               ),
