@@ -4,26 +4,14 @@ import 'package:flutter/material.dart';
 import '../../../../controllers/project_controller.dart';
 import 'info/project_info.dart';
 
-class ProjectDetailScreen extends StatefulWidget {
-  const ProjectDetailScreen({Key? key}) : super(key: key);
+class ProjectDetailScreen extends StatelessWidget {
+  final String id;
 
+  const ProjectDetailScreen({Key? key, required this.id}) : super(key: key);
   static String screenId = "project_detail_screen";
 
   @override
-  State<ProjectDetailScreen> createState() => _ProjectDetailScreenState();
-}
-
-class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
-  @override
   Widget build(BuildContext context) {
-    final id = ModalRoute.of(context)?.settings.arguments as String;
-    Provider.of<ProjectController>(context, listen: false).show(id);
-    final project =
-        Provider.of<ProjectController>(context, listen: false).projectDetail;
-
-    bool loading =
-        Provider.of<ProjectController>(context, listen: false).loading;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -31,18 +19,28 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: loading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : Column(
-              children: [
-                ProjectInfo(
-                  title: project.title,
-                  description: project.description,
-                ),
-              ],
-            ),
+      body: FutureBuilder(
+        future: Provider.of<ProjectController>(context, listen: false).show(id),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            // Data has been fetched, display the data in a widget
+            return Consumer<ProjectController>(
+              builder: (context, value, child) => ProjectInfo(
+                title: value.projectDetail.title,
+                description: value.projectDetail.description,
+                image: value.projectDetail.image,
+                status: value.projectDetail.status,
+              ),
+            );
+          } else if (snapshot.hasError) {
+            // An error occurred, display an error message
+            return Text('An error occurred: ${snapshot.error}');
+          } else {
+            // Data is being fetched, display a loading spinner
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
     );
   }
 }

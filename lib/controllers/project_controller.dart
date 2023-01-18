@@ -11,7 +11,7 @@ class ProjectController with ChangeNotifier {
   HttpRequestsService httpRequestsService = HttpRequestsService();
   late List<ProjectPreview> projects = [];
 
-  bool loading = true;
+  bool loading = false;
 
   var projectDetail = null;
 
@@ -36,7 +36,8 @@ class ProjectController with ChangeNotifier {
     notifyListeners();
   } // index
 
-  Future<void> show(String id) async {
+  Future<ProjectDetail> show(String id) async {
+    loading = true;
     var endpoint = '${dotenv.env["API_BASE"]}/projects/$id';
     var result = await httpRequestsService.fetchData(endpoint, "method");
     final data = jsonDecode(result.body);
@@ -56,5 +57,6 @@ class ProjectController with ChangeNotifier {
 
     loading = false;
     notifyListeners();
+    return projectDetail;
   } // show
 }

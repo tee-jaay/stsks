@@ -20,8 +20,8 @@ class MyAppRoot extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => ProjectController(),
+        ChangeNotifierProvider.value(
+          value: ProjectController(),
         ),
       ],
       child: Builder(
