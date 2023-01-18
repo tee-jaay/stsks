@@ -32,6 +32,7 @@ class ProjectDetailScreen extends StatelessWidget {
                 commentsCount: value.projectDetail.commentsCount,
                 estimate: value.projectDetail.estimate,
                 spent: value.projectDetail.spent,
+                createdBy: value.projectDetail.createdBy,
               ),
             );
           } else if (snapshot.hasError) {

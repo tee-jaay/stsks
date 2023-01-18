@@ -17,6 +17,7 @@ class ProjectInfo extends StatelessWidget {
       required this.commentsCount,
       required this.estimate,
       required this.spent,
+      required this.createdBy,
       Key? key})
       : super(key: key);
   String title;
@@ -26,6 +27,7 @@ class ProjectInfo extends StatelessWidget {
   String commentsCount;
   String estimate;
   String spent;
+  String createdBy;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,7 @@ class ProjectInfo extends StatelessWidget {
               image: image,
               status: status,
               commentsCount: commentsCount,
+              createdBy: createdBy,
             ),
             Budget(
               estimate: estimate,

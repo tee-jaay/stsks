@@ -7,13 +7,16 @@ class Meta extends StatelessWidget {
       required this.image,
       required this.status,
       required this.commentsCount,
-      Key? key})
+      required this.createdBy,
+        Key? key,
+      })
       : super(key: key);
   String title;
   String description;
   String image;
   String status;
   String commentsCount;
+  String createdBy;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +58,7 @@ class Meta extends StatelessWidget {
           ),
         ),
         Text('Statue: $status'),
+        Text('Created by: $createdBy'),
       ],
     );
   }
