@@ -8,7 +8,7 @@ class UserController with  ChangeNotifier{
     print("fetchUsers");
     var endpoint = '${dotenv.env["API_BASE"]}/users';
     HttpRequestsService httpRequestsService = HttpRequestsService();
-    var result =await httpRequestsService.fetchData(endpoint, "method");
+    var result =await httpRequestsService.requestApi(endpoint, "method");
     print("fetchUsers");
     print(result);
   }

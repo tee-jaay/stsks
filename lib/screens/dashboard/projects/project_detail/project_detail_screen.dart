@@ -5,13 +5,12 @@ import '../../../../controllers/project_controller.dart';
 import 'info/project_info.dart';
 
 class ProjectDetailScreen extends StatelessWidget {
-  final String id;
-
-  const ProjectDetailScreen({Key? key, required this.id}) : super(key: key);
+  const ProjectDetailScreen({Key? key}) : super(key: key);
   static String screenId = "project_detail_screen";
 
   @override
   Widget build(BuildContext context) {
+    final id = ModalRoute.of(context)?.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -20,7 +19,7 @@ class ProjectDetailScreen extends StatelessWidget {
         ),
       ),
       body: FutureBuilder(
-        future: Provider.of<ProjectController>(context, listen: false).show(id),
+        future: Provider.of<ProjectController>(context, listen: true).show(id),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             // Data has been fetched, display the data in a widget

@@ -9,7 +9,7 @@ class ProfileController with  ChangeNotifier{
     //var endpoint = '${dotenv.env["API_BASE"]}/profiles/user/mWorQlHzk64nKLcl-LSZD';
     var endpoint = '${dotenv.env["API_BASE"]}/users/mWorQlHzk64nKLcl-LSZD/profile';
     HttpRequestsService httpRequestsService = HttpRequestsService();
-    var result =await httpRequestsService.fetchData(endpoint, "method");
+    var result =await httpRequestsService.requestApi(endpoint, "method");
     print("profile");
     print(result);
   }

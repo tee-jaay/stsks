@@ -8,7 +8,7 @@ class IssueController with ChangeNotifier{
     print("index issues");
     var endpoint = '${dotenv.env["API_BASE"]}/issues/project/nf-dnpZ4Y4WVmRkzO4G8R';
     HttpRequestsService httpRequestsService = HttpRequestsService();
-    var result =await httpRequestsService.fetchData(endpoint, "method");
+    var result =await httpRequestsService.requestApi(endpoint, "method");
     print("index issues");
     print(result);
   }

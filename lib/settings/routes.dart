@@ -16,5 +16,5 @@ final Map<String, WidgetBuilder> routes = {
   RequestPasswordScreen.screenId: (context) => const RequestPasswordScreen(),
   NewPasswordScreen.screenId: (context) => const NewPasswordScreen(),
   ProjectListScreen.screenId: (context) => const ProjectListScreen(),
-  ProjectDetailScreen.screenId: (context) => const ProjectDetailScreen(id: ''),
+  ProjectDetailScreen.screenId: (context) => const ProjectDetailScreen(),
 };

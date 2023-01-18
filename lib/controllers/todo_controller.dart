@@ -10,7 +10,7 @@ class TodoController with ChangeNotifier {
     //var endpoint =        '${dotenv.env["API_BASE"]}/todos' ;
     var endpoint = '${dotenv.env["API_BASE"]}/projects/nf-dnpZ4Y4WVmRkzO4G8R/todos';
     HttpRequestsService httpRequestsService = HttpRequestsService();
-    var result = await httpRequestsService.fetchData(endpoint, "method");
+    var result = await httpRequestsService.requestApi(endpoint, "method");
     print("index todos");
     print(result);
   }

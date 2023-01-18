@@ -18,7 +18,7 @@ class ProjectController with ChangeNotifier {
   Future<void> index({int limit = 4}) async {
     var endpoint = '${dotenv.env["API_BASE"]}/projects-by-limit/$limit';
 
-    final result = await httpRequestsService.fetchData(endpoint, "get");
+    final result = await httpRequestsService.requestApi(endpoint, "get");
     final data = jsonDecode(result.body);
     for (var i = 0; i < data.length; i++) {
       var id = data[i]["id"] ?? '';
@@ -39,7 +39,7 @@ class ProjectController with ChangeNotifier {
   Future<ProjectDetail> show(String id) async {
     loading = true;
     var endpoint = '${dotenv.env["API_BASE"]}/projects/$id';
-    var result = await httpRequestsService.fetchData(endpoint, "method");
+    var result = await httpRequestsService.requestApi(endpoint, "get");
     final data = jsonDecode(result.body);
 
     projectDetail = ProjectDetail(

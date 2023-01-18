@@ -9,7 +9,7 @@ class TimesheetController with ChangeNotifier {
     var endpoint =
         '${dotenv.env["API_BASE"]}/timeSheets/project/nf-dnpZ4Y4WVmRkzO4G8R';
     HttpRequestsService httpRequestsService = HttpRequestsService();
-    var result = await httpRequestsService.fetchData(endpoint, "method");
+    var result = await httpRequestsService.requestApi(endpoint, "method");
     print("index timesheet");
     print(result);
   }
