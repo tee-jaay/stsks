@@ -15,7 +15,7 @@ class Budget extends StatelessWidget {
           "Budget",
           style: TextStyle(
             color: Colors.black,
-            fontSize: 24.0,
+            fontSize: 18.0,
           ),
         ),
         Row(

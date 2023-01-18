@@ -25,19 +25,19 @@ class Meta extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 18.0,
           ),
         ),
         Text(
           description,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black87,
             fontSize: 14.0,
           ),
         ),
-        Container(
+        SizedBox(
           height: 300,
           width: double.infinity,
           child: Image.network(image),
@@ -46,18 +46,18 @@ class Meta extends StatelessWidget {
           width: 60.0,
           child: Row(
             children: [
-              Icon(
+              const Icon(
                 Icons.comment,
                 color: Colors.black,
               ),
               Text(
                 commentsCount,
-                style: TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.black),
               ),
             ],
           ),
         ),
-        Text('Statue: $status'),
+        Text('Status: $status'),
         Text('Created by: $createdBy'),
       ],
     );

@@ -13,7 +13,8 @@ class ProjectDetailScreen extends StatelessWidget {
     final id = ModalRoute.of(context)?.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
+          key: Key('project_detail'),
           'Detail',
           style: TextStyle(color: Colors.black),
         ),
@@ -25,6 +26,7 @@ class ProjectDetailScreen extends StatelessWidget {
             // Data has been fetched, display the data in a widget
             return Consumer<ProjectController>(
               builder: (context, value, child) => ProjectInfo(
+                key: const Key('project_info'),
                 title: value.projectDetail.title,
                 description: value.projectDetail.description,
                 image: value.projectDetail.image,
@@ -33,6 +35,9 @@ class ProjectDetailScreen extends StatelessWidget {
                 estimate: value.projectDetail.estimate,
                 spent: value.projectDetail.spent,
                 createdBy: value.projectDetail.createdBy,
+                repoLink: value.projectDetail.repoLink,
+                urlOne: value.projectDetail.urlOne,
+                urlTwo: value.projectDetail.urlTwo,
               ),
             );
           } else if (snapshot.hasError) {

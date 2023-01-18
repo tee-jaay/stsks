@@ -52,7 +52,7 @@ class ProjectController with ChangeNotifier {
         slug: data[0]["slug"] ?? '',
         createdBy: data[0]["createdBy"] ?? '',
         description: data[0]["description"] ?? '',
-        repoLink: data[0][" repoLink "] ?? '',
+        repoLink: data[0]["repoLink"] ?? '',
         urlOne: data[0]["urlOne"] ?? '',
         urlTwo: data[0]["urlTwo"] ?? '',
         estimate: data[0]["budget"][0]["estimate"].toString() ?? '',
