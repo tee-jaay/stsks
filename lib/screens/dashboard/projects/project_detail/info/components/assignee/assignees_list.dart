@@ -22,9 +22,20 @@ class AssigneesList extends StatelessWidget {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: assignees.length,
-            itemBuilder: (context, index) => CircleAvatar(
-                backgroundImage:
-                    NetworkImage(assignees[index]["userAvatar"])),
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                height: 120,
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                        backgroundImage:
+                            NetworkImage(assignees[index]["userAvatar"])),
+                    Text(assignees[index]["userName"]),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ],
