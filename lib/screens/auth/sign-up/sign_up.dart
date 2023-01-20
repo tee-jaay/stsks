@@ -6,12 +6,14 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        "Sign up screen",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 24.0,
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          "Sign Up",
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: 22.0,
+          ),
         ),
       ),
     );
