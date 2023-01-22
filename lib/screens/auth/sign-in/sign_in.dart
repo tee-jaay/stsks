@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../controllers/auth_controller.dart';
 import '../sign-up/sign_up.dart';
 import '../../../settings/constants.dart';
 
@@ -27,9 +28,8 @@ class _SignInScreenState extends State<SignInScreen> {
     if (!isValid!) {
       return;
     }
-    print('sign in');
-    print(_email);
-    print(_password);
+    AuthController authController = AuthController();
+    authController.signIn({"email": _email, "password": _password});
   }
 
   @override

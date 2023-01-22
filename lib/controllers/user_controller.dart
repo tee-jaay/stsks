@@ -3,12 +3,13 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import '../services/http_requests_service.dart';
 
-class UserController with  ChangeNotifier{
+class UserController with ChangeNotifier {
   void index() async {
     print("fetchUsers");
     var endpoint = '${dotenv.env["API_BASE"]}/users';
     HttpRequestsService httpRequestsService = HttpRequestsService();
-    var result =await httpRequestsService.requestApi(endpoint, "method");
+    var result = await httpRequestsService
+        .requestApi(object: {}, endpoint: endpoint, reqMethod: "GET");
     print("fetchUsers");
     print(result);
   }

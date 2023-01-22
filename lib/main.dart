@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'settings/constants.dart';
 import 'settings/routes.dart';
+import 'controllers/auth_controller.dart';
 import 'controllers/project_controller.dart';
 import './screens/home/home_screen.dart';
 
@@ -20,6 +21,7 @@ class MyAppRoot extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider.value(value: AuthController()),
         ChangeNotifierProvider.value(
           value: ProjectController(),
         ),

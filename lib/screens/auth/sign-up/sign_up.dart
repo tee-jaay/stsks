@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../controllers/auth_controller.dart';
 import '../../../settings/constants.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -14,12 +15,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
 
   late String _email = '';
+  late String _username = '';
   late String _password = '';
 
   TextEditingController _emailController = TextEditingController();
+  TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
   FocusNode _emailFocusNode = FocusNode();
+  FocusNode _usernameFocusNode = FocusNode();
   FocusNode _passwordFocusNode = FocusNode();
 
   void _handleSubmit() {
@@ -29,7 +33,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
     print('sign up');
     print(_email);
+    print(_username);
     print(_password);
+    AuthController authController = AuthController();
+    authController.signUp({"email": _email,"username":_username, "password": _password});
   }
 
   @override
@@ -61,6 +68,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: InputDecoration(hintText: 'Email'),
                   keyboardType: TextInputType.emailAddress,
                   focusNode: _emailFocusNode,
+                  onFieldSubmitted: (value) =>
+                      FocusScope.of(context).requestFocus(_usernameFocusNode),
+                ),
+                SizedBox(
+                  height: appDefaultSpace,
+                ),TextFormField(
+                  controller: _usernameController,
+                  validator: (String? value) {
+                    if (value!.isEmpty) {
+                      return 'Username is required';
+                    } else {
+                      return null;
+                    }
+                  },
+                  onChanged: (value) => setState(() {
+                    _username = value;
+                  }),
+                  decoration: InputDecoration(hintText: 'Username'),
+                  focusNode: _usernameFocusNode,
                   onFieldSubmitted: (value) =>
                       FocusScope.of(context).requestFocus(_passwordFocusNode),
                 ),
