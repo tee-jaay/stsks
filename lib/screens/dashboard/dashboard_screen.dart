@@ -9,7 +9,6 @@ import '../../controllers/user_controller.dart';
 import 'inc/body.dart';
 import 'projects/projects_list/projects_list_screen.dart';
 
-
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
 
@@ -20,12 +19,12 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  void _handleClickProjects(){
+  void _handleClickProjects() {
     ProjectController projectController = ProjectController();
     projectController.index();
   }
 
-  void _handleClickUsers(){
+  void _handleClickUsers() {
     UserController userController = UserController();
     userController.index();
   }
@@ -50,8 +49,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
           children: [
             TextButton(
               style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
                 backgroundColor: Colors.grey,
-                primary: Colors.white,
               ),
               onPressed: () {
                 if (kDebugMode) {
@@ -98,13 +97,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
 }
 
 void _handleClickMeetings() {
-MeetingController meetingController = MeetingController();
-meetingController.index();
+  MeetingController meetingController = MeetingController();
+  meetingController.index();
 }
 
 void _handleClickTasks() {
-TaskController taskController = TaskController();
-taskController.index();
+  TaskController taskController = TaskController();
+  taskController.index();
 }
-
-

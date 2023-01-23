@@ -1,18 +1,21 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import '../settings/api_endpoints.dart';
 import '../services/http_requests_service.dart';
 
 class TodoController with ChangeNotifier {
-  void index() async {
+  HttpRequestsService httpRequestsService = HttpRequestsService();
+
+  void index({String projectId: 'nf-dnpZ4Y4WVmRkzO4G8R'}) async {
     print("index todos");
     // Todo: update endpoint in server side to ""
-    var endpoint = '${dotenv.env["API_BASE"]}/projects/nf-dnpZ4Y4WVmRkzO4G8R/todos';
-    HttpRequestsService httpRequestsService = HttpRequestsService();
+    var endpoint = '$PROJECTS/$projectId/todos';
+
     var result = await httpRequestsService.requestApi(
       object: {},
-        endpoint:endpoint,
-        reqMethod:  "GET", );
+      endpoint: endpoint,
+      reqMethod: "GET",
+    );
     print("index todos");
     print(result);
   }

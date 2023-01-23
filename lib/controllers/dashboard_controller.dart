@@ -1,1 +1,3 @@
-class DashboardController{}
+class DashboardController{
+  DashboardController();
+}

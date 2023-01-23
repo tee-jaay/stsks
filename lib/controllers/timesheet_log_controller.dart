@@ -1,1 +1,3 @@
-class TimesheetLogController {}
+class TimesheetLogController {
+  TimesheetLogController();
+}

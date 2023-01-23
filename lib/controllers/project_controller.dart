@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import '../settings/api_endpoints.dart';
 import '../models/project_detail.dart';
 import '../models/project_preview.dart';
 import '../services/http_requests_service.dart';
@@ -16,7 +17,8 @@ class ProjectController with ChangeNotifier {
   var projectDetail = null;
 
   Future<void> index({int limit = 4}) async {
-    var endpoint = '${dotenv.env["API_BASE"]}/projects-by-limit/$limit';
+    // var endpoint = '${dotenv.env["API_BASE"]}/projects-by-limit/$limit';
+    var endpoint = '$PROJECTS_BY_LIMIT/$limit';
 
     final result = await httpRequestsService.requestApi(
         endpoint: endpoint, object: {}, reqMethod: "GET");
@@ -39,7 +41,8 @@ class ProjectController with ChangeNotifier {
 
   Future<ProjectDetail> show(String id) async {
     loading = true;
-    var endpoint = '${dotenv.env["API_BASE"]}/projects/$id';
+    // var endpoint = '${dotenv.env["API_BASE"]}/projects/$id';
+    var endpoint = '$PROJECTS/$id';
     var result = await httpRequestsService
         .requestApi(object: {}, endpoint: endpoint, reqMethod: 'GET');
     final data = jsonDecode(result.body);

@@ -1,12 +1,11 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import '../settings/api_endpoints.dart';
 import '../services/http_requests_service.dart';
 
 class TaskController with ChangeNotifier {
-  void index() async {
-    var endpoint =
-        '${dotenv.env["API_BASE"]}/projects/nf-dnpZ4Y4WVmRkzO4G8R/tasks';
+  void index({String projectId: 'nf-dnpZ4Y4WVmRkzO4G8R'}) async {
+    var endpoint = '$PROJECTS/$projectId/tasks';
     HttpRequestsService httpRequestsService = HttpRequestsService();
     var result = await httpRequestsService.requestApi(
       endpoint: endpoint,
@@ -17,10 +16,11 @@ class TaskController with ChangeNotifier {
     print(result);
   }
 
-  void show() async {
+  void show(
+      {String projectId: 'nf-dnpZ4Y4WVmRkzO4G8R',
+      String taskId: 'L7u9AzHRUXMz1kblk-Kgg'}) async {
     print("detail task");
-    var endpoint =
-        '${dotenv.env["API_BASE"]}/projects/nf-dnpZ4Y4WVmRkzO4G8R/tasks/L7u9AzHRUXMz1kblk-Kgg';
+    var endpoint = '$PROJECTS/$projectId/tasks/$taskId';
     HttpRequestsService httpRequestsService = HttpRequestsService();
     var result = await httpRequestsService.requestApi(
       object: {},
