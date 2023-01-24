@@ -15,17 +15,22 @@ class AuthController extends HttpRequestsService with ChangeNotifier {
   }
 
   Future<int> signUp(Object obj) async {
+    loading = true;
     print(obj);
     var response = await requestApi(
         endpoint: AUTH_SIGN_UP, reqMethod: 'POST', object: obj);
     print(jsonDecode(response.body));
+    _httpResponseStatus = response.statusCode;
     return _httpResponseStatus;
   }
 
   Future<int> signIn(Object obj) async {
+    loading = true;
     var response = await requestApi(
         endpoint: AUTH_SIGN_IN, object: obj, reqMethod: 'POST');
     print(jsonDecode(response.body));
+    loading = false;
+    _httpResponseStatus = response.statusCode;
     return _httpResponseStatus;
   }
 }

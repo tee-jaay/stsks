@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../sign-in/sign_in.dart';
 import '../../../controllers/auth_controller.dart';
 import '../../../settings/constants.dart';
 
@@ -18,25 +19,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late String _username = '';
   late String _password = '';
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-  FocusNode _emailFocusNode = FocusNode();
-  FocusNode _usernameFocusNode = FocusNode();
-  FocusNode _passwordFocusNode = FocusNode();
+  final FocusNode _emailFocusNode = FocusNode();
+  final FocusNode _usernameFocusNode = FocusNode();
+  final FocusNode _passwordFocusNode = FocusNode();
 
   void _handleSubmit() {
     final isValid = _formKey.currentState?.validate();
     if (!isValid!) {
       return;
     }
-    print('sign up');
-    print(_email);
-    print(_username);
-    print(_password);
     AuthController authController = AuthController();
-    authController.signUp({"email": _email,"username":_username, "password": _password});
+    authController.signUp({"email": _email,"username":_username, "password": _password}).then((value) {
+      if (value == 201) {
+        Navigator.pushNamed(context, SignInScreen.screenId);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+              'Sign up failed',
+              style: TextStyle(color: Colors.amber),
+            )));
+      }
+    });
   }
 
   @override
@@ -65,13 +72,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onChanged: (value) => setState(() {
                     _email = value;
                   }),
-                  decoration: InputDecoration(hintText: 'Email'),
+                  decoration: const InputDecoration(hintText: 'Email'),
                   keyboardType: TextInputType.emailAddress,
                   focusNode: _emailFocusNode,
                   onFieldSubmitted: (value) =>
                       FocusScope.of(context).requestFocus(_usernameFocusNode),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: appDefaultSpace,
                 ),TextFormField(
                   controller: _usernameController,
@@ -85,12 +92,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onChanged: (value) => setState(() {
                     _username = value;
                   }),
-                  decoration: InputDecoration(hintText: 'Username'),
+                  decoration: const InputDecoration(hintText: 'Username'),
                   focusNode: _usernameFocusNode,
                   onFieldSubmitted: (value) =>
                       FocusScope.of(context).requestFocus(_passwordFocusNode),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: appDefaultSpace,
                 ),
                 TextFormField(
@@ -107,22 +114,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onChanged: (value) => setState(() {
                     _password = value;
                   }),
-                  decoration: InputDecoration(hintText: 'Password'),
+                  decoration: const InputDecoration(hintText: 'Password'),
                   obscureText: true,
                   focusNode: _passwordFocusNode,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: appDefaultSpace,
                 ),
                 TextButton(
                   onPressed: _handleSubmit,
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                     backgroundColor:
                         MaterialStatePropertyAll(Colors.blueAccent),
+                  ),
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ],

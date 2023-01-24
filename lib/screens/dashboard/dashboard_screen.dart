@@ -1,11 +1,11 @@
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../controllers/issue_controller.dart';
-import '../../controllers/meeting_controller.dart';
-import '../../controllers/task_controller.dart';
+// import '../../controllers/issue_controller.dart';
+// import '../../controllers/meeting_controller.dart';
+// import '../../controllers/task_controller.dart';
 import '../../controllers/project_controller.dart';
-import '../../controllers/user_controller.dart';
+// import '../../controllers/user_controller.dart';
 import 'inc/body.dart';
 import 'projects/projects_list/projects_list_screen.dart';
 
@@ -24,15 +24,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
     projectController.index();
   }
 
-  void _handleClickUsers() {
-    UserController userController = UserController();
-    userController.index();
-  }
-
-  void _handleClickIssues() {
-    IssueController issueController = IssueController();
-    issueController.index();
-  }
+  // void _handleClickUsers() {
+  //   UserController userController = UserController();
+  //   userController.index();
+  // }
+  //
+  // void _handleClickIssues() {
+  //   IssueController issueController = IssueController();
+  //   issueController.index();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +52,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.grey,
               ),
-              onPressed: () {
-                if (kDebugMode) {
-                  print("Dashboard screen");
-                }
-              },
+              onPressed: () {},
               child: const Text("Dashboard"),
             ),
             TextButton(
@@ -67,13 +63,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: const Text("Projects"),
             ),
             TextButton(
-              onPressed: () {
-                // _handleClickUsers();
-                // _handleClickIssues();
-                // _handleClickMeetings();
-                // _handleClickTasks();
-              },
-              child: const Text("Users List"),
+              onPressed: () {},
+              child: const Text("Users"),
             ),
           ],
         ),
@@ -81,11 +72,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         actions: [
           IconButton(
             color: Colors.black,
-            onPressed: () {
-              if (kDebugMode) {
-                print("logout");
-              }
-            },
+            onPressed: () {},
             icon: const Icon(Icons.logout),
           ),
         ],
@@ -96,12 +83,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 }
 
-void _handleClickMeetings() {
-  MeetingController meetingController = MeetingController();
-  meetingController.index();
-}
-
-void _handleClickTasks() {
-  TaskController taskController = TaskController();
-  taskController.index();
-}
+// void _handleClickMeetings() {
+//   MeetingController meetingController = MeetingController();
+//   meetingController.index();
+// }
+//
+// void _handleClickTasks() {
+//   TaskController taskController = TaskController();
+//   taskController.index();
+// }
