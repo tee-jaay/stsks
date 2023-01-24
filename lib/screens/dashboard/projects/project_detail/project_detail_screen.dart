@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:prozeqts/widgets/app_drawer.dart';
 
 import 'info/project_comments.dart';
 import 'info/project_stats.dart';
@@ -29,6 +30,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
     final id = ModalRoute.of(context)?.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.black87),
         title: const Text(
           key: Key('project_detail'),
           'Detail',
@@ -97,6 +99,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
           }
         },
       ),
+      drawer: AppDrawer(),
     );
   }
 }
