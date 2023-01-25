@@ -12,7 +12,7 @@ class Meeting {
   String location;
   String address;
   String phone;
-  String comments;
+  List<dynamic> comments;
 
   Meeting({
     required this.id,
@@ -29,5 +29,5 @@ class Meeting {
     required this.address,
     required this.phone,
     required this.comments,
-});
+  });
 }

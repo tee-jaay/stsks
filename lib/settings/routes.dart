@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../screens/dashboard/projects/issue/list/issues_list_screen.dart';
-import '../screens/dashboard/projects/meeting/meetings_list_screen.dart';
+import '../screens/dashboard/projects/meeting/list/meetings_list_screen.dart';
 import '../screens/dashboard/projects/task/list/tasks_list_screen.dart';
 import '../screens/auth/new-password/new_password.dart';
 import '../screens/auth/request-password/request_password.dart';
