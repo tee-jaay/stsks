@@ -5,7 +5,8 @@ import '../screens/dashboard/projects/task/list/tasks_list_screen.dart';
 import '../screens/dashboard/projects/timesheet/timesheets_list_screen.dart';
 
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({Key? key}) : super(key: key);
+  String projectId;
+  AppDrawer({required this.projectId, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class AppDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.black87),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed(TasksListScreen.screenId);
+              Navigator.of(context).pushNamed(TasksListScreen.screenId, arguments: projectId);
             },
           ),
           const Divider(),

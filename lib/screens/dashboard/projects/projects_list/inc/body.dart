@@ -8,7 +8,7 @@ class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
   Future<void> _refreshProjects(BuildContext context) async {
-    await Provider.of<ProjectController>(context, listen: false).index();
+    await Provider.of<ProjectController>(context, listen: false).index(6);
   }
 
   @override
@@ -32,7 +32,8 @@ class Body extends StatelessWidget {
                           title: value.projects[index].title,
                           imgUrl: value.projects[index].imgUrl,
                           status: value.projects[index].status,
-                          commentsCount: value.projects[index].commentsCount),
+                          commentsCount: value.projects[index].commentsCount
+                      ),
                     ),
                   ),
                 ),

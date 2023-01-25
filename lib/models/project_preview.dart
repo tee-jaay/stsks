@@ -5,7 +5,7 @@ class ProjectPreview with ChangeNotifier {
   String title;
   String imgUrl;
   String status;
-  String commentsCount;
+  String commentsCount = '0';
 
   ProjectPreview({
     required this.id,

@@ -4,9 +4,10 @@ import 'package:provider/provider.dart';
 
 import 'settings/constants.dart';
 import 'settings/routes.dart';
+import './screens/home/home_screen.dart';
 import 'controllers/auth_controller.dart';
 import 'controllers/project_controller.dart';
-import './screens/home/home_screen.dart';
+import 'controllers/task_controller.dart';
 
 void main() async {
   await dotenv.load(fileName: "assets/.env");
@@ -21,9 +22,14 @@ class MyAppRoot extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: AuthController()),
-        ChangeNotifierProvider.value(
-          value: ProjectController(),
+        ChangeNotifierProvider(
+          create: (_) => AuthController(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProjectController(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => TaskController(),
         ),
       ],
       child: Builder(

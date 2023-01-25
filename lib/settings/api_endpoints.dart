@@ -11,14 +11,19 @@ final String PROJECTS_BY_LIMIT = "$API_ROOT/projects-by-limit";
 final String PROJECTS = "$API_ROOT/projects";
 
 // Tasks
+final String TASKS = "$API_ROOT/projects-tasks/projectId";
 
 // Issues
+final String ISSUES = "$API_ROOT/projects-issues/projectId";
 
 // Todos
-
-// TimeSheets
+final String TODOS = "$API_ROOT/projects-tasks-todos/projectId";
 
 // Meetings
+final String MEETINGS = "$API_ROOT/projects-meetings/projectId";
+
+// TimeSheets
+final String TIMESHEET = "$API_ROOT/projects-timesheets/projectId";
 
 // Users
 final String USERS = "$API_ROOT/users";

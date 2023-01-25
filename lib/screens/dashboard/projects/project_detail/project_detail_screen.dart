@@ -1,7 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:prozeqts/widgets/app_drawer.dart';
 
+import '../../../../widgets/app_drawer.dart';
 import 'info/project_comments.dart';
 import 'info/project_stats.dart';
 import '../../../../controllers/project_controller.dart';
@@ -38,7 +38,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
         ),
         bottom: TabBar(
           controller: _tabController,
-          tabs: [
+          tabs: const [
             Tab(
               child: Text(
                 'Info',
@@ -74,7 +74,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
                     description: value.projectDetail.description,
                     image: value.projectDetail.image,
                     status: value.projectDetail.status,
-                    commentsCount: value.projectDetail.commentsCount,
+                    commentsCount: value.projectDetail.comments.length.toString(),
                     estimate: value.projectDetail.estimate,
                     spent: value.projectDetail.spent,
                     createdBy: value.projectDetail.createdBy,
@@ -99,7 +99,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
           }
         },
       ),
-      drawer: AppDrawer(),
+      drawer: AppDrawer(projectId: id),
     );
   }
 }

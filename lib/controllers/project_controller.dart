@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import '../settings/api_endpoints.dart';
 import '../models/project_detail.dart';
@@ -10,14 +8,12 @@ import '../services/http_requests_service.dart';
 
 class ProjectController with ChangeNotifier {
   HttpRequestsService httpRequestsService = HttpRequestsService();
+
   late List<ProjectPreview> projects = [];
-
   bool loading = false;
-
   var projectDetail = null;
 
-  Future<void> index({int limit = 4}) async {
-    // var endpoint = '${dotenv.env["API_BASE"]}/projects-by-limit/$limit';
+  Future<void> index(int limit) async {
     var endpoint = '$PROJECTS_BY_LIMIT/$limit';
 
     final result = await httpRequestsService.requestApi(
@@ -41,20 +37,16 @@ class ProjectController with ChangeNotifier {
 
   Future<ProjectDetail> show(String id) async {
     loading = true;
-    // var endpoint = '${dotenv.env["API_BASE"]}/projects/$id';
     var endpoint = '$PROJECTS/$id';
     var result = await httpRequestsService
         .requestApi(object: {}, endpoint: endpoint, reqMethod: 'GET');
     final data = jsonDecode(result.body);
-
-    print(data[0]);
 
     projectDetail = ProjectDetail(
       id: data[0]["id"] ?? '',
       title: data[0]["title"] ?? '',
       image: data[0]["image"] ?? '',
       status: data[0]["status"] ?? '',
-      commentsCount: data[0]["comments"].length.toString() ?? '',
       slug: data[0]["slug"] ?? '',
       createdBy: data[0]["createdBy"] ?? '',
       description: data[0]["description"] ?? '',
