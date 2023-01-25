@@ -10,7 +10,7 @@ import '../screens/auth/sign-up/sign_up.dart';
 import '../screens/dashboard/dashboard_screen.dart';
 import '../screens/dashboard/projects/project_detail/project_detail_screen.dart';
 import '../screens/dashboard/projects/projects_list/projects_list_screen.dart';
-import '../screens/dashboard/projects/timesheet/timesheets_list_screen.dart';
+import '../screens/dashboard/projects/timesheet/list/timesheets_list_screen.dart';
 import '../screens/home/home_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {

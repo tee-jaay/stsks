@@ -1,6 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../settings/constants.dart';
 import '../../../../widgets/app_drawer.dart';
 import 'info/project_comments.dart';
 import 'info/project_stats.dart';
@@ -59,6 +60,17 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
             ),
           ],
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: appDefaultSpace),
+            child: InkWell(
+                onTap: () => Navigator.pop(context),
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.black87,
+                )),
+          ),
+        ],
       ),
       body: FutureBuilder(
         future: Provider.of<ProjectController>(context, listen: false).show(id),
@@ -74,7 +86,8 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
                     description: value.projectDetail.description,
                     image: value.projectDetail.image,
                     status: value.projectDetail.status,
-                    commentsCount: value.projectDetail.comments.length.toString(),
+                    commentsCount:
+                        value.projectDetail.comments.length.toString(),
                     estimate: value.projectDetail.estimate,
                     spent: value.projectDetail.spent,
                     createdBy: value.projectDetail.createdBy,

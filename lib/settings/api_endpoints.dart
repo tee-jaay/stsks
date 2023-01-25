@@ -23,7 +23,7 @@ final String TODOS = "$API_ROOT/projects-tasks-todos/projectId";
 final String MEETINGS = "$API_ROOT/projects-meetings/projectId";
 
 // TimeSheets
-final String TIMESHEET = "$API_ROOT/projects-timesheets/projectId";
+final String TIMESHEETS = "$API_ROOT/projects-timesheets/projectId";
 
 // Users
 final String USERS = "$API_ROOT/users";

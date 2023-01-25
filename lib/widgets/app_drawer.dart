@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../screens/dashboard/projects/issue/list/issues_list_screen.dart';
 import '../screens/dashboard/projects/meeting/meetings_list_screen.dart';
 import '../screens/dashboard/projects/task/list/tasks_list_screen.dart';
-import '../screens/dashboard/projects/timesheet/timesheets_list_screen.dart';
+import '../screens/dashboard/projects/timesheet/list/timesheets_list_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   String projectId;

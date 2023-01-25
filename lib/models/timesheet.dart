@@ -5,7 +5,7 @@ class TimeSheet {
   String task;
   String createdBy;
   String title;
-  Map<String, dynamic> logs;
+  List<dynamic> logs = [];
 
   TimeSheet({
     required this.id,

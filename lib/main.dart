@@ -9,6 +9,9 @@ import 'controllers/auth_controller.dart';
 import 'controllers/project_controller.dart';
 import 'controllers/task_controller.dart';
 import 'controllers/issue_controller.dart';
+import 'controllers/timesheet_controller.dart';
+import 'controllers/timesheet_log_controller.dart';
+import 'controllers/meeting_controller.dart';
 
 void main() async {
   await dotenv.load(fileName: "assets/.env");
@@ -34,6 +37,15 @@ class MyAppRoot extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => IssueController(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => TimesheetController(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => TimesheetLogController(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MeetingController(),
         ),
       ],
       child: Builder(
