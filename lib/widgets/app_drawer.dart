@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import '../screens/dashboard/projects/issue/issues_screen.dart';
+
+import '../screens/dashboard/projects/issue/list/issues_list_screen.dart';
 import '../screens/dashboard/projects/meeting/meetings_list_screen.dart';
 import '../screens/dashboard/projects/task/list/tasks_list_screen.dart';
 import '../screens/dashboard/projects/timesheet/timesheets_list_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   String projectId;
+
   AppDrawer({required this.projectId, Key? key}) : super(key: key);
 
   @override
@@ -20,7 +22,10 @@ class AppDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.black87),
             ),
             automaticallyImplyLeading: false,
-            leading: Icon(Icons.web, color: Colors.black87,),
+            leading: Icon(
+              Icons.web,
+              color: Colors.black87,
+            ),
           ),
           const Divider(),
           ListTile(
@@ -30,7 +35,8 @@ class AppDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.black87),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed(TasksListScreen.screenId, arguments: projectId);
+              Navigator.of(context)
+                  .pushNamed(TasksListScreen.screenId, arguments: projectId);
             },
           ),
           const Divider(),
@@ -41,7 +47,8 @@ class AppDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.black87),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed(IssuesScreen.screenId);
+              Navigator.of(context)
+                  .pushNamed(IssuesListScreen.screenId, arguments: projectId);
             },
           ),
           const Divider(),
@@ -52,7 +59,8 @@ class AppDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.black87),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed(TimeSheetsScreen.screenId);
+              Navigator.of(context)
+                  .pushNamed(TimeSheetsScreen.screenId, arguments: projectId);
             },
           ),
           const Divider(),
@@ -63,7 +71,8 @@ class AppDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.black87),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed(MeetingsListScreen.screenId);
+              Navigator.of(context)
+                  .pushNamed(MeetingsListScreen.screenId, arguments: projectId);
             },
           ),
         ],

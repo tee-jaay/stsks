@@ -12,6 +12,7 @@ class Issue {
   String priority;
   String type;
   String severity;
+  List<dynamic> comments = [];
 
   Issue({
     required this.id,
@@ -27,5 +28,6 @@ class Issue {
     required this.priority,
     required this.type,
     required this.severity,
+    required this.comments,
   });
 }

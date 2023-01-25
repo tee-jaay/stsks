@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../screens/dashboard/projects/issue/issues_screen.dart';
+import '../screens/dashboard/projects/issue/list/issues_list_screen.dart';
 import '../screens/dashboard/projects/meeting/meetings_list_screen.dart';
 import '../screens/dashboard/projects/task/list/tasks_list_screen.dart';
 import '../screens/auth/new-password/new_password.dart';
@@ -23,7 +23,7 @@ final Map<String, WidgetBuilder> routes = {
   ProjectListScreen.screenId: (context) => const ProjectListScreen(),
   ProjectDetailScreen.screenId: (context) => const ProjectDetailScreen(),
   TasksListScreen.screenId: (context) => const TasksListScreen(),
-  IssuesScreen.screenId: (context) => const IssuesScreen(),
+  IssuesListScreen.screenId: (context) => const IssuesListScreen(),
   MeetingsListScreen.screenId: (context) => const MeetingsListScreen(),
   TimeSheetsScreen.screenId: (context) => const TimeSheetsScreen(),
 };
