@@ -6,11 +6,14 @@ import '../services/http_requests_service.dart';
 class UserController with ChangeNotifier {
   HttpRequestsService httpRequestsService = HttpRequestsService();
 
-  void index() async {
+  void index({required String accessToken}) async {
     print("fetchUsers");
     var endpoint = USERS;
     var result = await httpRequestsService.requestApi(
-        object: {}, endpoint: endpoint, reqMethod: "GET", accessToken: '');
+        object: {},
+        endpoint: endpoint,
+        reqMethod: "GET",
+        accessToken: accessToken);
     print("fetchUsers");
     print(result);
   }

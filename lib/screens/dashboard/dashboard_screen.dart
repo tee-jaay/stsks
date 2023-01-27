@@ -14,14 +14,15 @@ class DashboardScreen extends StatelessWidget {
   void _handleClickProjects(String accessToken) {
     ProjectController projectController = ProjectController();
     print('_handleClickProjects: $accessToken');
-    projectController.index(6, accessToken);
+    projectController.index(limit: 6, accessToken: accessToken);
   }
 
   @override
   Widget build(BuildContext context) {
-    final accessToken = Provider.of<AuthController>(context, listen: false).user.accessToken;
+    final accessToken =
+        Provider.of<AuthController>(context, listen: false).user.accessToken;
     print('Dashboard token $accessToken');
-    return   Scaffold(
+    return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           color: Colors.black,

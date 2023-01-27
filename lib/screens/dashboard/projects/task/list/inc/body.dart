@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../../controllers/auth_controller.dart';
 import '../../../../../../controllers/task_controller.dart';
 
 class Body extends StatelessWidget {
   Body({required this.projectId, Key? key}) : super(key: key);
   String projectId;
 
-  Future<void> _refreshProjectTasks(BuildContext context, id) async {
-    await Provider.of<TaskController>(context, listen: false).index(id);
+  Future<void> _refreshProjectTasks(BuildContext context, id, token) async {
+    await Provider.of<TaskController>(context, listen: false)
+        .index(projectId: id, accessToken: token);
   }
 
   @override
   Widget build(BuildContext context) {
+    final accessToken =
+        Provider.of<AuthController>(context, listen: false).user.accessToken;
     return SingleChildScrollView(
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.8,
@@ -23,7 +27,8 @@ class Body extends StatelessWidget {
                       child: CircularProgressIndicator(),
                     )
                   : RefreshIndicator(
-                      onRefresh: () => _refreshProjectTasks(context, projectId),
+                      onRefresh: () =>
+                          _refreshProjectTasks(context, projectId, accessToken),
                       child: Consumer<TaskController>(
                         builder: (context, value, child) => ListView.builder(
                           itemCount: value.tasksPreviews.length,
@@ -42,7 +47,7 @@ class Body extends StatelessWidget {
                         ),
                       ),
                     ),
-          future: _refreshProjectTasks(context, projectId),
+          future: _refreshProjectTasks(context, projectId, accessToken),
         ),
       ),
     );

@@ -10,15 +10,15 @@ class IssueController with ChangeNotifier {
 
   late List<Issue> issues = [];
 
-  Future<void> index(String projectId) async {
+  Future<void> index(
+      {required String projectId, required String accessToken}) async {
     issues.clear();
     var endpoint = '$ISSUES/$projectId';
     var result = await httpRequestsService.requestApi(
-      object: {},
-      endpoint: endpoint,
-      reqMethod: 'GET',
-      accessToken: ''
-    );
+        object: {},
+        endpoint: endpoint,
+        reqMethod: 'GET',
+        accessToken: accessToken);
     var data = jsonDecode(result.body);
 
     for (var i = 0; i < data.length; i++) {

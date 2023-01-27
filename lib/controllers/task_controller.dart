@@ -11,10 +11,14 @@ class TaskController with ChangeNotifier {
 
   late List<TaskPreview> tasksPreviews = [];
 
-  Future<void> index(String projectId) async {
+  Future<void> index(
+      {required String projectId, required String accessToken}) async {
     var endpoint = '$TASKS/$projectId';
     var result = await httpRequestsService.requestApi(
-        endpoint: endpoint, object: {}, reqMethod: "GET", accessToken: '');
+        endpoint: endpoint,
+        object: {},
+        reqMethod: "GET",
+        accessToken: accessToken);
     final data = jsonDecode(result.body);
 
     var tempData = List.from(data);
@@ -42,12 +46,16 @@ class TaskController with ChangeNotifier {
   }
 
   Future<void> show(
-      {String projectId = 'nf-dnpZ4Y4WVmRkzO4G8R',
-      String taskId = 'L7u9AzHRUXMz1kblk-Kgg'}) async {
+      {required String projectId,
+      required String taskId,
+      required String accessToken}) async {
     print("detail task");
     var endpoint = '$PROJECTS/$projectId/tasks/$taskId';
     var result = await httpRequestsService.requestApi(
-        object: {}, endpoint: endpoint, reqMethod: "method", accessToken: '');
+        object: {},
+        endpoint: endpoint,
+        reqMethod: "method",
+        accessToken: accessToken);
     print("detail task");
     print(result);
     notifyListeners();

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 
 import '../../../../settings/constants.dart';
 import '../../../../widgets/app_drawer.dart';
-import 'info/project_comments.dart';
-import 'info/project_stats.dart';
 import '../../../../controllers/project_controller.dart';
+import '../../../../controllers/auth_controller.dart';
+import 'info/project_stats.dart';
+import 'info/project_comments.dart';
 import 'info/project_info.dart';
 
 class ProjectDetailScreen extends StatefulWidget {
@@ -29,6 +30,8 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
   @override
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context)?.settings.arguments as String;
+    final accessToken =
+        Provider.of<AuthController>(context, listen: false).user.accessToken;
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black87),
@@ -73,7 +76,8 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
         ],
       ),
       body: FutureBuilder(
-        future: Provider.of<ProjectController>(context, listen: false).show(id),
+        future: Provider.of<ProjectController>(context, listen: false)
+            .show(id: id, accessToken: accessToken),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             // Data has been fetched, display the data in a widget

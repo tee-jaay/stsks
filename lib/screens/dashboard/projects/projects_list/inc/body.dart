@@ -12,7 +12,7 @@ class Body extends StatelessWidget {
     final accessToken =
         Provider.of<AuthController>(context, listen: false).user.accessToken;
     await Provider.of<ProjectController>(context, listen: false)
-        .index(6, accessToken);
+        .index(limit: 6, accessToken: accessToken);
   }
 
   @override

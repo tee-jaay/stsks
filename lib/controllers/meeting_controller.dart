@@ -10,15 +10,15 @@ class MeetingController with ChangeNotifier {
 
   late List<Meeting> meetingsList = [];
 
-  Future<void> index(String projectId) async {
+  Future<void> index(
+      {required String projectId, required String accessToken}) async {
     meetingsList.clear();
     var endpoint = '$MEETINGS/$projectId';
     var result = await httpRequestsService.requestApi(
-      endpoint: endpoint,
-      object: {},
-      reqMethod: 'GET',
-        accessToken: ''
-    );
+        endpoint: endpoint,
+        object: {},
+        reqMethod: 'GET',
+        accessToken: accessToken);
     var data = jsonDecode(result.body);
     print(data.length);
     for (var i = 0; i < data.length; i++) {

@@ -10,11 +10,15 @@ class TimesheetController with ChangeNotifier {
 
   late List<TimeSheet> timeSheetsList = [];
 
-  Future<void> index(String projectId) async {
+  Future<void> index(
+      {required String projectId, required String accessToken}) async {
     timeSheetsList.clear();
     var endpoint = '$TIMESHEETS/$projectId';
     var result = await httpRequestsService.requestApi(
-        endpoint: endpoint, object: {}, reqMethod: "GET", accessToken: '');
+        endpoint: endpoint,
+        object: {},
+        reqMethod: "GET",
+        accessToken: accessToken);
     var data = jsonDecode(result.body);
     for (var i = 0; i < data.length; i++) {
       String id = data[i]["id"] ?? '';
