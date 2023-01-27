@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,14 +10,15 @@ class HttpRequestsService {
     'DELETE': http.delete,
   };
 
-  Future<http.Response> requestApi({
-    required String endpoint,
-    required String reqMethod,
-    required Object object,
-  }) async {
+  Future<http.Response> requestApi(
+      {required String endpoint,
+      required String reqMethod,
+      required Object object,
+      required String accessToken}) async {
     final uri = Uri.parse(endpoint);
     final headers = {
-      "Authorization": "Bearer ${dotenv.env['TMP_AUTH_TOKEN']}",
+      // "Authorization": "Bearer ${dotenv.env['TMP_AUTH_TOKEN']}",
+      "Authorization": "Bearer $accessToken",
       "Content-Type": "application/json"
     };
     final Function? method = _methods[reqMethod];

@@ -132,6 +132,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
+                SizedBox(height: appDefaultSpace,),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, SignInScreen.screenId);
+                  },
+                  child: RichText(
+                    text: const TextSpan(
+                        text: 'Already have an account?',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: ' Sign In',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blueAccent,
+                            ),
+                          ),
+                          TextSpan(text: ' here'),
+                        ]),
+                  ),
+                )
               ],
             ),
           ),

@@ -17,6 +17,7 @@ class MeetingController with ChangeNotifier {
       endpoint: endpoint,
       object: {},
       reqMethod: 'GET',
+        accessToken: ''
     );
     var data = jsonDecode(result.body);
     print(data.length);

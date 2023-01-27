@@ -12,10 +12,7 @@ class TodoController with ChangeNotifier {
     var endpoint = '$PROJECTS/$projectId/todos';
 
     var result = await httpRequestsService.requestApi(
-      object: {},
-      endpoint: endpoint,
-      reqMethod: "GET",
-    );
+        object: {}, endpoint: endpoint, reqMethod: "GET", accessToken: '');
     print("index todos");
     print(result);
   }

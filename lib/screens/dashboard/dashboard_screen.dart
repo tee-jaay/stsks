@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../controllers/auth_controller.dart';
 import '../../controllers/project_controller.dart';
 import 'inc/body.dart';
 import 'projects/projects_list/projects_list_screen.dart';
 
-class DashboardScreen extends StatefulWidget {
+class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
 
   static String screenId = "dashboard";
 
-  @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
-}
-
-class _DashboardScreenState extends State<DashboardScreen> {
-  void _handleClickProjects() {
+  void _handleClickProjects(String accessToken) {
     ProjectController projectController = ProjectController();
-    projectController.index(6);
+    print('_handleClickProjects: $accessToken');
+    projectController.index(6, accessToken);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    final accessToken = Provider.of<AuthController>(context, listen: false).user.accessToken;
+    print('Dashboard token $accessToken');
+    return   Scaffold(
       appBar: AppBar(
         leading: IconButton(
           color: Colors.black,
@@ -42,7 +42,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             TextButton(
               onPressed: () {
-                _handleClickProjects();
+                _handleClickProjects(accessToken);
                 Navigator.pushNamed(context, ProjectListScreen.screenId);
               },
               child: const Text("Projects"),

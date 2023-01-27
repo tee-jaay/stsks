@@ -9,8 +9,8 @@ class UserController with ChangeNotifier {
   void index() async {
     print("fetchUsers");
     var endpoint = USERS;
-    var result = await httpRequestsService
-        .requestApi(object: {}, endpoint: endpoint, reqMethod: "GET");
+    var result = await httpRequestsService.requestApi(
+        object: {}, endpoint: endpoint, reqMethod: "GET", accessToken: '');
     print("fetchUsers");
     print(result);
   }

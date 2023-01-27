@@ -14,10 +14,7 @@ class TaskController with ChangeNotifier {
   Future<void> index(String projectId) async {
     var endpoint = '$TASKS/$projectId';
     var result = await httpRequestsService.requestApi(
-      endpoint: endpoint,
-      object: {},
-      reqMethod: "GET",
-    );
+        endpoint: endpoint, object: {}, reqMethod: "GET", accessToken: '');
     final data = jsonDecode(result.body);
 
     var tempData = List.from(data);
@@ -50,10 +47,7 @@ class TaskController with ChangeNotifier {
     print("detail task");
     var endpoint = '$PROJECTS/$projectId/tasks/$taskId';
     var result = await httpRequestsService.requestApi(
-      object: {},
-      endpoint: endpoint,
-      reqMethod: "method",
-    );
+        object: {}, endpoint: endpoint, reqMethod: "method", accessToken: '');
     print("detail task");
     print(result);
     notifyListeners();

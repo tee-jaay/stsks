@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../controllers/auth_controller.dart';
 import '../../../../../controllers/project_controller.dart';
 import 'project_card.dart';
 
@@ -8,7 +9,10 @@ class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
   Future<void> _refreshProjects(BuildContext context) async {
-    await Provider.of<ProjectController>(context, listen: false).index(6);
+    final accessToken =
+        Provider.of<AuthController>(context, listen: false).user.accessToken;
+    await Provider.of<ProjectController>(context, listen: false)
+        .index(6, accessToken);
   }
 
   @override
@@ -32,8 +36,7 @@ class Body extends StatelessWidget {
                           title: value.projects[index].title,
                           imgUrl: value.projects[index].imgUrl,
                           status: value.projects[index].status,
-                          commentsCount: value.projects[index].commentsCount
-                      ),
+                          commentsCount: value.projects[index].commentsCount),
                     ),
                   ),
                 ),

@@ -8,8 +8,8 @@ class ProfileController with ChangeNotifier {
     print("profile");
     var endpoint = '$USERS/$userId/profile';
     HttpRequestsService httpRequestsService = HttpRequestsService();
-    var result = await httpRequestsService
-        .requestApi(object: {}, endpoint: endpoint, reqMethod: 'GET');
+    var result = await httpRequestsService.requestApi(
+        object: {}, endpoint: endpoint, reqMethod: 'GET', accessToken: '');
     print("profile");
     print(result);
   }

@@ -25,19 +25,17 @@ class _SignInScreenState extends State<SignInScreen> {
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
 
-  void _handleSubmit() {
+  _handleSubmit(BuildContext ctx) {
     final isValid = _formKey.currentState?.validate();
     if (!isValid!) {
       return;
     }
-    AuthController authController = AuthController();
-    authController
-        .signIn({"email": _email, "password": _password})
-        .then((value) {
+    Provider.of<AuthController>(ctx, listen: false)
+        .signIn({"email": _email, "password": _password}).then((value) {
       if (value == 200) {
-        Navigator.pushNamed(context, DashboardScreen.screenId);
+        Navigator.of(ctx).pushReplacementNamed(DashboardScreen.screenId);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(
             content: Text(
           'Sign in failed',
           style: TextStyle(color: Colors.amber),
@@ -48,12 +46,12 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthController>(context, listen: false);
+    final loading = Provider.of<AuthController>(context, listen: false).loading;
     return Scaffold(
       body: Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: authProvider.loading
+          child: loading
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
@@ -83,7 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         onFieldSubmitted: (value) => FocusScope.of(context)
                             .requestFocus(_passwordFocusNode),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: appDefaultSpace,
                       ),
                       TextFormField(
@@ -104,21 +102,26 @@ class _SignInScreenState extends State<SignInScreen> {
                         obscureText: true,
                         focusNode: _passwordFocusNode,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: appDefaultSpace,
                       ),
                       TextButton(
-                        onPressed: _handleSubmit,
-                        child: Text(
-                          'Sign In',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        style: ButtonStyle(
+                        onPressed:
+                            loading ? null : () => _handleSubmit(context),
+                        style: const ButtonStyle(
                           backgroundColor:
                               MaterialStatePropertyAll(Colors.blueAccent),
                         ),
+                        child: loading ? const Text(
+                          '...',
+                          style: TextStyle(color: Colors.red),
+                        )
+                       : const Text(
+                          'Sign In',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: appDefaultSpace,
                       ),
                       GestureDetector(
@@ -126,11 +129,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           Navigator.pushNamed(context, SignUpScreen.screenId);
                         },
                         child: RichText(
-                          text: TextSpan(
+                          text: const TextSpan(
                               text: 'Don\'t have an account?',
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.black,
-                                fontStyle: FontStyle.italic,
                               ),
                               children: [
                                 TextSpan(
@@ -140,7 +142,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     color: Colors.blueAccent,
                                   ),
                                 ),
-                                const TextSpan(text: ' here'),
+                                TextSpan(text: ' here'),
                               ]),
                         ),
                       )

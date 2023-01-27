@@ -17,6 +17,7 @@ class IssueController with ChangeNotifier {
       object: {},
       endpoint: endpoint,
       reqMethod: 'GET',
+      accessToken: ''
     );
     var data = jsonDecode(result.body);
 

@@ -14,18 +14,15 @@ class TimesheetController with ChangeNotifier {
     timeSheetsList.clear();
     var endpoint = '$TIMESHEETS/$projectId';
     var result = await httpRequestsService.requestApi(
-      endpoint: endpoint,
-      object: {},
-      reqMethod: "GET",
-    );
+        endpoint: endpoint, object: {}, reqMethod: "GET", accessToken: '');
     var data = jsonDecode(result.body);
     for (var i = 0; i < data.length; i++) {
-      String id = data[i]["id"]??'';
-      String projectId = data[i]["projectId"]??'';
-      String taskId = data[i]["taskId"]??'';
-      String task = data[i]["task"]??'';
-      String createdBy = data[i]["createdBy"]??'';
-      String title = data[i]["title"]??'';
+      String id = data[i]["id"] ?? '';
+      String projectId = data[i]["projectId"] ?? '';
+      String taskId = data[i]["taskId"] ?? '';
+      String task = data[i]["task"] ?? '';
+      String createdBy = data[i]["createdBy"] ?? '';
+      String title = data[i]["title"] ?? '';
       List<dynamic> logs = data[i]["logs"];
       timeSheetsList.add(TimeSheet(
           id: id,

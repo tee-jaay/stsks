@@ -13,11 +13,15 @@ class ProjectController with ChangeNotifier {
   bool loading = false;
   var projectDetail = null;
 
-  Future<void> index(int limit) async {
+  Future<void> index(int limit, String accessToken) async {
     var endpoint = '$PROJECTS_BY_LIMIT/$limit';
+    print('token: $accessToken');
 
     final result = await httpRequestsService.requestApi(
-        endpoint: endpoint, object: {}, reqMethod: "GET");
+        endpoint: endpoint,
+        object: {},
+        reqMethod: "GET",
+        accessToken: accessToken);
     final data = jsonDecode(result.body);
     for (var i = 0; i < data.length; i++) {
       var id = data[i]["id"] ?? '';
@@ -38,8 +42,8 @@ class ProjectController with ChangeNotifier {
   Future<ProjectDetail> show(String id) async {
     loading = true;
     var endpoint = '$PROJECTS/$id';
-    var result = await httpRequestsService
-        .requestApi(object: {}, endpoint: endpoint, reqMethod: 'GET');
+    var result = await httpRequestsService.requestApi(
+        object: {}, endpoint: endpoint, reqMethod: 'GET', accessToken: '');
     final data = jsonDecode(result.body);
 
     projectDetail = ProjectDetail(
