@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../../settings/constants.dart';
 import '../../dashboard/dashboard_screen.dart';
@@ -24,7 +25,7 @@ class HeroSection extends StatelessWidget {
       color: const Color(0xFFf1f1f1),
       child: Column(
         children: [
-          Image(image: AssetImage('assets/images/home/teaching.png')),
+          const HomeImageWidget(),
           Center(
             child: TextButton(
               onPressed: () {
@@ -33,11 +34,12 @@ class HeroSection extends StatelessWidget {
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: TextLiquidFill(
+                  loadDuration: const Duration(milliseconds: 1200),
                   text: appName,
                   waveColor: appPrimaryColor,
                   boxBackgroundColor: appBackgroundColorLight,
                   textStyle: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.2,
+                    fontSize: MediaQuery.of(context).size.width * 0.16,
                     fontWeight: FontWeight.bold,
                   ),
                   boxHeight: 200.0,
@@ -54,7 +56,7 @@ class HeroSection extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, SignInScreen.screenId);
                   },
-                  child: Text(
+                  child: const Text(
                     'Sign In',
                     style: TextStyle(color: Colors.black87),
                   ),
@@ -63,24 +65,37 @@ class HeroSection extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, SignUpScreen.screenId);
                   },
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll(
                       Colors.green,
                     ),
+                  ),
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           )
         ],
       ),
     );
+  }
+}
+
+class HomeImageWidget extends StatelessWidget {
+  const HomeImageWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    Widget myWidget =
+        const Image(image: AssetImage('assets/images/home/teaching.png'));
+    return myWidget.animate().fadeIn(duration: 2.seconds);
   }
 }

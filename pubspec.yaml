@@ -31,6 +31,7 @@ dependencies:
   jwt_decode: ^0.3.1
   image_picker: ^0.8.6
   provider:
+  flutter_animate: ^3.0.0
 
 dev_dependencies:
   flutter_test:
