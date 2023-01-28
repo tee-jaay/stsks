@@ -15,26 +15,27 @@ class ProjectController with ChangeNotifier {
 
   Future<void> index({required int limit, required String accessToken}) async {
     var endpoint = '$PROJECTS_BY_LIMIT/$limit';
-    print('token: $accessToken');
-
     final result = await httpRequestsService.requestApi(
         endpoint: endpoint,
         object: {},
         reqMethod: "GET",
         accessToken: accessToken);
-    final data = jsonDecode(result.body);
-    for (var i = 0; i < data.length; i++) {
-      var id = data[i]["id"] ?? '';
-      var title = data[i]["title"] ?? '';
-      var image = data[i]["image"] ?? '';
-      var status = data[i]["status"] ?? '';
-      var commentsCount = data[i]["commentsCount"] ?? '';
-      projects.add(ProjectPreview(
-          id: id,
-          title: title,
-          imgUrl: image,
-          status: status,
-          commentsCount: commentsCount));
+    if(result.statusCode == 200){
+      projects.clear();
+      final data = jsonDecode(result.body);
+      for (var i = 0; i < data.length; i++) {
+        var id = data[i]["id"] ?? '';
+        var title = data[i]["title"] ?? '';
+        var image = data[i]["image"] ?? '';
+        var status = data[i]["status"] ?? '';
+        var commentsCount = data[i]["commentsCount"] ?? '';
+        projects.add(ProjectPreview(
+            id: id,
+            title: title,
+            imgUrl: image,
+            status: status,
+            commentsCount: commentsCount));
+      }
     }
     notifyListeners();
   } // index

@@ -5,7 +5,6 @@ import '../settings/api_endpoints.dart';
 
 class ProfileController with ChangeNotifier {
   void index({required String userId, required String accessToken}) async {
-    print("profile");
     var endpoint = '$USERS/$userId/profile';
     HttpRequestsService httpRequestsService = HttpRequestsService();
     var result = await httpRequestsService.requestApi(
@@ -13,7 +12,9 @@ class ProfileController with ChangeNotifier {
         endpoint: endpoint,
         reqMethod: 'GET',
         accessToken: accessToken);
-    print("profile");
-    print(result);
+    if (result.statusCode == 200) {
+      print("profile");
+      print(result);
+    }
   }
 }

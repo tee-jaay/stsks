@@ -19,23 +19,26 @@ class TimesheetController with ChangeNotifier {
         object: {},
         reqMethod: "GET",
         accessToken: accessToken);
-    var data = jsonDecode(result.body);
-    for (var i = 0; i < data.length; i++) {
-      String id = data[i]["id"] ?? '';
-      String projectId = data[i]["projectId"] ?? '';
-      String taskId = data[i]["taskId"] ?? '';
-      String task = data[i]["task"] ?? '';
-      String createdBy = data[i]["createdBy"] ?? '';
-      String title = data[i]["title"] ?? '';
-      List<dynamic> logs = data[i]["logs"];
-      timeSheetsList.add(TimeSheet(
-          id: id,
-          projectId: projectId,
-          taskId: taskId,
-          task: task,
-          createdBy: createdBy,
-          title: title,
-          logs: logs));
+    if(result.statusCode == 200) {
+      timeSheetsList.clear();
+      var data = jsonDecode(result.body);
+      for (var i = 0; i < data.length; i++) {
+        String id = data[i]["id"] ?? '';
+        String projectId = data[i]["projectId"] ?? '';
+        String taskId = data[i]["taskId"] ?? '';
+        String task = data[i]["task"] ?? '';
+        String createdBy = data[i]["createdBy"] ?? '';
+        String title = data[i]["title"] ?? '';
+        List<dynamic> logs = data[i]["logs"];
+        timeSheetsList.add(TimeSheet(
+            id: id,
+            projectId: projectId,
+            taskId: taskId,
+            task: task,
+            createdBy: createdBy,
+            title: title,
+            logs: logs));
+      }
     }
     notifyListeners();
   }
