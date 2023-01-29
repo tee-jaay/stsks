@@ -12,6 +12,7 @@ final String PROJECTS = "$API_ROOT/projects";
 
 // Tasks
 final String TASKS = "$API_ROOT/projects-tasks/projectId";
+final String TASKS_SHOW = "$API_ROOT/projects-tasks/taskId";
 
 // Issues
 final String ISSUES = "$API_ROOT/projects-issues/projectId";

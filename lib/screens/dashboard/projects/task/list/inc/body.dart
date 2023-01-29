@@ -13,6 +13,12 @@ class Body extends StatelessWidget {
         .index(projectId: id, accessToken: token);
   }
 
+  Future<void> _showTask(BuildContext ctx, String projectId, String taskId,
+      String accessToken) async {
+    Provider.of<TaskController>(ctx, listen: false)
+        .show(projectId: projectId, taskId: taskId, accessToken: accessToken);
+  }
+
   @override
   Widget build(BuildContext context) {
     final accessToken =
@@ -34,9 +40,9 @@ class Body extends StatelessWidget {
                       itemCount: value.tasksPreviews.length,
                       itemBuilder: (context, index) {
                         return InkWell(
-                          onTap: (){
-                            print(value.tasksPreviews[index].id);
-                            print(value.tasksPreviews[index].projectId);
+                          onTap: () {
+                            _dialogBuilder(context,
+                                value.tasksPreviews[index].id, accessToken);
                           },
                           child: Card(
                             child: Padding(
@@ -45,23 +51,27 @@ class Body extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         value.tasksPreviews[index].title,
-                                        style: TextStyle(color: Colors.black87),
+                                        style: const TextStyle(
+                                            color: Colors.black87),
                                       ),
                                       Text(
                                         value.tasksPreviews[index].status,
-                                        style: TextStyle(color: Colors.cyan),
+                                        style:
+                                            const TextStyle(color: Colors.cyan),
                                       ),
                                     ],
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   Text(
                                     'Priority: ${value.tasksPreviews[index].priority}',
-                                    style: TextStyle(
-                                        color: Colors.black87,),
+                                    style: const TextStyle(
+                                      color: Colors.black87,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -75,6 +85,66 @@ class Body extends StatelessWidget {
           future: _refreshProjectTasks(context, projectId, accessToken),
         ),
       ),
+    );
+  }
+
+  // Task detail
+  Future<void> _dialogBuilder(
+      BuildContext context, String taskId, String accessToken) {
+    final task = Provider.of<TaskController>(context, listen: false).task;
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return FutureBuilder(
+          future: _showTask(context, projectId, taskId, accessToken),
+          builder: (context, snapshot) => snapshot.connectionState ==
+                  ConnectionState.waiting
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : RefreshIndicator(
+                  onRefresh: () =>
+                      _showTask(context, projectId, taskId, accessToken),
+                  child: Consumer<TaskController>(
+                    builder: (context, value, child) => AlertDialog(
+                      title: Text(task.title),
+                      content: Column(
+                        children: [
+                          const Text('A dialog is a type of modal window that\n'
+                              'appears in front of app content to\n'
+                              'provide critical information, or prompt\n'
+                              'for a decision to be made.'),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                                hintText: 'Type something!'),
+                          ),
+                        ],
+                      ),
+                      actions: <Widget>[
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                          ),
+                          child: const Text('Disable'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                          ),
+                          child: const Text('Enable'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+        );
+      },
     );
   }
 }
