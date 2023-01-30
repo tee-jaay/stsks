@@ -109,15 +109,13 @@ class Body extends StatelessWidget {
                     builder: (context, value, child) => AlertDialog(
                       title: Text(task.title),
                       content: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('A dialog is a type of modal window that\n'
-                              'appears in front of app content to\n'
-                              'provide critical information, or prompt\n'
-                              'for a decision to be made.'),
-                          TextFormField(
-                            decoration: const InputDecoration(
-                                hintText: 'Type something!'),
-                          ),
+                          Text('Created By: ${task.createdBy}'),
+                          Text('Status: ${task.status}'),
+                          Text('Priority: ${task.priority}'),
+                          Text('Planned Start: ${task.plannedStart}'),
+                          Text('Planned End: ${task.plannedEnd}'),
                         ],
                       ),
                       actions: <Widget>[
@@ -125,7 +123,7 @@ class Body extends StatelessWidget {
                           style: TextButton.styleFrom(
                             textStyle: Theme.of(context).textTheme.labelLarge,
                           ),
-                          child: const Text('Disable'),
+                          child: const Text('Close'),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
@@ -134,7 +132,7 @@ class Body extends StatelessWidget {
                           style: TextButton.styleFrom(
                             textStyle: Theme.of(context).textTheme.labelLarge,
                           ),
-                          child: const Text('Enable'),
+                          child: const Text('Update'),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
