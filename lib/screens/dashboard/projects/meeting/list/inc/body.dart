@@ -41,9 +41,46 @@ class Body extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 16.0, horizontal: 8.0),
-                            child: Text(
-                              value.meetingsList[index].title,
-                              style: const TextStyle(color: Colors.black87),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  value.meetingsList[index].title,
+                                  style: const TextStyle(color: Colors.black87),
+                                ),
+                                Text(
+                                  value.meetingsList[index].createdBy,
+                                  style: const TextStyle(color: Colors.black87),
+                                ),
+                                Text(
+                                  value.meetingsList[index].agenda,
+                                  style: const TextStyle(color: Colors.black87),
+                                ),
+                                Text(
+                                  value.meetingsList[index].address,
+                                  style: const TextStyle(color: Colors.black87),
+                                ),
+                                Text(
+                                  value.meetingsList[index].date,
+                                  style: const TextStyle(color: Colors.black87),
+                                ),
+                                Text(
+                                  value.meetingsList[index].phone,
+                                  style: const TextStyle(color: Colors.black87),
+                                ),
+                                Text(
+                                  value.meetingsList[index].location,
+                                  style: const TextStyle(color: Colors.black87),
+                                ),
+                                Text(
+                                  '${value.meetingsList[index].duration} hrs',
+                                  style: const TextStyle(color: Colors.black87),
+                                ),
+                                Text(
+                                  value.meetingsList[index].time,
+                                  style: const TextStyle(color: Colors.black87),
+                                ),
+                              ],
                             ),
                           ),
                         );
