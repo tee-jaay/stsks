@@ -18,7 +18,7 @@ class IssueController with ChangeNotifier {
         endpoint: endpoint,
         reqMethod: 'GET',
         accessToken: accessToken);
-    if(result.statusCode == 200){
+    if (result.statusCode == 200) {
       issues.clear();
       var data = jsonDecode(result.body);
       for (var i = 0; i < data.length; i++) {
