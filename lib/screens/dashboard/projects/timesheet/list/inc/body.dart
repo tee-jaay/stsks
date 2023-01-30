@@ -22,32 +22,67 @@ class Body extends StatelessWidget {
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.8,
         child: FutureBuilder(
-          builder: (context, snapshot) =>
-              snapshot.connectionState == ConnectionState.waiting
-                  ? const Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : RefreshIndicator(
-                      onRefresh: () => _refreshProjectTimeSheets(
-                          context, projectId, accessToken),
-                      child: Consumer<TimesheetController>(
-                        builder: (context, value, child) => ListView.builder(
-                          itemCount: value.timeSheetsList.length,
-                          itemBuilder: (context, index) {
-                            return Card(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 16.0, horizontal: 8.0),
-                                child: Text(
+          builder: (context, snapshot) => snapshot.connectionState ==
+                  ConnectionState.waiting
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : RefreshIndicator(
+                  onRefresh: () => _refreshProjectTimeSheets(
+                      context, projectId, accessToken),
+                  child: Consumer<TimesheetController>(
+                    builder: (context, value, child) => ListView.builder(
+                      itemCount: value.timeSheetsList.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16.0, horizontal: 8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
                                   value.timeSheetsList[index].title,
                                   style: const TextStyle(color: Colors.black87),
                                 ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
+                                Text(
+                                  value.timeSheetsList[index].createdBy,
+                                  style: const TextStyle(color: Colors.black87),
+                                ),
+                                Text(
+                                  value.timeSheetsList[index].task,
+                                  style: const TextStyle(color: Colors.black87),
+                                ),
+                                Container(
+                                  height: 200,
+                                  child: GridView.builder(
+                                    itemBuilder: (ctx, i) => Container(
+                                      margin: EdgeInsets.all(8),
+                                      padding: EdgeInsets.all(8),
+                                      color: Colors.black12,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(value.timeSheetsList[index].logs[i]["day"]),
+                                          Text(value.timeSheetsList[index].logs[i]["time"]),
+                                          Text(value.timeSheetsList[index].logs[i]["note"]),
+                                        ],
+                                      ),
+                                    ),
+                                      itemCount: value.timeSheetsList[index].logs.length,
+                                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                  ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
                     ),
+                  ),
+                ),
           future: _refreshProjectTimeSheets(context, projectId, accessToken),
         ),
       ),
