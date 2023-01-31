@@ -11,19 +11,12 @@ class TasksListScreen extends StatelessWidget {
     final projectId = ModalRoute.of(context)?.settings.arguments.toString();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Projects Tasks'),
+        title: const Text('Tasks', style: TextStyle(color: Colors.black87),),
         iconTheme: const IconThemeData(color: Colors.black87),
       ),
       body: Center(
         child: Column(
           children: [
-            const Text(
-              "Tasks projects tasks screen",
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 24.0,
-              ),
-            ),
             Body(projectId: projectId!),
           ],
         ),

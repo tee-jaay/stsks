@@ -7,18 +7,23 @@ class ProjectStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Tasks Todos Issues',
-          style: TextStyle(color: Colors.black87),
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Tasks Todos Issues',
+              style: TextStyle(color: Colors.black87),
+            ),
+            SizedBox(
+              height: 12.0,
+            ),
+            StatGraph(),
+          ],
         ),
-        SizedBox(
-          height: 12.0,
-        ),
-        StatGraph(),
-      ],
+      ),
     );
   }
 }

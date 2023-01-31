@@ -12,20 +12,17 @@ class MeetingsListScreen extends StatelessWidget {
     final projectId = ModalRoute.of(context)?.settings.arguments.toString();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Meetings'),
+        title: const Text(
+          'Meetings',
+          style: TextStyle(
+            color: Colors.black87,
+          ),
+        ),
+        iconTheme: const IconThemeData(color: Colors.black87),
       ),
       body: Column(
         children: [
-          const Center(
-            child: Text(
-              "Meetings List Screen",
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 24.0,
-              ),
-            ),
-          ),
-          Body(projectId:projectId!),
+          Body(projectId: projectId!),
         ],
       ),
     );

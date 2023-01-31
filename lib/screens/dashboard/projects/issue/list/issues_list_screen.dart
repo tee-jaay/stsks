@@ -12,19 +12,14 @@ class IssuesListScreen extends StatelessWidget {
     var projectId = ModalRoute.of(context)?.settings.arguments.toString();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Issues'),
+        title: const Text(
+          'Issues',
+          style: TextStyle(color: Colors.black87),
+        ),
+        iconTheme: const IconThemeData(color: Colors.black87),
       ),
       body: Column(
         children: [
-          Center(
-            child: Text(
-              "Issues screen",
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 24.0,
-              ),
-            ),
-          ),
           Body(projectId: projectId!),
         ],
       ),

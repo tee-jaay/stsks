@@ -11,10 +11,6 @@ class ProjectComments extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('project comments'),
-        SizedBox(
-          height: 12.0,
-        ),
         Expanded(
           flex: 1,
           child: ListView.builder(
