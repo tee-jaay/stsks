@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prozeqts/screens/auth/inc/home_logo_link.dart';
 
 class RequestPasswordScreen extends StatelessWidget {
   const RequestPasswordScreen({Key? key}) : super(key: key);
@@ -11,7 +12,12 @@ class RequestPasswordScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Password reset"),
       ),
-      body: const Text("Request reset password link"),
+      body: Column(
+        children: [
+          HomeLogoLink(imagePath: 'assets/images/auth/passwd-req.png'),
+          Text("Request reset password link"),
+        ],
+      ),
     );
   }
 }

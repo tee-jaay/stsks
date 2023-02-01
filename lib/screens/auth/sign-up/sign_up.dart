@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prozeqts/screens/auth/inc/home_logo_link.dart';
 
 import '../sign-in/sign_in.dart';
 import '../../../controllers/auth_controller.dart';
@@ -33,15 +34,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
       return;
     }
     AuthController authController = AuthController();
-    authController.signUp({"email": _email,"username":_username, "password": _password}).then((value) {
+    authController.signUp({
+      "email": _email,
+      "username": _username,
+      "password": _password
+    }).then((value) {
       if (value == 201) {
         Navigator.pushNamed(context, SignInScreen.screenId);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text(
-              'Sign up failed',
-              style: TextStyle(color: Colors.amber),
-            )));
+          'Sign up failed',
+          style: TextStyle(color: Colors.amber),
+        )));
       }
     });
   }
@@ -58,6 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                HomeLogoLink(imagePath: 'assets/images/auth/sign-up.png'),
                 TextFormField(
                   controller: _emailController,
                   validator: (String? value) {
@@ -80,7 +86,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(
                   height: appDefaultSpace,
-                ),TextFormField(
+                ),
+                TextFormField(
                   controller: _usernameController,
                   validator: (String? value) {
                     if (value!.isEmpty) {
@@ -132,7 +139,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                SizedBox(height: appDefaultSpace,),
+                SizedBox(
+                  height: appDefaultSpace,
+                ),
                 GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, SignInScreen.screenId);

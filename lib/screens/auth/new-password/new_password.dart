@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prozeqts/screens/auth/inc/home_logo_link.dart';
 
 class NewPasswordScreen extends StatelessWidget {
   const NewPasswordScreen({Key? key}) : super(key: key);
@@ -10,7 +11,12 @@ class NewPasswordScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Save new password"),
       ),
-      body: const Text("save new password form"),
+      body: Column(
+        children: [
+          HomeLogoLink(imagePath: 'assets/images/auth/newpwd.png'),
+          Text("save new password form"),
+        ],
+      ),
     );
   }
 }

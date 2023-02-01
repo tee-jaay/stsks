@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:prozeqts/screens/auth/inc/home_logo_link.dart';
 
 import '../../dashboard/dashboard_screen.dart';
 import '../../../controllers/auth_controller.dart';
@@ -61,6 +62,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      HomeLogoLink(
+                          imagePath: 'assets/images/home/teaching.png'),
                       TextFormField(
                         controller: _emailController,
                         validator: (String? value) {
@@ -112,14 +115,15 @@ class _SignInScreenState extends State<SignInScreen> {
                           backgroundColor:
                               MaterialStatePropertyAll(Colors.blueAccent),
                         ),
-                        child: loading ? const Text(
-                          '...',
-                          style: TextStyle(color: Colors.red),
-                        )
-                       : const Text(
-                          'Sign In',
-                          style: TextStyle(color: Colors.white),
-                        ),
+                        child: loading
+                            ? const Text(
+                                '...',
+                                style: TextStyle(color: Colors.red),
+                              )
+                            : const Text(
+                                'Sign In',
+                                style: TextStyle(color: Colors.white),
+                              ),
                       ),
                       const SizedBox(
                         height: appDefaultSpace,
