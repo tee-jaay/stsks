@@ -42,12 +42,12 @@ class HeroSection extends StatelessWidget {
                     fontSize: MediaQuery.of(context).size.width * 0.16,
                     fontWeight: FontWeight.bold,
                   ),
-                  boxHeight: 200.0,
+                  boxHeight: 120.0,
                 ),
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: 50,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -78,9 +78,6 @@ class HeroSection extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
-            height: 10,
-          )
         ],
       ),
     );

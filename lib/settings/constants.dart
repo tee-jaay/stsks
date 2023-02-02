@@ -9,10 +9,10 @@ const appTextColor = Color(0xFF3C4046);
 const appBackgroundColor = Color(0xFFF9F8FD);
 const appBackgroundColorLight = Color(0xFFf1f1f1);
 
-const projectColor = Color(0xffC8E6C9);
-const taskColor = Color(0xffBBDEFB);
-const issueColor = Color(0xffFFF9C4);
-const meetingColor = Color(0xffF8BBD0);
+const projectColor = Color(0xFF0C9869);
+const taskColor = Color(0xff0b83ee);
+const issueColor = Color(0xff8a2fe0);
+const meetingColor = Color(0xffcb809a);
 
 // spacing
 const double appDefaultSpace = 16.0;

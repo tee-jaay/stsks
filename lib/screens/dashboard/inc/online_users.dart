@@ -128,12 +128,6 @@ class OnLineUserCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(
-                  email,
-                  style: const TextStyle(
-                    color: Color(0xff666666),
-                  ),
-                ),
               ],
             ),
             const Spacer(),
