@@ -29,28 +29,34 @@ class DashboardScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Row(
-          children: [
-            TextButton(
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.grey,
-              ),
-              onPressed: () {},
-              child: const Text("Dashboard"),
+        title: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              children: [
+                TextButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.grey,
+                  ),
+                  onPressed: () {},
+                  child: const Text("Dashboard"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    _handleClickProjects(accessToken);
+                    Navigator.pushNamed(context, ProjectListScreen.screenId);
+                  },
+                  child: const Text("Projects"),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text("Users"),
+                ),
+              ],
             ),
-            TextButton(
-              onPressed: () {
-                _handleClickProjects(accessToken);
-                Navigator.pushNamed(context, ProjectListScreen.screenId);
-              },
-              child: const Text("Projects"),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: const Text("Users"),
-            ),
-          ],
+          ),
         ),
         centerTitle: true,
         actions: [

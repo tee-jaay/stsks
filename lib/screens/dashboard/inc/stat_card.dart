@@ -27,7 +27,7 @@ class StatCard extends StatelessWidget {
       width: scrWidth,
       height: scrHeight,
       decoration: BoxDecoration(
-        color: color,
+        color: Colors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
@@ -59,7 +59,10 @@ class StatCard extends StatelessWidget {
           const Spacer(),
           Text(
             "$name($count)",
-            style: Theme.of(context).textTheme.bodyText1,
+            style: TextStyle(
+              fontSize: 18.0,
+              color: color,
+            ),
           ),
           const Spacer(),
         ],

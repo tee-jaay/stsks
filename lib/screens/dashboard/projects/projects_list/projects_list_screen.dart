@@ -20,34 +20,40 @@ class ProjectListScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Row(
-          children: [
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, DashboardScreen.screenId);
-              },
-              child: const Text("Dashboard"),
+        title: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, DashboardScreen.screenId);
+                  },
+                  child: const Text("Dashboard"),
+                ),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.grey,
+                    primary: Colors.white,
+                  ),
+                  onPressed: null,
+                  child: const Text(
+                    "Projects",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    if (kDebugMode) {
+                      print("users");
+                    }
+                  },
+                  child: const Text("Users"),
+                ),
+              ],
             ),
-            TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.grey,
-                primary: Colors.white,
-              ),
-              onPressed: null,
-              child: const Text(
-                "Projects",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                if (kDebugMode) {
-                  print("users");
-                }
-              },
-              child: const Text("Users"),
-            ),
-          ],
+          ),
         ),
         centerTitle: true,
         actions: [

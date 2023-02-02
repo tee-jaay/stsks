@@ -57,20 +57,20 @@ class Body extends StatelessWidget {
                                   height: 200,
                                   child: GridView.builder(
                                     itemBuilder: (ctx, i) => Container(
-                                      margin: EdgeInsets.all(8),
-                                      padding: EdgeInsets.all(8),
+                                      margin: const EdgeInsets.all(8),
+                                      padding: const EdgeInsets.all(8),
                                       color: Colors.black12,
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(value.timeSheetsList[index].logs[i]["day"]),
                                           Text(value.timeSheetsList[index].logs[i]["time"]),
-                                          Text(value.timeSheetsList[index].logs[i]["note"]),
+                                          Text(value.timeSheetsList[index].logs[i]["note"].substring(0,5)),
                                         ],
                                       ),
                                     ),
                                       itemCount: value.timeSheetsList[index].logs.length,
-                                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 3,
                                   ),
                                   ),

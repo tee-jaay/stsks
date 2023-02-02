@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:prozeqts/settings/constants.dart';
 
 import '../../../../../../controllers/auth_controller.dart';
 import '../../../../../../controllers/issue_controller.dart';
@@ -34,7 +35,7 @@ class Body extends StatelessWidget {
                     builder: (context, value, child) => ListView.builder(
                       itemCount: value.issues.length,
                       itemBuilder: (context, index) => Container(
-                        height: MediaQuery.of(context).size.height * 0.4,
+                        height: MediaQuery.of(context).size.height * 0.6,
                         child: Card(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -81,18 +82,22 @@ class Body extends StatelessWidget {
                                   value.issues[index].type,
                                   style: const TextStyle(color: Colors.black87),
                                 ),
-                                Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.1,
-                                  child: ListView.builder(
-                                    itemBuilder: (ctx, i) => ListTile(
-                                      title: Text(value
-                                          .issues[index].comments[i]["text"]),
-                                      subtitle: Text(value.issues[index]
-                                          .comments[i]["commentBy"]),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    margin: const EdgeInsets.only(top: appDefaultSpace),
+                                    color: Colors.grey.withOpacity(0.2),
+                                    height:
+                                        MediaQuery.of(context).size.height * 0.2,
+                                    child: ListView.builder(
+                                      itemBuilder: (ctx, i) => ListTile(
+                                        title: Text(value
+                                            .issues[index].comments[i]["text"]),
+                                        subtitle: Text(value.issues[index]
+                                            .comments[i]["commentBy"]),
+                                      ),
+                                      itemCount:
+                                          value.issues[index].comments.length,
                                     ),
-                                    itemCount:
-                                        value.issues[index].comments.length,
                                   ),
                                 ),
                               ],
