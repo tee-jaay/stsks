@@ -44,10 +44,10 @@ class StatCard extends StatelessWidget {
             padding: const EdgeInsets.all(appDefaultSpace),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: color,
+              color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
+                  color: Colors.grey.withOpacity(0.1),
                   spreadRadius: 5,
                   blurRadius: 7,
                   offset: const Offset(0, 1),
@@ -58,7 +58,7 @@ class StatCard extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            "$name($count)",
+            "${name.toUpperCase()}($count)",
             style: TextStyle(
               fontSize: 18.0,
               color: color,
