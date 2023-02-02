@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:stasks/screens/dashboard/dashboard_screen.dart';
+
+import '../../dashboard_screen.dart';
 import './inc/body.dart';
 
 class ProjectListScreen extends StatelessWidget {

@@ -1,1 +1,5 @@
-class TimesheetLogController {}
+import 'package:flutter/foundation.dart';
+
+class TimesheetLogController with ChangeNotifier{
+  TimesheetLogController();
+}

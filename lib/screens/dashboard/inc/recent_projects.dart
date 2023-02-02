@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:stasks/settings/constants.dart';
-import 'package:stasks/screens/dashboard/inc/recent_projects_item.dart';
+
+import '../../../settings/constants.dart';
+import 'recent_projects_item.dart';
 
 class RecentProjects extends StatelessWidget {
   const RecentProjects({

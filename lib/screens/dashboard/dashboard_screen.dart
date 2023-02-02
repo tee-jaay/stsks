@@ -1,34 +1,25 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../controllers/auth_controller.dart';
 import '../../controllers/project_controller.dart';
-import '../../controllers/user_controller.dart';
 import 'inc/body.dart';
 import 'projects/projects_list/projects_list_screen.dart';
 
-
-class DashboardScreen extends StatefulWidget {
+class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
 
   static String screenId = "dashboard";
 
-  @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
-}
-
-class _DashboardScreenState extends State<DashboardScreen> {
-  void _handleClickProjects(){
-    ProjectController _projectController = ProjectController();
-    _projectController.index();
-  }
-
-  void _handleClickUsers(){
-    UserController _userController = UserController();
-    _userController.fetchUsers();
+  void _handleClickProjects(String accessToken) {
+    ProjectController projectController = ProjectController();
+    projectController.index(limit: 6, accessToken: accessToken);
   }
 
   @override
   Widget build(BuildContext context) {
+    final accessToken =
+        Provider.of<AuthController>(context, listen: false).user.accessToken;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -42,28 +33,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
           children: [
             TextButton(
               style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
                 backgroundColor: Colors.grey,
-                primary: Colors.white,
               ),
-              onPressed: () {
-                if (kDebugMode) {
-                  print("Dashboard screen");
-                }
-              },
+              onPressed: () {},
               child: const Text("Dashboard"),
             ),
             TextButton(
               onPressed: () {
-                _handleClickProjects();
+                _handleClickProjects(accessToken);
                 Navigator.pushNamed(context, ProjectListScreen.screenId);
               },
               child: const Text("Projects"),
             ),
             TextButton(
-              onPressed: () {
-                _handleClickUsers();
-              },
-              child: const Text("Users List"),
+              onPressed: () {},
+              child: const Text("Users"),
             ),
           ],
         ),
@@ -71,11 +56,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         actions: [
           IconButton(
             color: Colors.black,
-            onPressed: () {
-              if (kDebugMode) {
-                print("logout");
-              }
-            },
+            onPressed: () {},
             icon: const Icon(Icons.logout),
           ),
         ],

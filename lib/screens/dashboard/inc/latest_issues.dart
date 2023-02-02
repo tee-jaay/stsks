@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:stasks/settings/constants.dart';
+
+import '../../../settings/constants.dart';
 
 class LatestIssues extends StatefulWidget {
   const LatestIssues({Key? key}) : super(key: key);
@@ -110,44 +111,90 @@ class IssueItem extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Container(
-              width: MediaQuery.of(context).size.width * 0.5,
-              padding: const EdgeInsets.symmetric(
-                vertical: appDefaultSpace * 0.5,
-                horizontal: appDefaultSpace * 0.5,
-              ),
-              child: Text(
-                about,
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(
-                left: appDefaultSpace,
-              ),
-              padding: const EdgeInsets.symmetric(
-                  horizontal: appDefaultSpace * 0.6,
-                  vertical: appDefaultSpace * 0.3),
-              decoration: BoxDecoration(
-                  color: colorType, borderRadius: BorderRadius.circular(50)),
-              child: Text(
-                issueType,
-                style: const TextStyle(
-                  fontSize: 12.0,
-                ),
-              ),
-            ),
+            IssueAbout(about: about),
+            IssueType(colorType: colorType, issueType: issueType),
             const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(right: appDefaultSpace * 0.5),
-              child: Text(
-                severity,
-                style: TextStyle(
-                  color: colorSeverity,
-                ),
-              ),
-            ),
+            IssueSeverity(severity: severity, colorSeverity: colorSeverity),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class IssueSeverity extends StatelessWidget {
+  const IssueSeverity({
+    super.key,
+    required this.severity,
+    required this.colorSeverity,
+  });
+
+  final String severity;
+  final Color colorSeverity;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: appDefaultSpace * 0.5),
+      child: Text(
+        severity,
+        style: TextStyle(
+          color: colorSeverity,
+        ),
+      ),
+    );
+  }
+}
+
+class IssueType extends StatelessWidget {
+  const IssueType({
+    super.key,
+    required this.colorType,
+    required this.issueType,
+  });
+
+  final Color colorType;
+  final String issueType;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(
+        left: appDefaultSpace,
+      ),
+      padding: const EdgeInsets.symmetric(
+          horizontal: appDefaultSpace * 0.6,
+          vertical: appDefaultSpace * 0.3),
+      decoration: BoxDecoration(
+          color: colorType, borderRadius: BorderRadius.circular(50)),
+      child: Text(
+        issueType,
+        style: const TextStyle(
+          fontSize: 12.0,
+        ),
+      ),
+    );
+  }
+}
+
+class IssueAbout extends StatelessWidget {
+  const IssueAbout({
+    super.key,
+    required this.about,
+  });
+
+  final String about;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.4,
+      padding: const EdgeInsets.symmetric(
+        vertical: appDefaultSpace * 0.5,
+        horizontal: appDefaultSpace * 0.5,
+      ),
+      child: Text(
+        about,
       ),
     );
   }

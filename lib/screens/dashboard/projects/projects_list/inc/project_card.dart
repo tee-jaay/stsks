@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../settings/constants.dart';
-import '../../../../../controllers/project_controller.dart';
+import '../../project_detail/project_detail_screen.dart';
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({Key? key}) : super(key: key);
+  ProjectCard(
+      {Key? key,
+      required this.id,
+      required this.title,
+      required this.imgUrl,
+      required this.status,
+      required this.commentsCount})
+      : super(key: key);
+
+  String id;
+  String title;
+  String imgUrl;
+  String status;
+  String commentsCount;
 
   @override
   Widget build(BuildContext context) {
-
-    void _handleClickView() {
-      ProjectController projectController = ProjectController();
-      projectController.show();
-    }
-
     return Stack(
       children: [
         Padding(
@@ -21,17 +28,17 @@ class ProjectCard extends StatelessWidget {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: 200.0,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: NetworkImage("https://picsum.photos/200/300?q="),
+                image: NetworkImage(imgUrl),
               ),
             ),
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 12.0, horizontal: 8.0),
               child: Text(
-                "Quisque molestie quam eget nunc laoreet",
+                title,
                 style: TextStyle(
                   color: Colors.white,
                   backgroundColor: Colors.black.withOpacity(0.5),
@@ -42,13 +49,16 @@ class ProjectCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: appDefaultSpace,
-          left: appDefaultSpace * 1.4,
-          child: ElevatedButton(onPressed: (){
-            _handleClickView();
-            }, child: const Text('view'))),
+            bottom: appDefaultSpace,
+            left: appDefaultSpace * 1.4,
+            child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(
+                      context, ProjectDetailScreen.screenId,
+                      arguments: id);
+                },
+                child: const Text('view'))),
       ],
     );
   }
 }
-
