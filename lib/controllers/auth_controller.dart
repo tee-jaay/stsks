@@ -10,16 +10,22 @@ import '../services/http_requests_service.dart';
 class AuthController extends HttpRequestsService with ChangeNotifier {
   int _httpResponseStatus = 0;
   bool _loading = false;
+
   late Timer? _authTimer;
   final User _user =
       User(id: '', username: '', accessToken: '', isAuthenticated: false);
 
-  bool get loading => _loading;
-
   User get user => _user;
 
+  bool get loading => _loading;
+
+  set loading(bool value) {
+    _loading = value;
+    notifyListeners();
+  }
+
   Future<int> signUp(Object obj) async {
-    _loading = true;
+    loading = true;
     var result = await requestApi(
         endpoint: AUTH_SIGN_UP,
         reqMethod: 'POST',
@@ -31,13 +37,13 @@ class AuthController extends HttpRequestsService with ChangeNotifier {
       _authenticateUser(
           data["id"], data["username"], data["accessToken"], true);
     }
-    _loading = false;
+    loading = false;
     notifyListeners();
     return _httpResponseStatus;
   }
 
   Future<int> signIn(Object obj) async {
-    _loading = true;
+    loading = true;
     var result = await requestApi(
         endpoint: AUTH_SIGN_IN,
         object: obj,
@@ -49,7 +55,7 @@ class AuthController extends HttpRequestsService with ChangeNotifier {
       _authenticateUser(
           data["id"], data["username"], data["accessToken"], true);
     }
-    _loading = false;
+    loading = false;
     notifyListeners();
     return _httpResponseStatus;
   }

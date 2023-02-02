@@ -11,11 +11,22 @@ class NewPasswordScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Save new password"),
       ),
-      body: Column(
-        children: [
-          HomeLogoLink(imagePath: 'assets/images/auth/newpwd.png'),
-          Text("save new password form"),
-        ],
+      body: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                children: [
+                  HomeLogoLink(imagePath: 'assets/images/auth/newpwd.png'),
+                  Text("save new password form"),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
