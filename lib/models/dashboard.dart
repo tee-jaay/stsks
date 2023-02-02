@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../settings/constants.dart';
 
+double iconSize = 80.0;
+
 class DashboardStat {
   final String count, name, label;
   final double size, scrWidth, scrHeight;
@@ -28,7 +30,11 @@ List<DashboardStat> dashboardStats = [
     name: 'Projects',
     label: 'projects',
     color: projectColor,
-    icon: const Icon(Icons.archive),
+    icon: Icon(
+      Icons.archive,
+      size: iconSize,
+      color: projectColor,
+    ),
   ),
   DashboardStat(
     size: 48.0,
@@ -38,7 +44,11 @@ List<DashboardStat> dashboardStats = [
     name: 'Tasks',
     label: 'tasks',
     color: taskColor,
-    icon: const Icon(Icons.account_tree),
+    icon: Icon(
+      Icons.account_tree,
+      size: iconSize,
+      color: taskColor,
+    ),
   ),
   DashboardStat(
     size: 48.0,
@@ -48,7 +58,11 @@ List<DashboardStat> dashboardStats = [
     name: 'Issues',
     label: 'issues',
     color: issueColor,
-    icon: const Icon(Icons.list),
+    icon: Icon(
+      Icons.list,
+      size: iconSize,
+      color: issueColor,
+    ),
   ),
   DashboardStat(
     size: 48.0,
@@ -58,6 +72,10 @@ List<DashboardStat> dashboardStats = [
     name: 'Meetings',
     label: 'meetings',
     color: meetingColor,
-    icon: const Icon(Icons.people),
+    icon: Icon(
+      Icons.people,
+      size: iconSize,
+      color: meetingColor,
+    ),
   ),
 ];

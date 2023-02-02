@@ -9,21 +9,24 @@ class StatCardsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 8.0,
-        mainAxisSpacing: 8.0,
-        children: List.generate(
-            dashboardStats.length, (index) {
-          return StatCard(
-            scrWidth: dashboardStats[index].scrWidth,
-            scrHeight: dashboardStats[index].scrHeight,
-            name: dashboardStats[index].name,
-            count: dashboardStats[index].count,
-            icon: dashboardStats[index].icon,
-            color: dashboardStats[index].color,
-          );
-        }),
+      body: Container(
+        color: Colors.white,
+        child: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 8.0,
+          mainAxisSpacing: 8.0,
+          children: List.generate(
+              dashboardStats.length, (index) {
+            return StatCard(
+              scrWidth: dashboardStats[index].scrWidth,
+              scrHeight: dashboardStats[index].scrHeight,
+              name: dashboardStats[index].name,
+              count: dashboardStats[index].count,
+              icon: dashboardStats[index].icon,
+              color: dashboardStats[index].color,
+            );
+          }),
+        ),
       ),
     );
   }

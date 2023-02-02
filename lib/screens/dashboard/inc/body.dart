@@ -23,7 +23,10 @@ class Body extends StatelessWidget {
               height: appDefaultSpace * 1.4,
             ),
             // const StatCards(),
-            const SizedBox(height: 290.0, child: StatCardsGrid()),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.54,
+              child: StatCardsGrid(),
+            ),
             const SizedBox(
               height: appDefaultSpace,
             ),
