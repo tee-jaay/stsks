@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../../../controllers/auth_controller.dart';
 import '../../../../../../controllers/task_controller.dart';
+import '../../detail/task_detail_dialog.dart';
 
 class Body extends StatelessWidget {
   Body({required this.projectId, Key? key}) : super(key: key);
@@ -97,50 +98,19 @@ class Body extends StatelessWidget {
       builder: (BuildContext context) {
         return FutureBuilder(
           future: _showTask(context, projectId, taskId, accessToken),
-          builder: (context, snapshot) => snapshot.connectionState ==
-                  ConnectionState.waiting
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : RefreshIndicator(
-                  onRefresh: () =>
-                      _showTask(context, projectId, taskId, accessToken),
-                  child: Consumer<TaskController>(
-                    builder: (context, value, child) => AlertDialog(
-                      title: Text(task.title),
-                      content: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Created By: ${task.createdBy}'),
-                          Text('Status: ${task.status}'),
-                          Text('Priority: ${task.priority}'),
-                          Text('Planned Start: ${task.plannedStart}'),
-                          Text('Planned End: ${task.plannedEnd}'),
-                        ],
+          builder: (context, snapshot) =>
+              snapshot.connectionState == ConnectionState.waiting
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : RefreshIndicator(
+                      onRefresh: () =>
+                          _showTask(context, projectId, taskId, accessToken),
+                      child: Consumer<TaskController>(
+                        builder: (context, value, child) =>
+                            TaskDetailDialog(task: task),
                       ),
-                      actions: <Widget>[
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                          ),
-                          child: const Text('Close'),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                          ),
-                          child: const Text('Update'),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                      ],
                     ),
-                  ),
-                ),
         );
       },
     );
