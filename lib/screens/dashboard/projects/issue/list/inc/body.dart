@@ -36,58 +36,110 @@ class Body extends StatelessWidget {
                       itemCount: value.issues.length,
                       itemBuilder: (context, index) => Container(
                         height: MediaQuery.of(context).size.height * 0.6,
+                        color: Colors.grey,
                         child: Card(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  value.issues[index].title,
-                                  style: const TextStyle(color: Colors.black87),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      value.issues[index].title,
+                                      style: TextStyle(
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      value.issues[index].createdBy,
+                                      style: const TextStyle(
+                                          color: Colors.black87),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: appDefaultSpace,
                                 ),
                                 Text(
                                   value.issues[index].description,
                                   style: const TextStyle(color: Colors.black87),
                                 ),
-                                Text(
-                                  value.issues[index].createdBy,
-                                  style: const TextStyle(color: Colors.black87),
+                                SizedBox(
+                                  height: appDefaultSpace,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Priority: ${value.issues[index].priority}',
+                                      style: const TextStyle(
+                                          color: Colors.black87),
+                                    ),
+                                    Text(
+                                      'Status: ${value.issues[index].status}',
+                                      style: const TextStyle(
+                                          color: Colors.black87),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: appDefaultSpace,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Start: ${value.issues[index].start}',
+                                      style: const TextStyle(
+                                          color: Colors.black87),
+                                    ),
+                                    Text(
+                                      'End: ${value.issues[index].end}',
+                                      style: const TextStyle(
+                                          color: Colors.black87),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: appDefaultSpace,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Severity: ${value.issues[index].severity}',
+                                      style: const TextStyle(
+                                          color: Colors.black87),
+                                    ),
+                                    Text(
+                                      'Bookmark: ${value.issues[index].bookmark}',
+                                      style: const TextStyle(
+                                          color: Colors.black87),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: appDefaultSpace,
                                 ),
                                 Text(
-                                  value.issues[index].priority,
-                                  style: const TextStyle(color: Colors.black87),
-                                ),
-                                Text(
-                                  value.issues[index].status,
-                                  style: const TextStyle(color: Colors.black87),
-                                ),
-                                Text(
-                                  value.issues[index].start,
-                                  style: const TextStyle(color: Colors.black87),
-                                ),
-                                Text(
-                                  value.issues[index].end,
-                                  style: const TextStyle(color: Colors.black87),
-                                ),
-                                Text(
-                                  value.issues[index].bookmark,
-                                  style: const TextStyle(color: Colors.black87),
-                                ),
-                                Text(
-                                  value.issues[index].severity,
-                                  style: const TextStyle(color: Colors.black87),
-                                ),
-                                Text(
-                                  value.issues[index].type,
+                                  'Type: ${value.issues[index].type}',
                                   style: const TextStyle(color: Colors.black87),
                                 ),
                                 SingleChildScrollView(
                                   child: Container(
-                                    margin: const EdgeInsets.only(top: appDefaultSpace),
-                                    color: Colors.grey.withOpacity(0.2),
-                                    height:
-                                        MediaQuery.of(context).size.height * 0.2,
+                                    margin: EdgeInsets.only(top: 8),
+                                    height: 200,
+                                    decoration: BoxDecoration(
+                                      // borderRadius: BorderRadius.circular(24),
+                                      color: Colors.grey.withOpacity(0.2),
+                                    ),
                                     child: ListView.builder(
                                       itemBuilder: (ctx, i) => ListTile(
                                         title: Text(value
