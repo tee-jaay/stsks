@@ -29,7 +29,7 @@ class _OnlineUsersState extends State<OnlineUsers> {
               print("online user 1");
             }
           },
-          imgSrc: "https://i.pravatar.cc/300",
+          imgSrc: "https://i.pravatar.cc/300?q=1",
           role: "Admin",
           name: "Jhon Doe",
           email: "jhondoe@example.com",
@@ -40,7 +40,7 @@ class _OnlineUsersState extends State<OnlineUsers> {
               print("online user 2");
             }
           },
-          imgSrc: "https://i.pravatar.cc/300",
+          imgSrc: "https://i.pravatar.cc/300?q=2",
           role: "visitor",
           name: "Luz O'Reilly DVM",
           email: "0Casper560@example.com",
@@ -51,7 +51,7 @@ class _OnlineUsersState extends State<OnlineUsers> {
               print("online user 3");
             }
           },
-          imgSrc: "https://i.pravatar.cc/300",
+          imgSrc: "https://i.pravatar.cc/300?q=3",
           role: "client",
           name: "Scott Wunsch",
           email: "6Hudson_Bruen6@example.com",
@@ -62,7 +62,7 @@ class _OnlineUsersState extends State<OnlineUsers> {
               print("online user 4");
             }
           },
-          imgSrc: "https://i.pravatar.cc/300",
+          imgSrc: "https://i.pravatar.cc/300?q=4",
           role: "user",
           name: "Harry Roberts",
           email: "2Jocelyn_Cronin2@example.com",
@@ -73,7 +73,7 @@ class _OnlineUsersState extends State<OnlineUsers> {
               print("online user 5");
             }
           },
-          imgSrc: "https://i.pravatar.cc/300",
+          imgSrc: "https://i.pravatar.cc/300?q=5",
           role: "client",
           name: "Jackie Runolfsdottir",
           email: "4Layla_Skiles154@example.com",
