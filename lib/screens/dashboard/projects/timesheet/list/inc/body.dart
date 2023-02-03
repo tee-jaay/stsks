@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../../settings/constants.dart';
 import '../../../../../../controllers/auth_controller.dart';
 import '../../../../../../controllers/timesheet_controller.dart';
 
@@ -41,38 +42,53 @@ class Body extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  value.timeSheetsList[index].title,
-                                  style: const TextStyle(color: Colors.black87),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Task: ${value.timeSheetsList[index].title}',
+                                      style: const TextStyle(color: Colors.black87),
+                                    ),
+                                    Text(
+                                      'Entry By: ${value.timeSheetsList[index].createdBy}',
+                                      style: const TextStyle(color: Colors.black87),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  value.timeSheetsList[index].createdBy,
-                                  style: const TextStyle(color: Colors.black87),
-                                ),
+                                SizedBox(height: appDefaultSpace,),
                                 Text(
                                   value.timeSheetsList[index].task,
                                   style: const TextStyle(color: Colors.black87),
                                 ),
-                                Container(
-                                  height: 200,
+                                SizedBox(height: appDefaultSpace,),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.2,
                                   child: GridView.builder(
                                     itemBuilder: (ctx, i) => Container(
                                       margin: const EdgeInsets.all(8),
                                       padding: const EdgeInsets.all(8),
                                       color: Colors.black12,
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
-                                          Text(value.timeSheetsList[index].logs[i]["day"]),
-                                          Text(value.timeSheetsList[index].logs[i]["time"]),
-                                          Text(value.timeSheetsList[index].logs[i]["note"].substring(0,5)),
+                                          Text(value.timeSheetsList[index]
+                                              .logs[i]["day"]),
+                                          Text(value.timeSheetsList[index]
+                                              .logs[i]["time"]),
+                                          Text(value.timeSheetsList[index]
+                                              .logs[i]["note"]
+                                              .substring(0, 5)),
                                         ],
                                       ),
                                     ),
-                                      itemCount: value.timeSheetsList[index].logs.length,
-                                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3,
-                                  ),
+                                    itemCount:
+                                        value.timeSheetsList[index].logs.length,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3,
+                                    ),
                                   ),
                                 ),
                               ],
