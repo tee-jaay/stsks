@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:prozeqts/screens/auth/sign-in/sign_in.dart';
 
 import '../../../../settings/constants.dart';
 import '../../../../widgets/app_drawer.dart';
@@ -32,91 +33,97 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
     final id = ModalRoute.of(context)?.settings.arguments as String;
     final accessToken =
         Provider.of<AuthController>(context, listen: false).user.accessToken;
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black87),
-        title: const Text(
-          key: Key('project_detail'),
-          'Detail',
-          style: TextStyle(color: Colors.black),
-        ),
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: const [
-            Tab(
-              child: Text(
-                'Info',
-                style: TextStyle(color: Colors.black87),
+    final isAuthenticated = Provider.of<AuthController>(context, listen: false)
+        .user
+        .isAuthenticated;
+
+    return !isAuthenticated
+        ? const SignInScreen()
+        : Scaffold(
+            appBar: AppBar(
+              iconTheme: const IconThemeData(color: Colors.black87),
+              title: const Text(
+                key: Key('project_detail'),
+                'Detail',
+                style: TextStyle(color: Colors.black),
               ),
-            ),
-            Tab(
-              child: Text(
-                'Discussion',
-                style: TextStyle(color: Colors.black87),
-              ),
-            ),
-            Tab(
-              child: Text(
-                'Stats',
-                style: TextStyle(color: Colors.black87),
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: appDefaultSpace),
-            child: InkWell(
-                onTap: () => Navigator.pop(context),
-                child: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.black87,
-                )),
-          ),
-        ],
-      ),
-      body: FutureBuilder(
-        future: Provider.of<ProjectController>(context, listen: false)
-            .show(id: id, accessToken: accessToken),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            // Data has been fetched, display the data in a widget
-            return Consumer<ProjectController>(
-              builder: (context, value, child) {
-                return TabBarView(controller: _tabController, children: [
-                  ProjectInfo(
-                    key: const Key('project_info'),
-                    title: value.projectDetail.title,
-                    description: value.projectDetail.description,
-                    image: value.projectDetail.image,
-                    status: value.projectDetail.status,
-                    commentsCount:
-                        value.projectDetail.comments.length.toString(),
-                    estimate: value.projectDetail.estimate,
-                    spent: value.projectDetail.spent,
-                    createdBy: value.projectDetail.createdBy,
-                    repoLink: value.projectDetail.repoLink,
-                    urlOne: value.projectDetail.urlOne,
-                    urlTwo: value.projectDetail.urlTwo,
-                    createdAt: value.projectDetail.createdAt,
-                    updatedAt: value.projectDetail.updatedAt,
-                    assignees: value.projectDetail.assignees,
+              bottom: TabBar(
+                controller: _tabController,
+                tabs: const [
+                  Tab(
+                    child: Text(
+                      'Info',
+                      style: TextStyle(color: Colors.black87),
+                    ),
                   ),
-                  ProjectComments(comments: value.projectDetail.comments),
-                  ProjectStats(),
-                ]);
+                  Tab(
+                    child: Text(
+                      'Discussion',
+                      style: TextStyle(color: Colors.black87),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      'Stats',
+                      style: TextStyle(color: Colors.black87),
+                    ),
+                  ),
+                ],
+              ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.only(right: appDefaultSpace),
+                  child: InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: const Icon(
+                        Icons.arrow_back,
+                        color: Colors.black87,
+                      )),
+                ),
+              ],
+            ),
+            body: FutureBuilder(
+              future: Provider.of<ProjectController>(context, listen: false)
+                  .show(id: id, accessToken: accessToken),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  // Data has been fetched, display the data in a widget
+                  return Consumer<ProjectController>(
+                    builder: (context, value, child) {
+                      return TabBarView(controller: _tabController, children: [
+                        ProjectInfo(
+                          key: const Key('project_info'),
+                          title: value.projectDetail.title,
+                          description: value.projectDetail.description,
+                          image: value.projectDetail.image,
+                          status: value.projectDetail.status,
+                          commentsCount:
+                              value.projectDetail.comments.length.toString(),
+                          estimate: value.projectDetail.estimate,
+                          spent: value.projectDetail.spent,
+                          createdBy: value.projectDetail.createdBy,
+                          repoLink: value.projectDetail.repoLink,
+                          urlOne: value.projectDetail.urlOne,
+                          urlTwo: value.projectDetail.urlTwo,
+                          createdAt: value.projectDetail.createdAt,
+                          updatedAt: value.projectDetail.updatedAt,
+                          assignees: value.projectDetail.assignees,
+                        ),
+                        ProjectComments(comments: value.projectDetail.comments),
+                        ProjectStats(),
+                      ]);
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  // An error occurred, display an error message
+                  return Text('An error occurred: ${snapshot.error}');
+                } else {
+                  // Data is being fetched, display a loading spinner
+                  return const Center(child: CircularProgressIndicator());
+                }
               },
-            );
-          } else if (snapshot.hasError) {
-            // An error occurred, display an error message
-            return Text('An error occurred: ${snapshot.error}');
-          } else {
-            // Data is being fetched, display a loading spinner
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
-      drawer: AppDrawer(projectId: id),
-    );
+            ),
+            drawer: AppDrawer(projectId: id),
+          );
   }
 }

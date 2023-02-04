@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:prozeqts/screens/auth/sign-in/sign_in.dart';
 
 import '../../controllers/auth_controller.dart';
 import '../../controllers/project_controller.dart';
@@ -18,57 +19,62 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isAuthenticated =
+        Provider.of<AuthController>(context, listen: false).user.isAuthenticated;
     final accessToken =
         Provider.of<AuthController>(context, listen: false).user.accessToken;
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          color: Colors.black,
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Row(
-              children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.grey,
+    return !isAuthenticated
+        ? const SignInScreen()
+        : Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                color: Colors.black,
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              title: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: Colors.grey,
+                        ),
+                        onPressed: () {},
+                        child: const Text("Dashboard"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          _handleClickProjects(accessToken);
+                          Navigator.pushNamed(
+                              context, ProjectListScreen.screenId);
+                        },
+                        child: const Text("Projects"),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text("Users"),
+                      ),
+                    ],
                   ),
-                  onPressed: () {},
-                  child: const Text("Dashboard"),
                 ),
-                TextButton(
-                  onPressed: () {
-                    _handleClickProjects(accessToken);
-                    Navigator.pushNamed(context, ProjectListScreen.screenId);
-                  },
-                  child: const Text("Projects"),
-                ),
-                TextButton(
+              ),
+              centerTitle: true,
+              actions: [
+                IconButton(
+                  color: Colors.black,
                   onPressed: () {},
-                  child: const Text("Users"),
+                  icon: const Icon(Icons.logout),
                 ),
               ],
             ),
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            color: Colors.black,
-            onPressed: () {},
-            icon: const Icon(Icons.logout),
-          ),
-        ],
-      ),
-      backgroundColor: Colors.white,
-      body: const Body(),
-    );
+            backgroundColor: Colors.white,
+            body: const Body(),
+          );
   }
 }
