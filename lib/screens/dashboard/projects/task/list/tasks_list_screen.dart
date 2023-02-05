@@ -39,7 +39,8 @@ class TasksListScreen extends StatelessWidget {
               ),
               child: IconButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, TaskCreateScreen.screenId);
+                  Navigator.pushNamed(context, TaskCreateScreen.screenId,
+                      arguments: projectId);
                 },
                 icon: const Icon(Icons.add),
                 color: Colors.white,

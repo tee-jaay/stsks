@@ -94,4 +94,31 @@ class TaskController with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  Future<void> store(
+      {required String projectId, required String accessToken}) async {
+    var newTask = {
+      "projectId": projectId,
+      "createdBy": "xyz123",
+      "title": "task ${DateTime.now().toString()}",
+      "description": 'description ${DateTime.now().toString()}',
+      "bookmark": false,
+      "status": "active",
+      "plannedStart": "2023-2-12",
+      "plannedEnd": "2023-2-16",
+      "actualStart": "2023-3-12",
+      "actualEnd": "2023-5-16",
+      "priority": "High",
+      "color": "red"
+    };
+    var endpoint = TASKS_STORE;
+    var result = await httpRequestsService.requestApi(
+        object: newTask,
+        endpoint: endpoint,
+        reqMethod: "POST",
+        accessToken: accessToken);
+    if (result.statusCode == 201) {
+      print('Task created');
+    }
+  }
 }
