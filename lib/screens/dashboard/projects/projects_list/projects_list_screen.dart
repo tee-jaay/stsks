@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prozeqts/screens/auth/sign-in/sign_in.dart';
 
+import '../../../auth/sign-in/sign_in.dart';
 import '../../../../controllers/auth_controller.dart';
+import '../../../home/home_screen.dart';
 import '../../dashboard_screen.dart';
 import './inc/body.dart';
 
@@ -69,9 +70,10 @@ class ProjectListScreen extends StatelessWidget {
                 IconButton(
                   color: Colors.black,
                   onPressed: () {
-                    if (kDebugMode) {
-                      print("logout");
-                    }
+                    Provider.of<AuthController>(context, listen: false)
+                        .singOut();
+                    Navigator.pushReplacementNamed(
+                        context, HomeScreen.screenId);
                   },
                   icon: const Icon(Icons.logout),
                 ),

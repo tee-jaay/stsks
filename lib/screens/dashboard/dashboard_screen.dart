@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:prozeqts/screens/auth/sign-in/sign_in.dart';
+import 'package:prozeqts/screens/home/home_screen.dart';
 
 import '../../controllers/auth_controller.dart';
 import '../../controllers/project_controller.dart';
@@ -19,8 +20,9 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isAuthenticated =
-        Provider.of<AuthController>(context, listen: false).user.isAuthenticated;
+    final isAuthenticated = Provider.of<AuthController>(context, listen: false)
+        .user
+        .isAuthenticated;
     final accessToken =
         Provider.of<AuthController>(context, listen: false).user.accessToken;
     return !isAuthenticated
@@ -68,7 +70,12 @@ class DashboardScreen extends StatelessWidget {
               actions: [
                 IconButton(
                   color: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                    Provider.of<AuthController>(context, listen: false)
+                        .singOut();
+                    Navigator.pushReplacementNamed(
+                        context, HomeScreen.screenId);
+                  },
                   icon: const Icon(Icons.logout),
                 ),
               ],
