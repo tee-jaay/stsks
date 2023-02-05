@@ -1,11 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:prozeqts/screens/auth/sign-in/sign_in.dart';
 
+import '../../../home/home_screen.dart';
+import '../projects_list/projects_list_screen.dart';
+import '../../../auth/sign-in/sign_in.dart';
 import '../../../../settings/constants.dart';
 import '../../../../widgets/app_drawer.dart';
 import '../../../../controllers/project_controller.dart';
 import '../../../../controllers/auth_controller.dart';
+import '../../dashboard_screen.dart';
 import 'info/project_stats.dart';
 import 'info/project_comments.dart';
 import 'info/project_info.dart';
@@ -42,10 +46,42 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
         : Scaffold(
             appBar: AppBar(
               iconTheme: const IconThemeData(color: Colors.black87),
-              title: const Text(
-                key: Key('project_detail'),
-                'Detail',
-                style: TextStyle(color: Colors.black),
+              title: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, DashboardScreen.screenId);
+                        },
+                        child: const Text("Dashboard"),
+                      ),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.grey,
+                          primary: Colors.white,
+                        ),
+                        onPressed: () => Navigator.pushNamed(
+                            context, ProjectListScreen.screenId),
+                        child: const Text(
+                          "Projects",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          if (kDebugMode) {
+                            print("users");
+                          }
+                        },
+                        child: const Text("Users"),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               bottom: TabBar(
                 controller: _tabController,
@@ -71,14 +107,15 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
                 ],
               ),
               actions: [
-                Padding(
-                  padding: const EdgeInsets.only(right: appDefaultSpace),
-                  child: InkWell(
-                      onTap: () => Navigator.pop(context),
-                      child: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.black87,
-                      )),
+                IconButton(
+                  color: Colors.black,
+                  onPressed: () {
+                    Provider.of<AuthController>(context, listen: false)
+                        .singOut();
+                    Navigator.pushReplacementNamed(
+                        context, HomeScreen.screenId);
+                  },
+                  icon: const Icon(Icons.logout),
                 ),
               ],
             ),
