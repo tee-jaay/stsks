@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // info
-const String appName = "prozeqts";
+const String appName = "PROZEQTS";
 
 // colors
 const appPrimaryColor = Color(0xFF0C9869);
