@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prozeqts/screens/auth/inc/home_logo_link.dart';
-import 'package:prozeqts/screens/auth/new-password/new_password.dart';
-import 'package:prozeqts/screens/auth/request-password/request_password.dart';
 
+import '../inc/home_logo_link.dart';
+import '../request-password/request_password.dart';
 import '../../dashboard/dashboard_screen.dart';
 import '../../../controllers/auth_controller.dart';
 import '../sign-up/sign_up.dart';
