@@ -9,6 +9,7 @@ import '../services/http_requests_service.dart';
 class TaskController with ChangeNotifier {
   HttpRequestsService httpRequestsService = HttpRequestsService();
 
+  int _httpResponseStatus = 0;
   late List<TaskPreview> tasksPreviews = [];
 
   late Task task = Task(
@@ -95,7 +96,7 @@ class TaskController with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> store(
+  Future<int> store(
       {required String accessToken, required Object newTaskObj}) async {
     var endpoint = TASKS_STORE;
     var result = await httpRequestsService.requestApi(
@@ -104,7 +105,10 @@ class TaskController with ChangeNotifier {
         reqMethod: "POST",
         accessToken: accessToken);
     if (result.statusCode == 201) {
-      print('Task created');
+      _httpResponseStatus = 201;
+    } else {
+      _httpResponseStatus = 500;
     }
+    return _httpResponseStatus;
   }
 }

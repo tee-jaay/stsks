@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
+import '../list/tasks_list_screen.dart';
 import '../../../../../controllers/auth_controller.dart';
 import '../../../../../controllers/task_controller.dart';
 import '../../../../../settings/constants.dart';
@@ -119,7 +120,7 @@ class _TaskCreateScreenState extends State<TaskCreateScreen> {
       return;
     }
 
-    Object newObj = {
+    Object newTaskObj = {
       "projectId": projectId,
       "title": _title,
       "description": _description,
@@ -133,7 +134,22 @@ class _TaskCreateScreenState extends State<TaskCreateScreen> {
       "createdBy": createdBy,
     };
     Provider.of<TaskController>(context, listen: false)
-        .store(accessToken: accessToken, newTaskObj: newObj);
+        .store(accessToken: accessToken, newTaskObj: newTaskObj)  .then((value) {
+      if (value == 201) {
+        Navigator.of(context).pushReplacementNamed(TasksListScreen.screenId, arguments: projectId);
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+              'Task added',
+              style: TextStyle(color: Colors.lightGreenAccent),
+            )));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+              'Task create failed',
+              style: TextStyle(color: Colors.amber),
+            )));
+      }
+    });
   }
 
   @override
