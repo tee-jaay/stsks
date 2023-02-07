@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../edit/task_edit_screen.dart';
 import '../../../../../settings/constants.dart';
 import '../../../../../models/task.dart';
 
@@ -15,7 +16,21 @@ class TaskDetailDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: AlertDialog(
-        title: Text(task.title),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(task.title),
+            TextButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(
+                      context, TaskEditScreen.screenId,
+                      arguments: task.id);
+                },
+                child: Text('Edit', style: TextStyle(
+                  color: Colors.orange
+                ),))
+          ],
+        ),
         content: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Column(
@@ -61,7 +76,7 @@ class TaskDetailDialog extends StatelessWidget {
             style: TextButton.styleFrom(
               textStyle: Theme.of(context).textTheme.labelLarge,
             ),
-            child: const Text('Close'),
+            child: const Text('Delete', style: TextStyle(color: Colors.red),),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -70,7 +85,7 @@ class TaskDetailDialog extends StatelessWidget {
             style: TextButton.styleFrom(
               textStyle: Theme.of(context).textTheme.labelLarge,
             ),
-            child: const Text('Update'),
+            child: const Text('Close'),
             onPressed: () {
               Navigator.of(context).pop();
             },

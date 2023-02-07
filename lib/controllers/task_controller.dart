@@ -82,10 +82,10 @@ class TaskController extends HttpRequestsService with ChangeNotifier {
       task.plannedEnd = data["plannedEnd"];
       task.priority = data["priority"];
       task.description = data["description"] ?? '...';
-      task.bookmark = data["bookmark"]??'';
-      task.actualStart = data["actualStart"]??'';
-      task.actualEnd = data["actualEnd"]??'';
-      task.color = data["color"]??'';
+      task.bookmark = data["bookmark"] ?? '';
+      task.actualStart = data["actualStart"] ?? '';
+      task.actualEnd = data["actualEnd"] ?? '';
+      task.color = data["color"] ?? '';
     }
     notifyListeners();
   }
@@ -99,5 +99,17 @@ class TaskController extends HttpRequestsService with ChangeNotifier {
         reqMethod: "POST",
         accessToken: accessToken);
     return result.statusCode == 201 ? 201 : 500;
+  }
+
+  Future<void> update(
+      {required String taskId,
+      required String accessToken,
+      required Object obj}) async {
+    print('update');
+    print(obj);
+  }
+
+  Future<void> destroy() async {
+    print('destroy');
   }
 }
