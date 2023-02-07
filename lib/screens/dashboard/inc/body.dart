@@ -28,7 +28,7 @@ class Body extends StatelessWidget {
               child: StatCardsGrid(),
             ),
             const SizedBox(
-              height: appDefaultSpace,
+              height: appDefaultSpace * 0.5,
             ),
             const RecentProjects(),
             const SizedBox(

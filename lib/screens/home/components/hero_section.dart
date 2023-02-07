@@ -24,6 +24,7 @@ class HeroSection extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       color: const Color(0xFFf1f1f1),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const HomeImageWidget(),
           Center(
@@ -78,6 +79,7 @@ class HeroSection extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: 60.0,),
         ],
       ),
     );

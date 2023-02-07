@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../settings/constants.dart';
-// import '../../screens/home/components/deployed_using.dart';
-// import '../../screens/home/components/footer_links.dart';
-// import '../../screens/home/components/system_and_tools.dart';
-// import '../../screens/home/components/techs_used.dart';
-//
-// import 'components/description.dart';
-// import 'components/features.dart';
+
 import 'components/hero_section.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,12 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Hero(widget: widget),
-            // const Description(),
-            // const Features(),
-            // TechsUsed(),
-            // const SystemAndTools(),
-            // const DeployedUsing(),
-            // const FooterLinks(),
           ],
         ),
       ),

@@ -60,6 +60,13 @@ class AuthController extends HttpRequestsService with ChangeNotifier {
     return _httpResponseStatus;
   }
 
+  void singOut() {
+    _user.id = '';
+    _user.username = '';
+    _user.accessToken = '';
+    _user.isAuthenticated = false;
+  }
+
   void _authenticateUser(
       String id, String username, String accessToken, bool isAuthenticated) {
     _user.id = id;

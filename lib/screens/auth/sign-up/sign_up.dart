@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prozeqts/screens/auth/inc/home_logo_link.dart';
 
+import '../inc/home_logo_link.dart';
 import '../sign-in/sign_in.dart';
 import '../../../controllers/auth_controller.dart';
 import '../../../settings/constants.dart';
@@ -34,8 +34,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     if (!isValid!) {
       return;
     }
-    AuthController authController = AuthController();
-    authController.signUp({
+    Provider.of<AuthController>(context, listen: false).signUp({
       "email": _email,
       "username": _username,
       "password": _password
