@@ -6,10 +6,7 @@ import '../models/task.dart';
 import '../settings/api_endpoints.dart';
 import '../services/http_requests_service.dart';
 
-class TaskController with ChangeNotifier {
-  HttpRequestsService httpRequestsService = HttpRequestsService();
-
-  int _httpResponseStatus = 0;
+class TaskController extends HttpRequestsService with ChangeNotifier {
   late List<TaskPreview> tasksPreviews = [];
 
   late Task task = Task(
@@ -32,7 +29,7 @@ class TaskController with ChangeNotifier {
   Future<void> index(
       {required String projectId, required String accessToken}) async {
     var endpoint = '$TASKS/$projectId';
-    var result = await httpRequestsService.requestApi(
+    var result = await requestApi(
         endpoint: endpoint,
         object: {},
         reqMethod: "GET",
@@ -69,7 +66,7 @@ class TaskController with ChangeNotifier {
       required String taskId,
       required String accessToken}) async {
     var endpoint = '$TASKS_SHOW/$taskId';
-    var result = await httpRequestsService.requestApi(
+    var result = await requestApi(
         object: {},
         endpoint: endpoint,
         reqMethod: "GET",
@@ -84,14 +81,11 @@ class TaskController with ChangeNotifier {
       task.plannedStart = data["plannedStart"];
       task.plannedEnd = data["plannedEnd"];
       task.priority = data["priority"];
-
-      // task.description = data["description"];
-      // task.bookmark = data["bookmark"];
-      // task.actualStart = data["actualStart"];
-      // task.actualEnd = data["actualEnd"];
-      // task.color = data["color"];
-      // task.month = data["month"];
-      // task.year = data["year"];
+      task.description = data["description"] ?? '...';
+      task.bookmark = data["bookmark"]??'';
+      task.actualStart = data["actualStart"]??'';
+      task.actualEnd = data["actualEnd"]??'';
+      task.color = data["color"]??'';
     }
     notifyListeners();
   }
@@ -99,16 +93,11 @@ class TaskController with ChangeNotifier {
   Future<int> store(
       {required String accessToken, required Object newTaskObj}) async {
     var endpoint = TASKS_STORE;
-    var result = await httpRequestsService.requestApi(
+    var result = await requestApi(
         object: newTaskObj,
         endpoint: endpoint,
         reqMethod: "POST",
         accessToken: accessToken);
-    if (result.statusCode == 201) {
-      _httpResponseStatus = 201;
-    } else {
-      _httpResponseStatus = 500;
-    }
-    return _httpResponseStatus;
+    return result.statusCode == 201 ? 201 : 500;
   }
 }
