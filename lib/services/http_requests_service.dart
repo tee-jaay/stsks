@@ -8,6 +8,7 @@ class HttpRequestsService {
     'POST': http.post,
     'PUT': http.put,
     'DELETE': http.delete,
+    'PATCH': http.patch,
   };
 
   Future<http.Response> requestApi(
@@ -17,7 +18,6 @@ class HttpRequestsService {
       required String accessToken}) async {
     final uri = Uri.parse(endpoint);
     final headers = {
-      // "Authorization": "Bearer ${dotenv.env['TMP_AUTH_TOKEN']}",
       "Authorization": "Bearer $accessToken",
       "Content-Type": "application/json"
     };

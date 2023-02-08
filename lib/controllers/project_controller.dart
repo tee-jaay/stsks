@@ -75,7 +75,7 @@ class ProjectController with ChangeNotifier {
     return projectDetail;
   } // show
 
-  Future<void> commentStore(
+  Future<int> commentStore(
       {required String comment,
       required String commentBy,
       required String accessToken,
@@ -84,10 +84,9 @@ class ProjectController with ChangeNotifier {
     var result = await httpRequestsService.requestApi(
         object: {"comment": comment, "commentBy": commentBy},
         endpoint: endpoint,
-        reqMethod: 'POST',
+        reqMethod: 'PATCH',
         accessToken: accessToken);
-    final data = jsonDecode(result.body);
-    print(result.statusCode);
-    print(data);
+    // final data = jsonDecode(result.body);
+    return result.statusCode;
   }
 }

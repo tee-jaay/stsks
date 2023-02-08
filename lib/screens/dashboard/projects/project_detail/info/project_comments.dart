@@ -12,18 +12,34 @@ class ProjectComments extends StatelessWidget {
   String projectId;
   List<dynamic> comments;
 
+  TextEditingController _commentTextController = TextEditingController();
+
   _handleSubmit({
+    required BuildContext ctx,
     required String text,
     required String commentBy,
     required String accessToken,
     required String projectId,
   }) {
     ProjectController projectController = ProjectController();
-    projectController.commentStore(
-        comment: text,
-        commentBy: commentBy,
-        accessToken: accessToken,
-        projectId: projectId);
+    projectController
+        .commentStore(
+            comment: text,
+            commentBy: commentBy,
+            accessToken: accessToken,
+            projectId: projectId)
+        .then((value) {
+      if (value == 200) {
+        ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+            content: Text(
+          'Comment added',
+          style: TextStyle(
+            color: Colors.green,
+          ),
+        )));
+        _commentTextController.clear();
+      }
+    }).catchError((err) => print(err.toString()));
   }
 
   @override
@@ -50,7 +66,9 @@ class ProjectComments extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 0.1,
           child: TextField(
+            controller: _commentTextController,
             onSubmitted: (value) => _handleSubmit(
+                ctx: context,
                 text: value.toString(),
                 commentBy: user.username,
                 accessToken: user.accessToken,
