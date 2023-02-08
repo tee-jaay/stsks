@@ -5,15 +5,13 @@ import '../models/issue.dart';
 import '../settings/api_endpoints.dart';
 import '../services/http_requests_service.dart';
 
-class IssueController with ChangeNotifier {
-  HttpRequestsService httpRequestsService = HttpRequestsService();
-
+class IssueController extends HttpRequestsService with ChangeNotifier {
   late List<Issue> issues = [];
 
   Future<void> index(
       {required String projectId, required String accessToken}) async {
     var endpoint = '$ISSUES/$projectId';
-    var result = await httpRequestsService.requestApi(
+    var result = await requestApi(
         object: {},
         endpoint: endpoint,
         reqMethod: 'GET',
@@ -55,5 +53,18 @@ class IssueController with ChangeNotifier {
       }
     }
     notifyListeners();
+  }
+
+  Future<int> store(
+      {required String projectId,
+      required String accessToken,
+      required Object obj}) async {
+    var endpoint = '$ISSUES/$projectId';
+    var result = await requestApi(
+        object: obj,
+        endpoint: endpoint,
+        reqMethod: 'POST',
+        accessToken: accessToken);
+    return result.statusCode;
   }
 }
