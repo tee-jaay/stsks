@@ -184,6 +184,7 @@ class _TaskCreateScreenState extends State<TaskCreateScreen> {
                   children: [
                     // title
                     TextFormField(
+                      autofocus: true,
                       //readOnly: loading,
                       controller: _titleController,
                       validator: (String? value) {

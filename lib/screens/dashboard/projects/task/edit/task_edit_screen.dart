@@ -113,8 +113,7 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
     }
   }
 
-  _handleSubmit(
-      {required taskId, required accessToken, required createdBy}) {
+  _handleSubmit({required taskId, required accessToken, required createdBy}) {
     final isValid = _formKey.currentState?.validate();
     if (!isValid!) {
       return;
@@ -150,17 +149,16 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
     // });
   }
 
-  Future<void> _getTaskData(BuildContext ctx, String projectId, String taskId,
-      String accessToken) async {
+  Future<void> _getTaskData(
+      BuildContext ctx, String taskId, String accessToken) async {
     Provider.of<TaskController>(ctx, listen: false)
-        .show(projectId: projectId, taskId: taskId, accessToken: accessToken);
+        .show(taskId: taskId, accessToken: accessToken);
   }
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AuthController>(context, listen: true).user;
     final taskId = ModalRoute.of(context)!.settings.arguments as String;
-    print(taskId);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -176,186 +174,224 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
               )),
         ],
       ),
-      body: Card(
-        child: Padding(
-          padding: EdgeInsets.all(appDefaultSpace),
-          child: Form(
-            key: _formKey,
-            child: SingleChildScrollView(
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.9,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // title
-                    TextFormField(
-                      //readOnly: loading,
-                      controller: _titleController,
-                      validator: (String? value) {
-                        if (value!.isEmpty) {
-                          return 'Title is required';
-                        } else if (value.length < 4) {
-                          return 'Minimum length 4 chars';
-                        } else {
-                          return null;
-                        }
-                      },
-                      onChanged: (value) => setState(() {
-                        _title = value;
-                      }),
-                      decoration: const InputDecoration(hintText: 'Title'),
-                      keyboardType: TextInputType.text,
-                      focusNode: _titleFocusNode,
-                      onFieldSubmitted: (value) => FocusScope.of(context)
-                          .requestFocus(_descriptionFocusNode),
-                    ),
-                    // title
-
-                    // description
-                    TextFormField(
-                      //readOnly: loading,
-                      controller: _descriptionController,
-                      validator: (String? value) {
-                        if (value!.isEmpty) {
-                          return 'Description is required';
-                        } else if (value.length < 6) {
-                          return 'Description is too short';
-                        } else {
-                          return null;
-                        }
-                      },
-                      onChanged: (value) => setState(() {
-                        _description = value;
-                      }),
-                      decoration:
-                          const InputDecoration(hintText: 'Description'),
-                      keyboardType: TextInputType.multiline,
-                      focusNode: _descriptionFocusNode,
-                    ),
-                    // description
-
-                    // status
-                    DropdownButtonFormField(
-                      value: _selectedStatus,
-                      items: _statusOptions.map((status) {
-                        return DropdownMenuItem(
-                          value: status,
-                          child: Text(status),
-                        );
-                      }).toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedStatus = value.toString();
-                        });
-                      },
-                      decoration: InputDecoration(
-                        labelText: 'Select a status',
-                      ),
-                    ),
-                    // status
-                    const SizedBox(
-                      height: appDefaultSpace * 2,
-                    ),
-                    // planned start date
-                    InkWell(
-                      onTap: () => _selectPlannedStartDate(context),
-                      child: Text(
-                          'Planned Start Date: ${_selectedPlannedStartDate == null ? 'Select a date' : DateFormat.yMMMMd().format(_selectedPlannedStartDate)}'),
-                    ),
-                    // planned start date
-                    const SizedBox(
-                      height: appDefaultSpace * 2,
-                    ),
-                    // planned end date
-                    InkWell(
-                      onTap: () => _selectPlannedEndDate(context),
-                      child: Text(
-                          'Planned End Date: ${_selectedPlannedEndDate == null ? 'Select a date' : DateFormat.yMMMMd().format(_selectedPlannedEndDate)}'),
-                    ),
-                    // planned end date
-                    const SizedBox(
-                      height: appDefaultSpace * 2,
-                    ),
-                    // Actual start date
-                    InkWell(
-                      onTap: () => _selectActualStartDate(context),
-                      child: Text(
-                          'Actual Start Date: ${_selectedActualStartDate == null ? 'Select a date' : DateFormat.yMMMMd().format(_selectedActualStartDate)}'),
-                    ),
-                    // Actual start date
-                    const SizedBox(
-                      height: appDefaultSpace * 2,
-                    ),
-
-                    // Actual end date
-                    InkWell(
-                      onTap: () => _selectActualEndDate(context),
-                      child: Text(
-                          'Actual End Date: ${_selectedActualEndDate == null ? 'Select a date' : DateFormat.yMMMMd().format(_selectedActualEndDate)}'),
-                    ),
-                    // Actual start date
-                    const SizedBox(
-                      height: appDefaultSpace * 2,
-                    ),
-
-                    // Priority
-                    Container(
-                      child: Row(
-                        children: [
-                          for (var priority in _priorities)
-                            Container(
-                              margin: EdgeInsets.only(right: 20.0),
-                              child: Column(
-                                children: [
-                                  Radio(
-                                    value: priority,
-                                    groupValue: _priority,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _priority = value as String;
-                                      });
-                                    },
-                                  ),
-                                  Text(
-                                    priority,
-                                    style: TextStyle(
-                                      fontSize: 16.0,
+      body: FutureBuilder(
+          future: _getTaskData(context, taskId, user.accessToken),
+          builder: (context, snapshot) => snapshot.connectionState ==
+                  ConnectionState.waiting
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : RefreshIndicator(
+                  onRefresh: () =>
+                      _getTaskData(context, taskId, user.accessToken),
+                  child: Consumer<TaskController>(
+                    builder: (context, value, child) {
+                      _titleController..text = value.task.title;
+                      _descriptionController..text = value.task.description;
+                      return Card(
+                        child: Padding(
+                          padding: EdgeInsets.all(appDefaultSpace),
+                          child: Form(
+                            key: _formKey,
+                            child: SingleChildScrollView(
+                              child: SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.9,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // title
+                                    TextFormField(
+                                      autofocus: true,
+                                      controller: _titleController,
+                                      validator: (String? val) {
+                                        if (val!.isEmpty) {
+                                          return 'Title is required';
+                                        } else if (val.length < 4) {
+                                          return 'Minimum length 4 chars';
+                                        } else {
+                                          return null;
+                                        }
+                                      },
+                                      onChanged: (val) {
+                                        if (_selectedStatus != value) {
+                                          _titleController.text = val;
+                                          _titleController.selection =
+                                              TextSelection.fromPosition(
+                                                  TextPosition(
+                                                      offset: val.length));
+                                        }
+                                      },
+                                      decoration: const InputDecoration(
+                                          hintText: 'Title'),
+                                      keyboardType: TextInputType.text,
+                                      focusNode: _titleFocusNode,
+                                      onFieldSubmitted: (value) =>
+                                          FocusScope.of(context).requestFocus(
+                                              _descriptionFocusNode),
                                     ),
-                                  ),
-                                ],
+                                    // title
+
+                                    // description
+                                    TextFormField(
+                                      //readOnly: loading,
+                                      controller: _descriptionController,
+                                      validator: (String? v) {
+                                        if (v!.isEmpty) {
+                                          return 'Description is required';
+                                        } else if (v.length < 6) {
+                                          return 'Description is too short';
+                                        } else {
+                                          return null;
+                                        }
+                                      },
+                                      onChanged: (val) {
+                                        _descriptionController.text = val;
+                                        _descriptionController.selection =
+                                            TextSelection.fromPosition(
+                                                TextPosition(
+                                                    offset: val.length));
+                                      },
+                                      decoration: const InputDecoration(
+                                          hintText: 'Description'),
+                                      keyboardType: TextInputType.multiline,
+                                      focusNode: _descriptionFocusNode,
+                                    ),
+                                    // description
+
+                                    // status
+                                    DropdownButtonFormField(
+                                      value: _selectedStatus,
+                                      items: _statusOptions.map((status) {
+                                        return DropdownMenuItem(
+                                          value: status,
+                                          child: Text(status),
+                                        );
+                                      }).toList(),
+                                      onChanged: (value) {
+                                        setState(() {
+                                          _selectedStatus = value.toString();
+                                        });
+                                      },
+                                      decoration: InputDecoration(
+                                        labelText: 'Select a status',
+                                      ),
+                                    ),
+                                    // status
+                                    const SizedBox(
+                                      height: appDefaultSpace * 2,
+                                    ),
+                                    // planned start date
+                                    InkWell(
+                                      onTap: () =>
+                                          _selectPlannedStartDate(context),
+                                      child: Text(
+                                          'Planned Start Date: ${_selectedPlannedStartDate == null ? 'Select a date' : DateFormat.yMMMMd().format(_selectedPlannedStartDate)}'),
+                                    ),
+                                    // planned start date
+                                    const SizedBox(
+                                      height: appDefaultSpace * 2,
+                                    ),
+                                    // planned end date
+                                    InkWell(
+                                      onTap: () =>
+                                          _selectPlannedEndDate(context),
+                                      child: Text(
+                                          'Planned End Date: ${_selectedPlannedEndDate == null ? 'Select a date' : DateFormat.yMMMMd().format(_selectedPlannedEndDate)}'),
+                                    ),
+                                    // planned end date
+                                    const SizedBox(
+                                      height: appDefaultSpace * 2,
+                                    ),
+                                    // Actual start date
+                                    InkWell(
+                                      onTap: () =>
+                                          _selectActualStartDate(context),
+                                      child: Text(
+                                          'Actual Start Date: ${_selectedActualStartDate == null ? 'Select a date' : DateFormat.yMMMMd().format(_selectedActualStartDate)}'),
+                                    ),
+                                    // Actual start date
+                                    const SizedBox(
+                                      height: appDefaultSpace * 2,
+                                    ),
+
+                                    // Actual end date
+                                    InkWell(
+                                      onTap: () =>
+                                          _selectActualEndDate(context),
+                                      child: Text(
+                                          'Actual End Date: ${_selectedActualEndDate == null ? 'Select a date' : DateFormat.yMMMMd().format(_selectedActualEndDate)}'),
+                                    ),
+                                    // Actual start date
+                                    const SizedBox(
+                                      height: appDefaultSpace * 2,
+                                    ),
+
+                                    // Priority
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          for (var priority in _priorities)
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                  right: 20.0),
+                                              child: Column(
+                                                children: [
+                                                  Radio(
+                                                    value: priority,
+                                                    groupValue:
+                                                        value.task.priority,
+                                                    onChanged: (val) {
+                                                      setState(() {
+                                                        _priority =
+                                                            val as String;
+                                                      });
+                                                    },
+                                                  ),
+                                                  Text(
+                                                    priority,
+                                                    style: const TextStyle(
+                                                      fontSize: 16.0,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                    // Priority
+
+                                    const SizedBox(
+                                      height: appDefaultSpace * 2,
+                                    ),
+
+                                    TextButton(
+                                      onPressed: () => _handleSubmit(
+                                          taskId: taskId,
+                                          accessToken: user.accessToken,
+                                          createdBy: user.username),
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStatePropertyAll(
+                                                // loading ? Colors.grey :
+                                                Colors.green),
+                                      ),
+                                      child: Text(
+                                        'Update',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                        ],
-                      ),
-                    ),
-                    // Priority
-
-                    const SizedBox(
-                      height: appDefaultSpace * 2,
-                    ),
-
-                    TextButton(
-                      onPressed: () => _handleSubmit(
-                          taskId: taskId,
-                          accessToken: user.accessToken,
-                          createdBy: user.username),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(
-                            // loading ? Colors.grey :
-                            Colors.green),
-                      ),
-                      child: Text(
-                        'Update',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                )),
     );
   }
 }

@@ -62,9 +62,7 @@ class TaskController extends HttpRequestsService with ChangeNotifier {
   }
 
   Future<void> show(
-      {required String projectId,
-      required String taskId,
-      required String accessToken}) async {
+      {required String taskId, required String accessToken}) async {
     var endpoint = '$TASKS_SHOW/$taskId';
     var result = await requestApi(
         object: {},
