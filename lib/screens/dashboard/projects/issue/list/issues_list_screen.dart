@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../create/issue_create_screen.dart';
 import '../../../../../controllers/auth_controller.dart';
 import '../../../../auth/sign-in/sign_in.dart';
 import './inc/body.dart';
@@ -29,6 +30,14 @@ class IssuesListScreen extends StatelessWidget {
               children: [
                 Body(projectId: projectId!),
               ],
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () =>
+                  Navigator.pushNamed(context, IssueCreateScreen.screenId, arguments: projectId),
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
             ),
           );
   }

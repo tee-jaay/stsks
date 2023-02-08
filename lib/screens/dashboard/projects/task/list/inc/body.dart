@@ -17,7 +17,7 @@ class Body extends StatelessWidget {
   Future<void> _showTask(BuildContext ctx, String projectId, String taskId,
       String accessToken) async {
     Provider.of<TaskController>(ctx, listen: false)
-        .show(projectId: projectId, taskId: taskId, accessToken: accessToken);
+        .show(taskId: taskId, accessToken: accessToken);
   }
 
   @override

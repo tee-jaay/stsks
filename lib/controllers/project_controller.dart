@@ -20,7 +20,7 @@ class ProjectController with ChangeNotifier {
         object: {},
         reqMethod: "GET",
         accessToken: accessToken);
-    if(result.statusCode == 200){
+    if (result.statusCode == 200) {
       projects.clear();
       final data = jsonDecode(result.body);
       for (var i = 0; i < data.length; i++) {
@@ -74,4 +74,18 @@ class ProjectController with ChangeNotifier {
     notifyListeners();
     return projectDetail;
   } // show
+
+  Future<int> commentStore(
+      {required String comment,
+      required String commentBy,
+      required String accessToken,
+      required String projectId}) async {
+    var endpoint = '$PROJECTS_COMMENTS/$projectId';
+    var result = await httpRequestsService.requestApi(
+        object: {"comment": comment, "commentBy": commentBy},
+        endpoint: endpoint,
+        reqMethod: 'PATCH',
+        accessToken: accessToken);
+    return result.statusCode;
+  }
 }
