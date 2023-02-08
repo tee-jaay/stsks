@@ -86,7 +86,6 @@ class ProjectController with ChangeNotifier {
         endpoint: endpoint,
         reqMethod: 'PATCH',
         accessToken: accessToken);
-    // final data = jsonDecode(result.body);
     return result.statusCode;
   }
 }
