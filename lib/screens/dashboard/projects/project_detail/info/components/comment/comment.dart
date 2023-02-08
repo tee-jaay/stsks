@@ -28,7 +28,7 @@ class Comment extends StatelessWidget {
             Text(
               comment,
               style: TextStyle(
-                color: commentBy == username ? Colors.grey : Colors.black,
+                color: Colors.black,
                 fontSize: 14.0,
               ),
             ),
