@@ -146,8 +146,11 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
                           updatedAt: value.projectDetail.updatedAt,
                           assignees: value.projectDetail.assignees,
                         ),
-                        ProjectComments(comments: value.projectDetail.comments),
-                        ProjectStats(),
+                        ProjectComments(
+                          projectId: value.projectDetail.id,
+                          comments: value.projectDetail.comments,
+                        ),
+                        const ProjectStats(),
                       ]);
                     },
                   );
