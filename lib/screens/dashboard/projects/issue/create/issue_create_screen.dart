@@ -42,7 +42,8 @@ class _IssueCreateScreenState extends State<IssueCreateScreen> {
   List<String> _severities = ["minor", "major", "moderate", "critical"];
 
   _handleSubmit(
-      {required String createdBy,
+      {required BuildContext ctx,
+      required String createdBy,
       required String accessToken,
       required String projectId}) {
     Object newIssue = {
@@ -57,19 +58,21 @@ class _IssueCreateScreenState extends State<IssueCreateScreen> {
       "type": _type,
       "severity": _severity,
     };
-    IssueController issueController = IssueController();
-    issueController
+    Provider.of<IssueController>(ctx, listen: false)
         .store(projectId: projectId, accessToken: accessToken, obj: newIssue)
         .then((value) {
       if (value == 201) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(
             content: Text(
           'Issue Created',
           style: TextStyle(
             color: Colors.green,
           ),
-        ))        );
-        Navigator.pop(context);
+        )));
+        Provider.of<IssueController>(ctx, listen: false).clearIssues();
+        Provider.of<IssueController>(ctx, listen: false)
+            .index(projectId: projectId, accessToken: accessToken);
+        Navigator.pop(ctx);
       }
     }).catchError((err) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -282,6 +285,7 @@ class _IssueCreateScreenState extends State<IssueCreateScreen> {
                     style: ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(Colors.cyan)),
                     onPressed: () => _handleSubmit(
+                        ctx: context,
                         createdBy: user.username,
                         projectId: projectId,
                         accessToken: user.accessToken),
