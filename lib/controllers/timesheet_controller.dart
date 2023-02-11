@@ -10,7 +10,7 @@ class TimesheetController extends HttpRequestsService with ChangeNotifier {
 
   Future<void> index(
       {required String projectId, required String accessToken}) async {
-    timeSheetsList.clear();
+    clearTimeSheet();
     var endpoint = '$TIMESHEETS/$projectId';
     var result = await requestApi(
         endpoint: endpoint,
@@ -43,17 +43,16 @@ class TimesheetController extends HttpRequestsService with ChangeNotifier {
 
   Future<int> store(
       {required String projectId, required String accessToken, required Object newObj}) async {
-    print(newObj);
-    timeSheetsList.clear();
-    var endpoint = '$TIMESHEETS_CREATE/$projectId';
+    var endpoint = '$TIMESHEETS/$projectId';
     var result = await requestApi(
         endpoint: endpoint,
         object: newObj,
         reqMethod: "POST",
         accessToken: accessToken);
-    if(result.statusCode == 201) {
-      timeSheetsList.clear();
-    }
     return result.statusCode;
+  }
+
+  void clearTimeSheet(){
+    timeSheetsList.clear();
   }
 }

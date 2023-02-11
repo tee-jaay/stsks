@@ -16,7 +16,6 @@ class TimeSheetCreateScreen extends StatefulWidget {
 }
 
 class _TimeSheetCreateScreenState extends State<TimeSheetCreateScreen> {
-  // projectId, task, createdBy, title
   TextEditingController _titleController = TextEditingController();
 
   late String _selectedTask = "";
@@ -42,7 +41,12 @@ class _TimeSheetCreateScreenState extends State<TimeSheetCreateScreen> {
         .store(projectId: projectId, accessToken: accessToken, newObj: newObj)
         .then((value) {
       if (value == 201) {
-        print(value);
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Timesheet added', style: TextStyle(color: Colors.green),)));
+        Provider.of<TimesheetController>(context, listen: false)
+            .clearTimeSheet();
+        Navigator.pop(context);
+      }else{
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error occured', style: TextStyle(color: Colors.red),)));
       }
     }).catchError((err) {
       print(err.toString());
@@ -108,7 +112,7 @@ class _TimeSheetCreateScreenState extends State<TimeSheetCreateScreen> {
                                     itemCount: value.tasksPreviews.length,
                                     itemBuilder: (context, index) {
                                       return RadioListTile(
-                                        value: value.tasksPreviews[index].id,
+                                        value: value.tasksPreviews[index].title,
                                         groupValue: _selectedTask,
                                         onChanged: (v) {
                                           setState(() {
