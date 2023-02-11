@@ -55,12 +55,12 @@ class Body extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: appDefaultSpace,),
+                                const SizedBox(height: appDefaultSpace,),
                                 Text(
                                   value.timeSheetsList[index].task,
                                   style: const TextStyle(color: Colors.black87),
                                 ),
-                                SizedBox(height: appDefaultSpace,),
+                                const SizedBox(height: appDefaultSpace,),
                                 SizedBox(
                                   height:
                                       MediaQuery.of(context).size.height * 0.2,
@@ -86,7 +86,7 @@ class Body extends StatelessWidget {
                                     itemCount:
                                         value.timeSheetsList[index].logs.length,
                                     gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 3,
                                     ),
                                   ),

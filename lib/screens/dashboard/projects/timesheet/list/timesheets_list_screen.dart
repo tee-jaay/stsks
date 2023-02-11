@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../create/timesheet_create_screen.dart';
 import '../../../../../controllers/auth_controller.dart';
 import '../../../../auth/sign-in/sign_in.dart';
 import './inc/body.dart';
@@ -25,13 +26,24 @@ class TimeSheetsScreen extends StatelessWidget {
               ),
               iconTheme: const IconThemeData(color: Colors.black87),
             ),
-            body: Column(
-              children: [
-                Body(
-                  projectId: projectId!,
-                ),
-              ],
+            body: Container(
+              height: MediaQuery.of(context).size.height,
+              child: Column(
+                children: [
+                  Body(
+                    projectId: projectId!,
+                  ),
+                ],
+              ),
             ),
-          );
+            floatingActionButton: FloatingActionButton(
+              onPressed: () => Navigator.pushNamed(
+                  context, TimeSheetCreateScreen.screenId,
+                  arguments: projectId),
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+            ));
   }
 }

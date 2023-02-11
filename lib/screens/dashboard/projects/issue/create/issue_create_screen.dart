@@ -15,7 +15,7 @@ class IssueCreateScreen extends StatefulWidget {
 }
 
 class _IssueCreateScreenState extends State<IssueCreateScreen> {
-  TextEditingController _titleTextContoller = TextEditingController();
+  TextEditingController _titleTextController = TextEditingController();
   TextEditingController _descriptionTextContoller = TextEditingController();
   bool _isbookmark = false;
 
@@ -48,7 +48,7 @@ class _IssueCreateScreenState extends State<IssueCreateScreen> {
       required String projectId}) {
     Object newIssue = {
       "createdBy": createdBy,
-      "title": _titleTextContoller.text.toString(),
+      "title": _titleTextController.text.toString(),
       "description": _descriptionTextContoller.text.toString(),
       "bookmark": _isbookmark,
       "status": _selectedStatus.toString(),
@@ -110,7 +110,7 @@ class _IssueCreateScreenState extends State<IssueCreateScreen> {
                   // Title
                   TextField(
                     autofocus: true,
-                    controller: _titleTextContoller,
+                    controller: _titleTextController,
                     decoration: InputDecoration(hintText: 'Title'),
                   ),
                   // Title
