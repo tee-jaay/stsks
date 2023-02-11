@@ -65,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: MediaQuery.of(context).size.height,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     HomeLogoLink(imagePath: 'assets/images/auth/sign-up.png'),
                     TextFormField(

@@ -5,16 +5,14 @@ import '../models/timesheet.dart';
 import '../settings/api_endpoints.dart';
 import '../services/http_requests_service.dart';
 
-class TimesheetController with ChangeNotifier {
-  HttpRequestsService httpRequestsService = HttpRequestsService();
-
+class TimesheetController extends HttpRequestsService with ChangeNotifier {
   late List<TimeSheet> timeSheetsList = [];
 
   Future<void> index(
       {required String projectId, required String accessToken}) async {
-    timeSheetsList.clear();
+    clearTimeSheet();
     var endpoint = '$TIMESHEETS/$projectId';
-    var result = await httpRequestsService.requestApi(
+    var result = await requestApi(
         endpoint: endpoint,
         object: {},
         reqMethod: "GET",
@@ -41,5 +39,20 @@ class TimesheetController with ChangeNotifier {
       }
     }
     notifyListeners();
+  }
+
+  Future<int> store(
+      {required String projectId, required String accessToken, required Object newObj}) async {
+    var endpoint = '$TIMESHEETS/$projectId';
+    var result = await requestApi(
+        endpoint: endpoint,
+        object: newObj,
+        reqMethod: "POST",
+        accessToken: accessToken);
+    return result.statusCode;
+  }
+
+  void clearTimeSheet(){
+    timeSheetsList.clear();
   }
 }

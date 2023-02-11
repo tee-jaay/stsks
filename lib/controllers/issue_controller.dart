@@ -65,6 +65,11 @@ class IssueController extends HttpRequestsService with ChangeNotifier {
         endpoint: endpoint,
         reqMethod: 'POST',
         accessToken: accessToken);
+    //notifyListeners();
     return result.statusCode;
+  }
+
+  void clearIssues() {
+    issues.clear();
   }
 }

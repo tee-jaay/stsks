@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:prozeqts/screens/dashboard/projects/meeting/create/meeting_create_screen.dart';
+import 'package:prozeqts/screens/dashboard/projects/timesheet/create/timesheet_create_screen.dart';
 
 import '../screens/dashboard/projects/task/edit/task_edit_screen.dart';
 import '../screens/home/home_screen.dart';
@@ -31,5 +33,7 @@ final Map<String, WidgetBuilder> routes = {
   IssuesListScreen.screenId: (context) => const IssuesListScreen(),
   IssueCreateScreen.screenId: (context) => const IssueCreateScreen(),
   MeetingsListScreen.screenId: (context) => const MeetingsListScreen(),
+  MeetingCreateScreen.screenId: (context) => const MeetingCreateScreen(),
   TimeSheetsScreen.screenId: (context) => const TimeSheetsScreen(),
+  TimeSheetCreateScreen.screenId: (context) => const TimeSheetCreateScreen(),
 };
