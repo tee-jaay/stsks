@@ -17,7 +17,6 @@ class MeetingCreateScreen extends StatefulWidget {
 }
 
 class _MeetingCreateScreenState extends State<MeetingCreateScreen> {
-
   final FocusNode _durationFocusNode = FocusNode();
   final FocusNode _agendaFocusNode = FocusNode();
   final FocusNode _locationFocusNode = FocusNode();
@@ -132,9 +131,12 @@ class _MeetingCreateScreenState extends State<MeetingCreateScreen> {
                   autofocus: true,
                   controller: _titleController,
                   decoration: const InputDecoration(hintText: 'Title'),
-                  onEditingComplete: () => FocusScope.of(context).requestFocus(_agendaFocusNode),
+                  onEditingComplete: () =>
+                      FocusScope.of(context).requestFocus(_agendaFocusNode),
                 ),
-                const SizedBox(height: appDefaultSpace,),
+                const SizedBox(
+                  height: appDefaultSpace,
+                ),
                 TextField(
                   focusNode: _agendaFocusNode,
                   controller: _agendaController,
@@ -142,32 +144,44 @@ class _MeetingCreateScreenState extends State<MeetingCreateScreen> {
                     hintText: 'Agenda',
                   ),
                   maxLines: 4,
-                  onEditingComplete: () => FocusScope.of(context).requestFocus(_durationFocusNode),
+                  onEditingComplete: () =>
+                      FocusScope.of(context).requestFocus(_durationFocusNode),
                 ),
-                const SizedBox(height: appDefaultSpace,),
+                const SizedBox(
+                  height: appDefaultSpace,
+                ),
                 TextField(
                   focusNode: _durationFocusNode,
                   controller: _durationController,
                   decoration: const InputDecoration(
                     hintText: 'Duration in (hr:min)',
                   ),
-                  onEditingComplete: () => FocusScope.of(context).requestFocus(_addressFocusNode),
+                  onEditingComplete: () =>
+                      FocusScope.of(context).requestFocus(_addressFocusNode),
                 ),
-                const SizedBox(height: appDefaultSpace,),
+                const SizedBox(
+                  height: appDefaultSpace,
+                ),
                 TextField(
                   focusNode: _addressFocusNode,
                   controller: _addressController,
                   decoration: const InputDecoration(hintText: 'Address'),
-                  onEditingComplete: () => FocusScope.of(context).requestFocus(_locationFocusNode),
+                  onEditingComplete: () =>
+                      FocusScope.of(context).requestFocus(_locationFocusNode),
                 ),
-                const SizedBox(height: appDefaultSpace,),
+                const SizedBox(
+                  height: appDefaultSpace,
+                ),
                 TextField(
                   focusNode: _locationFocusNode,
                   controller: _locationController,
                   decoration: const InputDecoration(hintText: 'Location'),
-                  onEditingComplete: () => FocusScope.of(context).requestFocus(_phoneFocusNode),
+                  onEditingComplete: () =>
+                      FocusScope.of(context).requestFocus(_phoneFocusNode),
                 ),
-                const SizedBox(height: appDefaultSpace,),
+                const SizedBox(
+                  height: appDefaultSpace,
+                ),
                 TextField(
                   focusNode: _phoneFocusNode,
                   keyboardType: TextInputType.phone,
@@ -175,34 +189,44 @@ class _MeetingCreateScreenState extends State<MeetingCreateScreen> {
                   decoration: const InputDecoration(
                     hintText: 'Phone',
                   ),
-                  onEditingComplete: () => FocusScope.of(context).requestFocus(_dateFocusNode),
+                  onEditingComplete: () =>
+                      FocusScope.of(context).requestFocus(_dateFocusNode),
                 ),
-                const SizedBox(height: appDefaultSpace,),
+                const SizedBox(
+                  height: appDefaultSpace,
+                ),
                 Text(
                   _selectedDate == null
                       ? 'No date chosen'
                       : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
                 ),
-                const SizedBox(height: appDefaultSpace,),
+                const SizedBox(
+                  height: appDefaultSpace,
+                ),
                 TextButton(
                   focusNode: _dateFocusNode,
                   onPressed: _selectDate,
                   child: const Text('Choose date'),
                 ),
-                const SizedBox(height: appDefaultSpace,),
+                const SizedBox(
+                  height: appDefaultSpace,
+                ),
                 Text(
                   _selectedTime == null
                       ? 'No time chosen'
                       : 'Picked Time: ${_selectedTime.format(context)}',
                 ),
-                const SizedBox(height: appDefaultSpace,),
+                const SizedBox(
+                  height: appDefaultSpace,
+                ),
                 TextButton(
                   focusNode: _timeFocusNode,
                   onPressed: _selectTime,
                   child: const Text('Choose time'),
                 ),
-
-                const SizedBox(height: appDefaultSpace,),
+                const SizedBox(
+                  height: appDefaultSpace,
+                ),
                 TextButton(
                     onPressed: () => _handleSubmit(
                           accessToken: user.accessToken,

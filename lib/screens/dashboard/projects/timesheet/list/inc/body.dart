@@ -5,14 +5,113 @@ import '../../../../../../settings/constants.dart';
 import '../../../../../../controllers/auth_controller.dart';
 import '../../../../../../controllers/timesheet_controller.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   Body({required this.projectId, Key? key}) : super(key: key);
   String projectId;
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  final FocusNode _timeFocusNode = FocusNode();
+  final FocusNode _noteFocusNode = FocusNode();
+  final TextEditingController _dayController = TextEditingController();
+  final TextEditingController _timeController = TextEditingController();
+  final TextEditingController _noteController = TextEditingController();
 
   Future<void> _refreshProjectTimeSheets(
       BuildContext context, id, accessToken) async {
     await Provider.of<TimesheetController>(context, listen: false)
         .index(projectId: id, accessToken: accessToken);
+  }
+
+  void _showAddLogDialog(
+      {required String timeSheetId, required String accessToken}) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Add Time Log'),
+          content: Container(
+            height: MediaQuery.of(context).size.height * 0.4,
+            color: Colors.white,
+            child: Column(
+              children: [
+                TextField(
+                  autofocus: true,
+                  controller: _dayController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(hintText: 'Day (2)'),
+                  onEditingComplete: () => FocusScope.of(context).requestFocus(_timeFocusNode),
+                ),
+                TextField(
+                  focusNode: _timeFocusNode,
+                  controller: _timeController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(hintText: 'Hour (1~8)'),
+                  onEditingComplete: () => FocusScope.of(context).requestFocus(_noteFocusNode),
+                ),
+                TextField(
+                  focusNode: _noteFocusNode,
+                  controller: _noteController,
+                  keyboardType: TextInputType.text,
+                  decoration: const InputDecoration(hintText: 'Note...'),
+                  maxLines: 4,
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                _dayController.clear();
+                _timeController.clear();
+                _noteController.clear();
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Submit'),
+              onPressed: () {
+                var newObj = {
+                  "day": _dayController.text.toString(),
+                  "time": _timeController.text.toString(),
+                  "note": _noteController.text.toString()
+                };
+                Provider.of<TimesheetController>(context, listen: false)
+                    .update(
+                        timeSheetId: timeSheetId,
+                        accessToken: accessToken,
+                        newObj: newObj)
+                    .then((value) {
+                  if (value == 201) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text(
+                        'Timelog added',
+                        style: TextStyle(color: Colors.green),
+                      ),
+                    ));
+                    Provider.of<TimesheetController>(context, listen: false)
+                        .clearTimeSheet();
+                    Navigator.of(context).pop();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text(
+                        'Error occurred',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ));
+                    Navigator.of(context).pop();
+                  }
+                });
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -30,7 +129,7 @@ class Body extends StatelessWidget {
                 )
               : RefreshIndicator(
                   onRefresh: () => _refreshProjectTimeSheets(
-                      context, projectId, accessToken),
+                      context, widget.projectId, accessToken),
                   child: Consumer<TimesheetController>(
                     builder: (context, value, child) => ListView.builder(
                       itemCount: value.timeSheetsList.length,
@@ -43,24 +142,36 @@ class Body extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      'Task: ${value.timeSheetsList[index].title}',
-                                      style: const TextStyle(color: Colors.black87),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      child: Text(
+                                        'Task: ${value.timeSheetsList[index].title}',
+                                        softWrap: true,
+                                        style: const TextStyle(
+                                            color: Colors.black87),
+                                      ),
                                     ),
                                     Text(
                                       'Entry By: ${value.timeSheetsList[index].createdBy}',
-                                      style: const TextStyle(color: Colors.black87),
+                                      style: const TextStyle(
+                                          color: Colors.black87),
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: appDefaultSpace,),
+                                const SizedBox(
+                                  height: appDefaultSpace,
+                                ),
                                 Text(
                                   value.timeSheetsList[index].task,
                                   style: const TextStyle(color: Colors.black87),
                                 ),
-                                const SizedBox(height: appDefaultSpace,),
+                                const SizedBox(
+                                  height: appDefaultSpace,
+                                ),
                                 SizedBox(
                                   height:
                                       MediaQuery.of(context).size.height * 0.2,
@@ -76,10 +187,13 @@ class Body extends StatelessWidget {
                                           Text(value.timeSheetsList[index]
                                               .logs[i]["day"]),
                                           Text(value.timeSheetsList[index]
-                                              .logs[i]["time"]),
-                                          Text(value.timeSheetsList[index]
-                                              .logs[i]["note"]
-                                              .substring(0, 5)),
+                                                  .logs[i]["time"] ??
+                                              ""),
+                                          Text(
+                                            value.timeSheetsList[index].logs[i]
+                                                ["note"],
+                                            softWrap: true,
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -91,6 +205,29 @@ class Body extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+                                SizedBox(
+                                  width: 70.0,
+                                  child: TextButton(
+                                    onPressed: () => _showAddLogDialog(
+                                      timeSheetId:
+                                          value.timeSheetsList[index].id,
+                                      accessToken: accessToken,
+                                    ),
+                                    child: Row(
+                                      children: const [
+                                        Icon(
+                                          Icons.add,
+                                          color: Colors.black87,
+                                        ),
+                                        Text(
+                                          'Log',
+                                          style:
+                                              TextStyle(color: Colors.black87),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -99,7 +236,8 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ),
-          future: _refreshProjectTimeSheets(context, projectId, accessToken),
+          future:
+              _refreshProjectTimeSheets(context, widget.projectId, accessToken),
         ),
       ),
     );
