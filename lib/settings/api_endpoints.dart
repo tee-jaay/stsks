@@ -28,6 +28,7 @@ final String MEETINGS = "$API_ROOT/projects-meetings/projectId";
 
 // TimeSheets
 final String TIMESHEETS = "$API_ROOT/projects-timesheets/projectId";
+final String TIMESHEETS_LOG = "$API_ROOT/projects-timesheets/timeSheetId";
 
 // Users
 final String USERS = "$API_ROOT/users";
