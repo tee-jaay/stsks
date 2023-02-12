@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -16,6 +17,15 @@ class MeetingCreateScreen extends StatefulWidget {
 }
 
 class _MeetingCreateScreenState extends State<MeetingCreateScreen> {
+
+  final FocusNode _durationFocusNode = FocusNode();
+  final FocusNode _agendaFocusNode = FocusNode();
+  final FocusNode _locationFocusNode = FocusNode();
+  final FocusNode _addressFocusNode = FocusNode();
+  final FocusNode _phoneFocusNode = FocusNode();
+  final FocusNode _dateFocusNode = FocusNode();
+  final FocusNode _timeFocusNode = FocusNode();
+
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _durationController = TextEditingController();
   final TextEditingController _agendaController = TextEditingController();
@@ -23,21 +33,22 @@ class _MeetingCreateScreenState extends State<MeetingCreateScreen> {
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   late DateTime _selectedDate = DateTime.now();
+  late TimeOfDay _selectedTime = TimeOfDay.now();
 
   Future<void> _selectDate() async {
+    BuildContext dialogContext = context;
     final DateTime? picked = await showDatePicker(
-      context: context,
+      context: dialogContext,
       initialDate: _selectedDate,
       firstDate: DateTime(2015, 8),
       lastDate: DateTime(2101),
     );
-    if (picked != null && picked != _selectedDate)
+    if (picked != null && picked != _selectedDate) {
       setState(() {
         _selectedDate = picked;
       });
+    }
   }
-
-  late TimeOfDay _selectedTime = TimeOfDay.now();
 
   Future<void> _selectTime() async {
     final TimeOfDay? picked = await showTimePicker(
@@ -85,7 +96,9 @@ class _MeetingCreateScreenState extends State<MeetingCreateScreen> {
         )));
       }
     }).catchError((err) {
-      print(err.toString());
+      if (kDebugMode) {
+        print(err.toString());
+      }
     });
   }
 
@@ -119,26 +132,50 @@ class _MeetingCreateScreenState extends State<MeetingCreateScreen> {
                   autofocus: true,
                   controller: _titleController,
                   decoration: const InputDecoration(hintText: 'Title'),
+                  onEditingComplete: () => FocusScope.of(context).requestFocus(_agendaFocusNode),
                 ),
                 const SizedBox(height: appDefaultSpace,),
                 TextField(
+                  focusNode: _agendaFocusNode,
                   controller: _agendaController,
                   decoration: const InputDecoration(
                     hintText: 'Agenda',
                   ),
                   maxLines: 4,
+                  onEditingComplete: () => FocusScope.of(context).requestFocus(_durationFocusNode),
                 ),
                 const SizedBox(height: appDefaultSpace,),
                 TextField(
-                  autofocus: true,
+                  focusNode: _durationFocusNode,
+                  controller: _durationController,
+                  decoration: const InputDecoration(
+                    hintText: 'Duration in (hr:min)',
+                  ),
+                  onEditingComplete: () => FocusScope.of(context).requestFocus(_addressFocusNode),
+                ),
+                const SizedBox(height: appDefaultSpace,),
+                TextField(
+                  focusNode: _addressFocusNode,
                   controller: _addressController,
                   decoration: const InputDecoration(hintText: 'Address'),
+                  onEditingComplete: () => FocusScope.of(context).requestFocus(_locationFocusNode),
                 ),
                 const SizedBox(height: appDefaultSpace,),
                 TextField(
-                  autofocus: true,
+                  focusNode: _locationFocusNode,
                   controller: _locationController,
                   decoration: const InputDecoration(hintText: 'Location'),
+                  onEditingComplete: () => FocusScope.of(context).requestFocus(_phoneFocusNode),
+                ),
+                const SizedBox(height: appDefaultSpace,),
+                TextField(
+                  focusNode: _phoneFocusNode,
+                  keyboardType: TextInputType.phone,
+                  controller: _phoneController,
+                  decoration: const InputDecoration(
+                    hintText: 'Phone',
+                  ),
+                  onEditingComplete: () => FocusScope.of(context).requestFocus(_dateFocusNode),
                 ),
                 const SizedBox(height: appDefaultSpace,),
                 Text(
@@ -148,6 +185,7 @@ class _MeetingCreateScreenState extends State<MeetingCreateScreen> {
                 ),
                 const SizedBox(height: appDefaultSpace,),
                 TextButton(
+                  focusNode: _dateFocusNode,
                   onPressed: _selectDate,
                   child: const Text('Choose date'),
                 ),
@@ -159,17 +197,11 @@ class _MeetingCreateScreenState extends State<MeetingCreateScreen> {
                 ),
                 const SizedBox(height: appDefaultSpace,),
                 TextButton(
+                  focusNode: _timeFocusNode,
                   onPressed: _selectTime,
-                  child: Text('Choose time'),
+                  child: const Text('Choose time'),
                 ),
-                const SizedBox(height: appDefaultSpace,),
-                TextField(
-                  keyboardType: TextInputType.phone,
-                  controller: _phoneController,
-                  decoration: const InputDecoration(
-                    hintText: 'Phone',
-                  ),
-                ),
+
                 const SizedBox(height: appDefaultSpace,),
                 TextButton(
                     onPressed: () => _handleSubmit(
