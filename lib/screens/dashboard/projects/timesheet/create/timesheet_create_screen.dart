@@ -16,7 +16,7 @@ class TimeSheetCreateScreen extends StatefulWidget {
 }
 
 class _TimeSheetCreateScreenState extends State<TimeSheetCreateScreen> {
-  TextEditingController _titleController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
 
   late String _selectedTask = "";
 

@@ -5,21 +5,18 @@ import '../models/meeting.dart';
 import '../settings/api_endpoints.dart';
 import '../services/http_requests_service.dart';
 
-class MeetingController with ChangeNotifier {
-  HttpRequestsService httpRequestsService = HttpRequestsService();
-
+class MeetingController extends HttpRequestsService with ChangeNotifier {
   late List<Meeting> meetingsList = [];
 
   Future<void> index(
       {required String projectId, required String accessToken}) async {
-    var endpoint = '$MEETINGS/$projectId';
-    var result = await httpRequestsService.requestApi(
-        endpoint: endpoint,
+    var result = await requestApi(
+        endpoint: '$MEETINGS/$projectId',
         object: {},
         reqMethod: 'GET',
         accessToken: accessToken);
     if(result.statusCode == 200){
-      meetingsList.clear();
+      clearMeetings();
       var data = jsonDecode(result.body);
       for (var i = 0; i < data.length; i++) {
         String id = data[i]["id"] ?? '';
@@ -55,5 +52,18 @@ class MeetingController with ChangeNotifier {
       }
     }
     notifyListeners();
+  }
+
+  Future<int> store({required String projectId, required String accessToken, required Object newObj}) async{
+    var result = await requestApi(
+    endpoint: '$MEETINGS/$projectId',
+    object: newObj,
+    reqMethod: "POST",
+    accessToken: accessToken);
+    return result.statusCode;
+  }
+
+  void clearMeetings(){
+    meetingsList.clear();
   }
 }
