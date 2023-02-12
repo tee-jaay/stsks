@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../create/meeting_create_screen.dart';
 import '../../../../../controllers/auth_controller.dart';
 import '../../../../auth/sign-in/sign_in.dart';
 import 'inc/body.dart';
@@ -31,6 +32,15 @@ class MeetingsListScreen extends StatelessWidget {
               children: [
                 Body(projectId: projectId!),
               ],
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () => Navigator.pushNamed(
+                  context, MeetingCreateScreen.screenId,
+                  arguments: projectId),
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
             ),
           );
   }

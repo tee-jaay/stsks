@@ -44,6 +44,7 @@ class TimeSheetsScreen extends StatelessWidget {
                 Icons.add,
                 color: Colors.white,
               ),
-            ));
+            ),
+    );
   }
 }
