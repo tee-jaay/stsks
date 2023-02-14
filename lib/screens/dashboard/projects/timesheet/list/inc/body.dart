@@ -155,10 +155,15 @@ class _BodyState extends State<Body> {
                                             color: Colors.black87),
                                       ),
                                     ),
-                                    Text(
-                                      'Entry By: ${value.timeSheetsList[index].createdBy}',
-                                      style: const TextStyle(
-                                          color: Colors.black87),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.3,
+                                      child: Text(
+                                        'Entry By: ${value.timeSheetsList[index].createdBy}',
+                                        softWrap: true,
+                                        style: const TextStyle(
+                                            color: Colors.black87),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -185,13 +190,13 @@ class _BodyState extends State<Body> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(value.timeSheetsList[index]
-                                              .logs[i]["day"]),
+                                              .logs[i]["day"]??""),
                                           Text(value.timeSheetsList[index]
                                                   .logs[i]["time"] ??
                                               ""),
                                           Text(
                                             value.timeSheetsList[index].logs[i]
-                                                ["note"],
+                                                ["note"]??"",
                                             softWrap: true,
                                           ),
                                         ],

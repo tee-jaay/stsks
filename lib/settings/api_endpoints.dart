@@ -19,6 +19,7 @@ final String TASKS_COMMENTS = "$API_ROOT/projects-tasks-comments";
 
 // Issues
 final String ISSUES = "$API_ROOT/projects-issues/projectId";
+final String ISSUES_COMMENTS = "$API_ROOT/projects-issues/comments";
 
 // Todos
 final String TODOS = "$API_ROOT/projects-tasks-todos/projectId";
