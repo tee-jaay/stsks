@@ -63,6 +63,15 @@ class MeetingController extends HttpRequestsService with ChangeNotifier {
     return result.statusCode;
   }
 
+  Future<int> messageAdd({required String meetingId, required String accessToken, required Object newObj}) async{
+    var result = await requestApi(
+    endpoint: '$MEETINGS_COMMENTS/$meetingId',
+    object: newObj,
+    reqMethod: "PATCH",
+    accessToken: accessToken);
+    return result.statusCode;
+  }
+
   void clearMeetings(){
     meetingsList.clear();
   }
