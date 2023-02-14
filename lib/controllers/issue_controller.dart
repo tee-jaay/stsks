@@ -10,10 +10,9 @@ class IssueController extends HttpRequestsService with ChangeNotifier {
 
   Future<void> index(
       {required String projectId, required String accessToken}) async {
-    var endpoint = '$ISSUES/$projectId';
     var result = await requestApi(
         object: {},
-        endpoint: endpoint,
+        endpoint: '$ISSUES/$projectId',
         reqMethod: 'GET',
         accessToken: accessToken);
     if (result.statusCode == 200) {
@@ -59,13 +58,23 @@ class IssueController extends HttpRequestsService with ChangeNotifier {
       {required String projectId,
       required String accessToken,
       required Object obj}) async {
-    var endpoint = '$ISSUES/$projectId';
     var result = await requestApi(
         object: obj,
-        endpoint: endpoint,
+        endpoint: '$ISSUES/$projectId',
         reqMethod: 'POST',
         accessToken: accessToken);
-    //notifyListeners();
+    return result.statusCode;
+  }
+
+  Future<int> commentAdd(
+      {required String issueId,
+        required String accessToken,
+        required Object obj}) async {
+    var result = await requestApi(
+        object: obj,
+        endpoint: '$ISSUES_COMMENTS/$issueId',
+        reqMethod: 'PATCH',
+        accessToken: accessToken);
     return result.statusCode;
   }
 
