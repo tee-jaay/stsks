@@ -85,7 +85,7 @@ class DashboardScreen extends StatelessWidget {
               ],
             ),
             backgroundColor: Colors.white,
-            body: Body(),
+            body: Body(accessToken: accessToken),
           );
   }
 }

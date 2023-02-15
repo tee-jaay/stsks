@@ -7,7 +7,7 @@ import '../services/http_requests_service.dart';
 
 class DashboardController extends HttpRequestsService with ChangeNotifier {
   bool _loading = false;
-  List statData = [];
+  List<StatData> statData = [];
   List<RecentProject> recentProjects = [];
   List<LatestOpenIssues> latestOpenIssues = [];
   List<UsersOnline> usersOnline = [];
@@ -21,6 +21,7 @@ class DashboardController extends HttpRequestsService with ChangeNotifier {
 
   Future<int> index({required String accessToken, required}) async {
     loading = true;
+
     clearAll();
 
     var result = await requestApi(
@@ -30,13 +31,10 @@ class DashboardController extends HttpRequestsService with ChangeNotifier {
         accessToken: accessToken);
     final decodedData = jsonDecode(result.body);
 // Stats data
-    statData.add(StatData(
-      today: decodedData["today"],
-      allProjectsCount: decodedData["allProjectsCount"].toString(),
-      allTasksCount: decodedData["allTasksCount"].toString(),
-      allIssuesCount: decodedData["allIssuesCount"].toString(),
-      allMeetingsCount: decodedData["allMeetingsCount"].toString(),
-    ));
+    decodedData["statData"].forEach((data) {
+      statData.add(StatData(name: data["name"], count: data["count"].toString()));
+    });
+
 // Recent projects
     decodedData["recentProjects"].forEach((data) {
       recentProjects.add(

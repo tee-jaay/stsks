@@ -58,7 +58,7 @@ class StatCard extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            "${name.toUpperCase()}($count)",
+            "${name.toUpperCase()} ($count)",
             style: TextStyle(
               fontSize: 18.0,
               color: color,
