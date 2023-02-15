@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/dashboard.dart';
+import '../../../helpers/statCardIcon.dart';
+import '../../../helpers/statCardTextColor.dart';
 import 'stat_card.dart';
 
 class StatCardsGrid extends StatelessWidget {
-  const StatCardsGrid({Key? key}) : super(key: key);
+  StatCardsGrid({Key? key, required this.statData}) : super(key: key);
+  final List statData;
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +18,14 @@ class StatCardsGrid extends StatelessWidget {
           crossAxisSpacing: 8.0,
           mainAxisSpacing: 8.0,
           children: List.generate(
-              dashboardStats.length, (index) {
+              statData.length, (index) {
             return StatCard(
-              scrWidth: dashboardStats[index].scrWidth,
-              scrHeight: dashboardStats[index].scrHeight,
-              name: dashboardStats[index].name,
-              count: dashboardStats[index].count,
-              icon: dashboardStats[index].icon,
-              color: dashboardStats[index].color,
+              scrWidth: 360,
+              scrHeight: 360,
+              name: statData[index].name,
+              count: statData[index].count,
+              icon: getStatCardIcon(statData[index].name),
+              color: getStatCardTextColor(statData[index].name),
             );
           }),
         ),

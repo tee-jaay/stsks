@@ -2,6 +2,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // Base
 final String API_ROOT = dotenv.env["API_BASE"].toString();
+
+// Dashboard
+final String DASHBOARD = "$API_ROOT/dashboard";
+
 // Authentication
 final String AUTH_SIGN_IN = "$API_ROOT/auth/login";
 final String AUTH_SIGN_UP = "$API_ROOT/auth/register";

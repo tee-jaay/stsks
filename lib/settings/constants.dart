@@ -25,15 +25,9 @@ RegExp regExpEmail = RegExp(
   multiLine: false,
   caseSensitive: false,
 );
-const String passwordPattern = r"";
+const String passwordPattern = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{4,}$";
 RegExp regExpPassword = RegExp(
   passwordPattern,
   multiLine: false,
   caseSensitive: true,
 );
-// const String passwordPattern = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{4,}$";
-// RegExp regExpPassword = RegExp(
-//   passwordPattern,
-//   multiLine: false,
-//   caseSensitive: true,
-// );

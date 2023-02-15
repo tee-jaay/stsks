@@ -1,10 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../../helpers/issueTypeColor.dart';
 import '../../../settings/constants.dart';
 
 class LatestIssues extends StatefulWidget {
-  const LatestIssues({Key? key}) : super(key: key);
+  LatestIssues({required this.latestOpenIssues, Key? key}) : super(key: key);
+  List latestOpenIssues;
 
   @override
   State<LatestIssues> createState() => _LatestIssuesState();
@@ -27,54 +29,22 @@ class _LatestIssuesState extends State<LatestIssues> {
         const SizedBox(
           height: appDefaultSpace,
         ),
-        Container(),
-        IssueItem(
-          about: "Dolorum molestias dolores vero",
-          issueType: "maintenance",
-          severity: "Critical",
-          colorType: Colors.yellow,
-          colorSeverity: Colors.yellow,
-          press: () {
-            if (kDebugMode) {
-              print("pressed yellow");
-            }
-          },
-        ),
-        IssueItem(
-          about: "Nesciunt consequuntur non dolo",
-          issueType: "bug",
-          severity: "moderate",
-          colorType: Colors.red,
-          colorSeverity: Colors.red,
-          press: () {
-            if (kDebugMode) {
-              print("pressed red");
-            }
-          },
-        ),
-        IssueItem(
-          about: "Quas vero voluptas cumque susc vero voluptas cumque susc",
-          issueType: "feature",
-          severity: "Upgrade",
-          colorType: Colors.blue,
-          colorSeverity: Colors.blue,
-          press: () {
-            if (kDebugMode) {
-              print("pressed blue");
-            }
-          },
-        ),
-        IssueItem(
-          about: "Unde libero consequatur suscip",
-          issueType: "update",
-          severity: "moderate",
-          colorType: Colors.green,
-          colorSeverity: Colors.green,
-          press: () {
-            if (kDebugMode) {
-              print("pressed green");
-            }
-          },
+        Container(
+          height: widget.latestOpenIssues.length * 111,
+          child: ListView.builder(
+              itemBuilder: (context, index) => IssueItem(
+                    about: widget.latestOpenIssues[index].title.toString(),
+                    issueType:
+                        widget.latestOpenIssues[index].type.toString(),
+                    severity:
+                        widget.latestOpenIssues[index].severity.toString(),
+                    colorType: getIssueColor(
+                        widget.latestOpenIssues[index].type.toString()),
+                    colorSeverity: getIssueColor(
+                        widget.latestOpenIssues[index].type.toString()),
+                    press: () {},
+                  ),
+              itemCount: widget.latestOpenIssues.length),
         ),
       ],
     );
@@ -163,8 +133,7 @@ class IssueType extends StatelessWidget {
         left: appDefaultSpace,
       ),
       padding: const EdgeInsets.symmetric(
-          horizontal: appDefaultSpace * 0.6,
-          vertical: appDefaultSpace * 0.3),
+          horizontal: appDefaultSpace * 0.6, vertical: appDefaultSpace * 0.3),
       decoration: BoxDecoration(
           color: colorType, borderRadius: BorderRadius.circular(50)),
       child: Text(
