@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../settings/constants.dart';
 
 class OnlineUsers extends StatefulWidget {
-  const OnlineUsers({Key? key}) : super(key: key);
+  OnlineUsers({required this.usersOnline, Key? key}) : super(key: key);
+  List usersOnline;
 
   @override
   State<OnlineUsers> createState() => _OnlineUsersState();
@@ -23,60 +24,21 @@ class _OnlineUsersState extends State<OnlineUsers> {
         const SizedBox(
           height: appDefaultSpace,
         ),
-        OnLineUserCard(
-          press: () {
-            if (kDebugMode) {
-              print("online user 1");
-            }
-          },
-          imgSrc: "https://i.pravatar.cc/300?q=1",
-          role: "Admin",
-          name: "Jhon Doe",
-          email: "jhondoe@example.com",
-        ),
-        OnLineUserCard(
-          press: () {
-            if (kDebugMode) {
-              print("online user 2");
-            }
-          },
-          imgSrc: "https://i.pravatar.cc/300?q=2",
-          role: "visitor",
-          name: "Luz O'Reilly DVM",
-          email: "0Casper560@example.com",
-        ),
-        OnLineUserCard(
-          press: () {
-            if (kDebugMode) {
-              print("online user 3");
-            }
-          },
-          imgSrc: "https://i.pravatar.cc/300?q=3",
-          role: "client",
-          name: "Scott Wunsch",
-          email: "6Hudson_Bruen6@example.com",
-        ),
-        OnLineUserCard(
-          press: () {
-            if (kDebugMode) {
-              print("online user 4");
-            }
-          },
-          imgSrc: "https://i.pravatar.cc/300?q=4",
-          role: "user",
-          name: "Harry Roberts",
-          email: "2Jocelyn_Cronin2@example.com",
-        ),
-        OnLineUserCard(
-          press: () {
-            if (kDebugMode) {
-              print("online user 5");
-            }
-          },
-          imgSrc: "https://i.pravatar.cc/300?q=5",
-          role: "client",
-          name: "Jackie Runolfsdottir",
-          email: "4Layla_Skiles154@example.com",
+        Container(
+          height: widget.usersOnline.length * 60,
+          child: ListView.builder(
+            itemBuilder: (context, index) => OnLineUserCard(
+              press: () {
+                if (kDebugMode) {
+                  print("online user $index");
+                }
+              },
+              imgSrc: widget.usersOnline[index].profileAvatar,
+              role: widget.usersOnline[index].roleType,
+              name: widget.usersOnline[index].name,
+            ),
+            itemCount: widget.usersOnline.length,
+          ),
         ),
       ],
     );
@@ -88,12 +50,11 @@ class OnLineUserCard extends StatelessWidget {
     Key? key,
     required this.name,
     required this.role,
-    required this.email,
     required this.imgSrc,
     required this.press,
   }) : super(key: key);
 
-  final String name, role, email, imgSrc;
+  final String name, role, imgSrc;
   final VoidCallback press;
 
   @override

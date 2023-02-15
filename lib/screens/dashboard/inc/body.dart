@@ -90,7 +90,12 @@ class _BodyState extends State<Body> {
                             const SizedBox(
                               height: appDefaultSpace,
                             ),
-                            const OnlineUsers(),
+                            OnlineUsers(
+                                usersOnline:Provider.of<DashboardController>(
+                                    context,
+                                    listen: false)
+                                    .usersOnline,
+                            ),
                             const SizedBox(
                               height: appDefaultSpace,
                             ),
