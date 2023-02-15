@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../settings/constants.dart';
-
 Color getIssueColor(String str) {
   switch (str) {
     case 'bug':
