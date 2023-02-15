@@ -21,6 +21,7 @@ class DashboardController extends HttpRequestsService with ChangeNotifier {
 
   Future<int> index({required String accessToken, required}) async {
     loading = true;
+    clearAll();
 
     var result = await requestApi(
         endpoint: DASHBOARD,
@@ -58,13 +59,11 @@ class DashboardController extends HttpRequestsService with ChangeNotifier {
           severity: data["severity"],
           createdAt: data["createdAt"]));
     });
-
 //    Tasks Count By Priority
     decodedData["tasksCountByPriority"].forEach((data) {
       tasksCountByPriority
           .add(TasksCountByPriority(id: data["_id"], count: data["count"]));
     });
-
 // Users online
     decodedData["users"].forEach((data) {
       usersOnline.add(UsersOnline(
@@ -78,5 +77,13 @@ class DashboardController extends HttpRequestsService with ChangeNotifier {
     notifyListeners();
     loading = false;
     return result.statusCode;
+  }
+
+  void clearAll() {
+    statData.clear();
+    recentProjects.clear();
+    tasksCountByPriority.clear();
+    latestOpenIssues.clear();
+    usersOnline.clear();
   }
 }

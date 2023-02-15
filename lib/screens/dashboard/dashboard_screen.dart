@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prozeqts/controllers/dashboard_controller.dart';
 
 import '../auth/sign-in/sign_in.dart';
 import '../home/home_screen.dart';
+import '../../controllers/dashboard_controller.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/project_controller.dart';
 import 'inc/body.dart';
@@ -85,7 +85,7 @@ class DashboardScreen extends StatelessWidget {
               ],
             ),
             backgroundColor: Colors.white,
-            body: const Body(),
+            body: Body(),
           );
   }
 }
