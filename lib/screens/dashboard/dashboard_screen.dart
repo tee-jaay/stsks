@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prozeqts/screens/auth/sign-in/sign_in.dart';
-import 'package:prozeqts/screens/home/home_screen.dart';
+import 'package:prozeqts/controllers/dashboard_controller.dart';
 
+import '../auth/sign-in/sign_in.dart';
+import '../home/home_screen.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/project_controller.dart';
 import 'inc/body.dart';
@@ -59,8 +60,11 @@ class DashboardScreen extends StatelessWidget {
                         child: const Text("Projects"),
                       ),
                       TextButton(
-                        onPressed: () {},
-                        child: const Text("Users"),
+                        onPressed: () {
+                          Provider.of<DashboardController>(context, listen: false)
+                              .index(accessToken: accessToken);
+                        },
+                        child: const Text("Fetch"),
                       ),
                     ],
                   ),

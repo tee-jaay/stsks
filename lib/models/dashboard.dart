@@ -79,3 +79,78 @@ List<DashboardStat> dashboardStats = [
     ),
   ),
 ];
+
+class StatData {
+  final String today;
+  final String allProjectsCount;
+  final String allTasksCount;
+  final String allIssuesCount;
+  final String allMeetingsCount;
+
+  StatData({
+    required this.today,
+    required this.allProjectsCount,
+    required this.allTasksCount,
+    required this.allIssuesCount,
+    required this.allMeetingsCount,
+  });
+}
+
+class RecentProject {
+  final String id;
+  final String title;
+  final String status;
+
+  RecentProject({
+    required this.id,
+    required this.title,
+    required this.status,
+  });
+}
+
+class LatestOpenIssues {
+  final String id;
+  final String projectId;
+  final String createdBy;
+  final String title;
+  final String status;
+  final String type;
+  final String severity;
+  final String createdAt;
+
+  LatestOpenIssues({
+    required this.id,
+    required this.projectId,
+    required this.createdBy,
+    required this.title,
+    required this.status,
+    required this.type,
+    required this.severity,
+    required this.createdAt,
+  });
+}
+
+class TasksCountByPriority {
+  final String id;
+  final int count;
+
+  TasksCountByPriority({
+    required this.id,
+    required this.count,
+  });
+}
+
+class UsersOnline {
+  final String id;
+  final String name;
+  final String roleType;
+  final String profileAvatar;
+
+  UsersOnline({
+    required this.id,
+    required this.name,
+    required this.roleType,
+    required this.profileAvatar,
+  });
+}
+
