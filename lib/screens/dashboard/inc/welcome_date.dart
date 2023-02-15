@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:date_format/date_format.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
-DateTime todayDate = DateTime.now();
-Row welcomeDate() {
-  return Row(
-    children: [
-      const Text(
-        "Welcome to Dashboard",
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      const Spacer(),
-      Text(formatDate(todayDate, [yy, '-', M, '-', d])),
-    ],
-  );
+import '../../../controllers/auth_controller.dart';
+
+class WelcomeDate extends StatelessWidget {
+  const WelcomeDate({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final user = Provider.of<AuthController>(context).user;
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat.MMMd().format(now);
+
+    return Row(
+      children: [
+        Text(
+          "Hello, ${user.username}",
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        const Spacer(),
+        Text(formattedDate),
+      ],
+    );
+  }
 }

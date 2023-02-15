@@ -18,7 +18,7 @@ class Body extends StatelessWidget {
         padding: const EdgeInsets.all(appDefaultSpace),
         child: Column(
           children: [
-            welcomeDate(),
+            const WelcomeDate(),
             const SizedBox(
               height: appDefaultSpace * 1.4,
             ),
