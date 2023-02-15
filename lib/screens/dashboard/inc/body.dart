@@ -83,7 +83,10 @@ class _BodyState extends State<Body> {
                             const SizedBox(
                               height: appDefaultSpace,
                             ),
-                            const LatestIssues(),
+                            LatestIssues(latestOpenIssues:Provider.of<DashboardController>(
+                                context,
+                                listen: false)
+                                .latestOpenIssues,),
                             const SizedBox(
                               height: appDefaultSpace,
                             ),

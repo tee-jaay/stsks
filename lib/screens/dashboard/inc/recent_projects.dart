@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../helpers/ProjectStatusColor.dart';
+import '../../../helpers/projectStatusColor.dart';
 import '../../../models/dashboard.dart';
 import '../projects/project_detail/project_detail_screen.dart';
 import '../../../settings/constants.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../helpers/StatCardIcon.dart';
-import '../../../helpers/StatCardTextColor.dart';
+import '../../../helpers/statCardIcon.dart';
+import '../../../helpers/statCardTextColor.dart';
 import 'stat_card.dart';
 
 class StatCardsGrid extends StatelessWidget {
