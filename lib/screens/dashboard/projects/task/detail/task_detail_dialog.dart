@@ -19,14 +19,14 @@ class TaskDetailDialog extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(task.title),
+            Text(task.title, softWrap: true,),
             TextButton(
                 onPressed: () {
                   Navigator.pushReplacementNamed(
                       context, TaskEditScreen.screenId,
                       arguments: task.id);
                 },
-                child: Text('Edit', style: TextStyle(
+                child: const Text('Edit', style: TextStyle(
                   color: Colors.orange
                 ),))
           ],

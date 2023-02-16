@@ -32,7 +32,8 @@ class DashboardController extends HttpRequestsService with ChangeNotifier {
     final decodedData = jsonDecode(result.body);
 // Stats data
     decodedData["statData"].forEach((data) {
-      statData.add(StatData(name: data["name"], count: data["count"].toString()));
+      statData
+          .add(StatData(name: data["name"], count: data["count"].toString()));
     });
 
 // Recent projects
@@ -59,8 +60,8 @@ class DashboardController extends HttpRequestsService with ChangeNotifier {
     });
 //    Tasks Count By Priority
     decodedData["tasksCountByPriority"].forEach((data) {
-      tasksCountByPriority
-          .add(TasksCountByPriority(id: data["_id"], count: data["count"]));
+      tasksCountByPriority.add(
+          TasksCountByPriority(priority: data["_id"], count: data["count"]));
     });
 // Users online
     decodedData["users"].forEach((data) {

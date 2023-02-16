@@ -30,7 +30,7 @@ class _LatestIssuesState extends State<LatestIssues> {
           height: appDefaultSpace,
         ),
         Container(
-          height: widget.latestOpenIssues.length * 111,
+          height: widget.latestOpenIssues.length * 100,
           child: ListView.builder(
               itemBuilder: (context, index) => IssueItem(
                     about: widget.latestOpenIssues[index].title.toString(),

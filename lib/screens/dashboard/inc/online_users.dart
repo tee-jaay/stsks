@@ -24,7 +24,7 @@ class _OnlineUsersState extends State<OnlineUsers> {
         const SizedBox(
           height: appDefaultSpace,
         ),
-        Container(
+        SizedBox(
           height: widget.usersOnline.length * 60,
           child: ListView.builder(
             itemBuilder: (context, index) => OnLineUserCard(

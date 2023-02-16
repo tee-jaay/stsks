@@ -79,7 +79,12 @@ class _BodyState extends State<Body> {
                             const SizedBox(
                               height: appDefaultSpace,
                             ),
-                            TasksStatusGraph(),
+                            TasksStatusGraph(
+                              tasks:Provider.of<DashboardController>(
+                                  context,
+                                  listen: false)
+                                  .tasksCountByPriority,
+                            ),
                             const SizedBox(
                               height: appDefaultSpace,
                             ),
