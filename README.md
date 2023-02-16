@@ -6,4 +6,8 @@ Mobile version for the Project Management App.
 
 ## Getting Started
 
-Under live development.
+#### Clone the repo
+
+#### Add required packages
+
+#### Rune the project
