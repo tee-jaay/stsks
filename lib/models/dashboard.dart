@@ -43,11 +43,11 @@ class LatestOpenIssues {
 }
 
 class TasksCountByPriority {
-  final String id;
+  final String priority;
   final int count;
 
   TasksCountByPriority({
-    required this.id,
+    required this.priority,
     required this.count,
   });
 }
