@@ -10,4 +10,4 @@ Mobile version for the Project Management App.
 
 #### Add required packages
 
-#### Rune the project
+#### Run the project
