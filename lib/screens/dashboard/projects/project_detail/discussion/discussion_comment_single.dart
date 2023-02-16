@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../../../controllers/auth_controller.dart';
+import '../../../../../controllers/auth_controller.dart';
 
-class Comment extends StatelessWidget {
-  Comment({required this.comment, required this.commentBy, Key? key})
+class DiscussionCommentSingle extends StatelessWidget {
+  const DiscussionCommentSingle({required this.comment, required this.commentBy, Key? key})
       : super(key: key);
-  String comment;
-  String commentBy;
+  final String comment;
+  final String commentBy;
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +20,14 @@ class Comment extends StatelessWidget {
           children: [
             Text(
               commentBy == username ? 'You: ' : '$commentBy: ',
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 14.0,
                   fontWeight: FontWeight.bold),
             ),
             Text(
               comment,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 14.0,
               ),

@@ -43,10 +43,9 @@ class ProjectController with ChangeNotifier {
   Future<ProjectDetail> show(
       {required String id, required String accessToken}) async {
     loading = true;
-    var endpoint = '$PROJECTS/$id';
     var result = await httpRequestsService.requestApi(
         object: {},
-        endpoint: endpoint,
+        endpoint: '$PROJECTS/$id',
         reqMethod: 'GET',
         accessToken: accessToken);
     final data = jsonDecode(result.body);
@@ -80,10 +79,9 @@ class ProjectController with ChangeNotifier {
       required String commentBy,
       required String accessToken,
       required String projectId}) async {
-    var endpoint = '$PROJECTS_COMMENTS/$projectId';
     var result = await httpRequestsService.requestApi(
         object: {"comment": comment, "commentBy": commentBy},
-        endpoint: endpoint,
+        endpoint: '$PROJECTS_COMMENTS/$projectId',
         reqMethod: 'PATCH',
         accessToken: accessToken);
     return result.statusCode;
