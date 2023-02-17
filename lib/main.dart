@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
-import 'package:prozeqts/controllers/dashboard_controller.dart';
 
+import './screens/home/home_screen.dart';
 import 'settings/constants.dart';
 import 'settings/routes.dart';
-import './screens/home/home_screen.dart';
+import 'controllers/dashboard_controller.dart';
 import 'controllers/auth_controller.dart';
 import 'controllers/project_controller.dart';
 import 'controllers/task_controller.dart';
