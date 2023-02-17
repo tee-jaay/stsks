@@ -10,4 +10,6 @@ Mobile version for the Project Management App.
 
 #### Add required packages
 
+#### Provide the API_BASE path in 'assets/.env'
+
 #### Run the project
