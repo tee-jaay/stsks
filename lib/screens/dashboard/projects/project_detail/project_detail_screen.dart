@@ -10,7 +10,7 @@ import '../../../../widgets/app_drawer.dart';
 import '../../../../controllers/project_controller.dart';
 import '../../../../controllers/auth_controller.dart';
 import '../../dashboard_screen.dart';
-import 'info/project_stats.dart';
+import 'stats/project_stats.dart';
 import 'info/project_comments.dart';
 import 'info/project_info.dart';
 
@@ -150,7 +150,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
                           projectId: value.projectDetail.id,
                           comments: value.projectDetail.comments,
                         ),
-                        const ProjectStats(),
+                        ProjectStats(),
                       ]);
                     },
                   );
