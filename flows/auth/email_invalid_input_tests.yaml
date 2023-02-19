@@ -1,0 +1,11 @@
+description: Email invalid input validation test
+---
+# Go to the sign in screen
+- expectVisible: "Sign In"
+- tapOn: "Sign In"
+- expectVisible: "Email"
+# Sign in attempt with an invalid email
+- tapOn: "Email"
+- inputText: "asriel@"
+- tapOn: "Sign In"
+- expectVisible: "Email is invalid"

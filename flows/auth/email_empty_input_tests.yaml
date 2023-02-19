@@ -1,0 +1,9 @@
+description: Email empty input test
+---
+# Go to the sign in screen
+- expectVisible: "Sign In"
+- tapOn: "Sign In"
+- expectVisible: "Email"
+# Sign in attempt with an empty email
+- tapOn: "Sign In"
+- expectVisible: "Email is required"
