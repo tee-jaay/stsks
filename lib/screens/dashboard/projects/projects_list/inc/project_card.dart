@@ -4,7 +4,7 @@ import '../../../../../settings/constants.dart';
 import '../../project_detail/project_detail_screen.dart';
 
 class ProjectCard extends StatelessWidget {
-  ProjectCard(
+  const ProjectCard(
       {Key? key,
       required this.id,
       required this.title,
@@ -13,11 +13,11 @@ class ProjectCard extends StatelessWidget {
       required this.commentsCount})
       : super(key: key);
 
-  String id;
-  String title;
-  String imgUrl;
-  String status;
-  String commentsCount;
+  final String id;
+  final String title;
+  final String imgUrl;
+  final String status;
+  final String commentsCount;
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +49,11 @@ class ProjectCard extends StatelessWidget {
           ),
         ),
         Positioned(
-            bottom: appDefaultSpace,
+            bottom: appDefaultSpace * 1.4,
             left: appDefaultSpace * 1.4,
             child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(
-                      context, ProjectDetailScreen.screenId,
+                  Navigator.pushNamed(context, ProjectDetailScreen.screenId,
                       arguments: id);
                 },
                 child: const Text('view'))),
